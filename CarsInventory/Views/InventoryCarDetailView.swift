@@ -61,10 +61,10 @@ struct InventoryCarDetailView: View {
                 }
                 
                 LabeledContent {
-                    TextField("Make", text: $make)
+                    TextField("Model", text: $make)
                         .multilineTextAlignment(.trailing)
                 } label: {
-                    Text("Make")
+                    Text("Model")
                     Text("Required")
                         .font(.footnote)
                 }
@@ -107,7 +107,7 @@ struct InventoryCarDetailView: View {
                     TextField("Value", value: $value, format: .currency(code: Locale.current.currency?.identifier ?? "USD"))
                         .multilineTextAlignment(.trailing)
                 } label: {
-                    Text("Can value")
+                    Text("Value")
                     Text("optional")
                         .font(.footnote)
                 }
@@ -131,6 +131,7 @@ struct InventoryCarDetailView: View {
             }
             .buttonStyle(.borderedProminent)
             .disabled(make.trimmingCharacters(in: .whitespacesAndNewlines).isEmpty)
+            .padding(.bottom, 8)
         }
         .sheet(isPresented: $showBrandSelectionView) {
             CarBrandSelectionView(selectedBrand: $brandSelection)
@@ -165,6 +166,7 @@ struct InventoryCarDetailView: View {
         } message: {
             Text("Are you sure you want to delete this car from your inventory? This action cannot be undone")
         }
+        .toolbarVisibility(.hidden, for: .tabBar)
         .toolbar {
             ToolbarItem(placement: .topBarTrailing) {
                 Button {

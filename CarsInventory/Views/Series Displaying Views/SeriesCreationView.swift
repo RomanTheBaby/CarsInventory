@@ -56,6 +56,8 @@ struct SeriesCreationView: View {
             requiredInformationSection
             optionalInformationSection
         }
+        .toolbarVisibility(.hidden, for: .tabBar)
+        .navigationTitle(series == nil ? "Create series" : "Update series")
         .overlay(alignment: .bottom) {
             creationCTAView
         }
@@ -128,7 +130,7 @@ struct SeriesCreationView: View {
             
             handleSeriesAction()
         } label: {
-            Text("\(series == nil ? "Create" : "Update") series")
+            Text(series == nil ? "Create new series" : "Update series")
                 .padding(.horizontal)
                 .frame(height: 50)
         }

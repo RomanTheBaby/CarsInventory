@@ -51,9 +51,12 @@ struct SeriesListView: View {
     var body: some View {
         List {
             if searchResults.isEmpty {
-                NavigationLink(value: "Add") {
-                    Label("Add Custom", systemImage: "plus")
+                NavigationLink {
+                    SeriesCreationView(name: searchText)
+                } label: {
+                    Label("Add", systemImage: "plus")
                 }
+
             } else {
                 ForEach(searchResults) { series in
                     NavigationLink {
@@ -68,7 +71,9 @@ struct SeriesListView: View {
         .toolbar {
             if showAddNewButton {
                 ToolbarItem(placement: showDismissButton ? .topBarLeading : .topBarTrailing) {
-                    NavigationLink(value: "Add") {
+                    NavigationLink {
+                        SeriesCreationView(name: searchText)
+                    } label: {
                         Label("Add", systemImage: "plus")
                     }
                 }
@@ -87,11 +92,6 @@ struct SeriesListView: View {
         }
         .searchable(text: $searchText)
         .toolbarVisibility(.visible, for: .navigationBar)
-        .navigationDestination(for: String.self) { view in
-            if view == "Add" {
-                SeriesCreationView(name: searchText)
-            }
-        }
     }
 }
 

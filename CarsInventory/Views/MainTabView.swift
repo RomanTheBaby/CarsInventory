@@ -22,13 +22,11 @@ struct MainTabView: View {
             Tab("Scan", systemImage: "camera.viewfinder") {
                 ScanningView()
                     .toolbarBackground(.visible, for: .tabBar)
-//                    .ignoresSafeArea(.all, edges: .top)
             }
             
             Tab("Settings", systemImage: "gear") {
                 SettingsView()
                     .toolbarBackground(.visible, for: .tabBar)
-                    .ignoresSafeArea(.all, edges: .top)
             }
         }
     }

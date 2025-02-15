@@ -103,15 +103,38 @@ struct ScannerFooterView: View {
                 }.frame(maxWidth: .infinity)
             }
 
+            Spacer()
+                .frame(height: 16)
+            
             HStack(spacing: 16) {
                 Button(action: {
                     viewModel.clearSuggestions()
                 }, label: {
-                    Text("Clear")
-                        .padding(.horizontal)
-                        .frame(maxWidth: .infinity, maxHeight: 40)
+                    Image(systemName: "multiply.circle.fill")
+                        .resizable()
+                        .scaledToFit()
+                        .padding(6)
+                        .frame(width: 40, height: 40)
                 })
                 .buttonStyle(.borderedProminent)
+                .clipShape(RoundedRectangle(cornerRadius: 8))
+                
+                Button(action: {
+                    viewModel.isScanning.toggle()
+                    
+                    if viewModel.isScanning {
+                        viewModel.clearSuggestions()
+                    }
+                    
+                }, label: {
+                    Image(systemName: viewModel.isScanning ? "stop.circle.fill" : "doc.text.viewfinder")
+                        .resizable()
+                        .scaledToFit()
+                        .padding(6)
+                        .frame(width: 40, height: 40)
+                })
+                .buttonStyle(.borderedProminent)
+                .clipShape(RoundedRectangle(cornerRadius: 8))
                 
                 Button(action: {
                     guard animateAddToInventoryButton == false else {
@@ -135,29 +158,24 @@ struct ScannerFooterView: View {
                         Image(systemName: "checkmark.circle")
                             .frame(maxWidth: .infinity, maxHeight: 40)
                     } else {
-                        Text("Add to inventory")
-                            .padding(.horizontal)
-                            .frame(maxWidth: .infinity, maxHeight: 40)
+                        HStack(spacing: -8) {
+                            Image(systemName: "plus.circle.fill")
+                                .resizable()
+                                .scaledToFit()
+                                .padding(6)
+                            Text("Add to inventory")
+                                .frame(maxWidth: .infinity)
+                                .fixedSize(horizontal: false, vertical: true)
+                                .multilineTextAlignment(.leading)
+                        }
+                        .padding(.horizontal, 4)
+                        .frame(height: 40)
                     }
                 })
                 .buttonStyle(.borderedProminent)
                 .disabled(selectedBrand == nil || selectedMake == nil)
+                .frame(height: 50)
             }
-            
-            Button(action: {
-                viewModel.isScanning.toggle()
-                
-                if viewModel.isScanning {
-                    viewModel.clearSuggestions()
-                }
-                
-            }, label: {
-                Text(viewModel.isScanning ? "Stop Scanning" : "Start Scanning")
-                    .padding(.horizontal)
-                    .frame(height: 30)
-                    .frame(maxWidth: .infinity)
-            })
-            .buttonStyle(.borderedProminent)
         }
         .padding()
         .background(Color(uiColor: UIColor.systemBackground)) //Color(red: 229 / 255, green: 229 / 255, blue: 229 / 255))
