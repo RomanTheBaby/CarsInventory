@@ -171,9 +171,9 @@ struct SeriesCreationView: View {
                     let newSeries = Series(
                         id: "\(allSeries.count)",
                         classification: classificationSelection,
-                        fullName: name.trimmingCharacters(in: .whitespacesAndNewlines),
-                        displayName: name.trimmingCharacters(in: .whitespacesAndNewlines),
-                        year: yearSelection == 0 ? nil : yearSelection
+                        name: name.trimmingCharacters(in: .whitespacesAndNewlines),
+                        year: yearSelection == 0 ? nil : yearSelection,
+                        carsCount: carsCount
                     )
                     modelContext.insert(newSeries)
                     series = newSeries

@@ -35,6 +35,8 @@ class Series: Hashable, CustomStringConvertible {
     
     private(set) var fullName: String
     private(set) var displayName: String
+    /// Number of cars in a series. NOT number of cars linked to the series
+    private(set) var carsCount: Int?
     private(set) var year: Int?
     
     @Relationship(deleteRule: .cascade, inverse: \InventoryCar.series)
@@ -43,7 +45,9 @@ class Series: Hashable, CustomStringConvertible {
     
     @Transient
     var allNames: Set<String> {
-        Set<String>([fullName, displayName])
+        let names = Set<String>([fullName, displayName])
+        let trademarkNames = Set<String>(names.map { $0 + "™" })
+        return names.union(trademarkNames)
     }
     
     @Transient
@@ -53,7 +57,10 @@ class Series: Hashable, CustomStringConvertible {
             id: \(id), \
             classification: \(classification), \
             fullName: \(fullName)) \
-            displayName: \(displayName)
+            displayName: \(displayName) \
+            year: \(year?.description ?? "No year") \
+            totalCars: \(cars.count) \
+            cars: \(cars)
         )
         """
     }
@@ -66,6 +73,7 @@ class Series: Hashable, CustomStringConvertible {
         fullName: String,
         displayName: String,
         year: Int? = nil,
+        carsCount: Int? = nil,
         cars: [InventoryCar] = []
     ) {
         self.id = id
@@ -73,6 +81,23 @@ class Series: Hashable, CustomStringConvertible {
         self.fullName = fullName
         self.displayName = displayName
         self.year = year
+        self.cars = cars
+    }
+//    ™"
+    init(
+        id: String,
+        classification: Classification,
+        name: String,
+        year: Int? = nil,
+        carsCount: Int? = nil,
+        cars: [InventoryCar] = []
+    ) {
+        self.id = id
+        self.classification = classification
+        self.fullName = name
+        self.displayName = name
+        self.year = year
+        self.carsCount = carsCount
         self.cars = cars
     }
     

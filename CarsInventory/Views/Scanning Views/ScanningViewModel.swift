@@ -35,6 +35,15 @@ class ScanningViewModel: ObservableObject {
         suggestion.add(brands: [brand])
     }
     
+    func addSuggestedModel(_ model: String) {
+        let trimmedModel = model.trimmingCharacters(in: .whitespacesAndNewlines)
+        guard trimmedModel.isEmpty == false else {
+            return
+        }
+        
+        suggestion.add(models: [trimmedModel])
+    }
+    
     func addSuggestedSeries(_ series: Series) {
         suggestion.add(series: [series])
     }

@@ -49,8 +49,11 @@ struct ScannerFooterView: View {
     @State private var selectedSeries: Series?
     @State private var selectedSeriesNumber: ScanningSuggestion.Number?
     
-    @State private var showSeriesSelectionView = false
+    @State private var modelInput: String = ""
+    
     @State private var showBrandSelectionView = false
+    @State private var showModelInputView = false
+    @State private var showSeriesSelectionView = false
     
     @State private var animateAddToInventoryButton = false
     @State private var error: Error?
@@ -78,7 +81,7 @@ struct ScannerFooterView: View {
                         items: viewModel.suggestion.models,
                         selectedItem: $selectedMake,
                         manualInputActionHandler: {
-                            assertionFailure("Manual make adding is not supported yet")
+                            showModelInputView = true
                         }
                     ).frame(height: 40)
                     
@@ -212,6 +215,15 @@ struct ScannerFooterView: View {
                     showBrandSelectionView = false
                 }
         }
+        .sheet(isPresented: $showModelInputView) {
+            viewModel.addSuggestedModel(modelInput)
+            modelInput = ""
+        } content: {
+            NavigationStack {
+                ModelInputView(input: $modelInput)
+            }
+        }
+
     }
     
     // MARK: - Helper Methods
