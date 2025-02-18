@@ -15,23 +15,14 @@ class InventoryCar: Identifiable, Hashable, CustomStringConvertible {
     @Attribute(.unique)
     private(set) var id: String
     
-    @Transient
-    var brand: CarBrand {
-        CarBrand(rawValue: rawBrand)!
-    }
-    
-    @Transient
-    var color: ColorOption {
-        ColorOption(rawValue: rawColor)!
-    }
-    
-    private var rawBrand: String
-    private var rawColor: String
+    private(set) var brand: CarBrand
+    private(set) var color: ColorOption
     private(set) var make: String
     
 //    @Relationship(inverse: \Series.cars)
     private(set) var series: Series
     private(set) var year: Int?
+    private(set) var seriesEntryNumber: SeriesEntryNumber?
     private(set) var value: Decimal?
     private(set) var note: String?
     
@@ -39,13 +30,15 @@ class InventoryCar: Identifiable, Hashable, CustomStringConvertible {
     var description: String {
         """
         InventoryCar(id: \(id), \
-        brand: \(brand), \
-        make: \(make), \
-        series: \(series), \
-        color: \(color)
-        year: \(year?.description ?? "nil"), \
-        value: \(value?.description ?? "nil"), \
-        note: \(note ?? "nil"))
+            brand: \(brand), \
+            make: \(make), \
+            series: \(series), \
+            color: \(color)
+            year: \(year?.description ?? "nil"), \
+            seriesEntryNumber: \(seriesEntryNumber?.description ?? "nothing")
+            value: \(value?.description ?? "nil"), \
+            note: \(note ?? "nil")
+        )
         """
     }
     
@@ -58,15 +51,17 @@ class InventoryCar: Identifiable, Hashable, CustomStringConvertible {
         series: Series,
         color: ColorOption = .unspecified,
         year: Int? = nil,
+        seriesEntryNumber: SeriesEntryNumber? = nil,
         value: Decimal? = nil,
         note: String? = nil
     ) {
         self.id = id
-        self.rawBrand = brand.rawValue
+        self.brand = brand
         self.make = make
         self.series = series
-        self.rawColor = color.rawValue
+        self.color = color
         self.year = year
+        self.seriesEntryNumber = seriesEntryNumber
         self.value = value
         self.note = note
     }
@@ -74,7 +69,7 @@ class InventoryCar: Identifiable, Hashable, CustomStringConvertible {
     // MARK: - Update Helper Methods
     
     func updateBrand(_ newBrand: CarBrand) {
-        rawBrand = newBrand.rawValue
+        brand = newBrand
     }
     
     func updateMake(_ newMake: String) {
@@ -86,11 +81,15 @@ class InventoryCar: Identifiable, Hashable, CustomStringConvertible {
     }
     
     func updateColor(_ newColor: ColorOption) {
-        rawColor = newColor.rawValue
+        color = newColor
     }
     
     func updateYear(_ newYear: Int?) {
         year = newYear
+    }
+    
+    func updateSeriesEntryNumber(_ newSeriesEntryNumber: SeriesEntryNumber?) {
+        seriesEntryNumber = newSeriesEntryNumber
     }
     
     func updateValue(_ newValue: Decimal?) {

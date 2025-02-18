@@ -87,9 +87,15 @@ struct InventoryCarsView: View {
                     NavigationLink {
                         InventoryCarDetailView(inventoryCar: car)
                     } label: {
-                        Text("\(car.brand.displayName) - \(car.make)")
-                            .frame(maxWidth: .infinity, alignment: .leading)
-                            .contentShape(Rectangle())
+                        LabeledContent {
+                            Text("")
+                        } label: {
+                            Text("\(car.brand.displayName) - \(car.make)")
+                                .frame(maxWidth: .infinity, alignment: .leading)
+                                .contentShape(Rectangle())
+                            Text("Series: \(car.series.displayName)")
+                                .font(.footnote)
+                        }
                     }
                 }
             } header: {
@@ -121,9 +127,11 @@ struct InventoryCarsView: View {
         
         sections = Set(inventoryCars.map(\.brand)).sorted(by: { $0.displayName < $1.displayName })
             .compactMap { carBrand -> CarBrandSection? in
-                guard let inventoryCars = carsByBrands[carBrand] else {
+                guard var inventoryCars = carsByBrands[carBrand] else {
                     return nil
                 }
+                
+                inventoryCars = inventoryCars.sorted(by: { $0.make < $1.make })
                 
                 if searchText.isEmpty {
                     return CarBrandSection(brand: carBrand, cars: inventoryCars)
@@ -145,7 +153,7 @@ struct InventoryCarsView: View {
 
 // MARK: - Previews
 
-#Preview("With series") {
+#Preview("Without series") {
     NavigationStack {
         InventoryCarsView()
             .modelContainer(CarsInventoryAppContainerSampleData.container)

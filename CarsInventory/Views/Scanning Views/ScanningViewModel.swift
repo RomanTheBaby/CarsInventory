@@ -48,6 +48,10 @@ class ScanningViewModel: ObservableObject {
         suggestion.add(series: [series])
     }
     
+    func addSuggestedSeriesEntryNumber(_ number: SeriesEntryNumber) {
+        suggestion.add(seriesNumber: [number])
+    }
+    
     func clearSuggestions() {
         suggestion = .empty
     }

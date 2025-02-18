@@ -7,7 +7,7 @@
 
 import Foundation
 
-enum ColorOption: String, Hashable, CaseIterable {
+enum ColorOption: String, Hashable, CaseIterable, Codable {
     case amber
     case black
     case blue

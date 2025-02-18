@@ -17,7 +17,7 @@ private protocol FooterSelectionItem: Equatable {
 
 extension CarBrand: FooterSelectionItem {}
 extension Series: FooterSelectionItem {}
-extension ScanningSuggestion.Number: FooterSelectionItem {
+extension SeriesEntryNumber: FooterSelectionItem {
     var id: String {
         displayName
     }
@@ -47,13 +47,15 @@ struct ScannerFooterView: View {
     @State private var selectedBrand: CarBrand?
     @State private var selectedMake: String?
     @State private var selectedSeries: Series?
-    @State private var selectedSeriesNumber: ScanningSuggestion.Number?
+    @State private var selectedSeriesNumber: SeriesEntryNumber?
     
     @State private var modelInput: String = ""
+    @State private var seriesNumberInput: SeriesEntryNumber?
     
     @State private var showBrandSelectionView = false
     @State private var showModelInputView = false
     @State private var showSeriesSelectionView = false
+    @State private var showSeriesNumberInputView = false
     
     @State private var animateAddToInventoryButton = false
     @State private var error: Error?
@@ -99,7 +101,7 @@ struct ScannerFooterView: View {
                         items: viewModel.suggestion.seriesNumber,
                         selectedItem: $selectedSeriesNumber,
                         manualInputActionHandler: {
-                            assertionFailure("Manual number adding is not supported yet")
+                            showSeriesNumberInputView = true
                         }
                     ).frame(height: 40)
 
@@ -223,6 +225,16 @@ struct ScannerFooterView: View {
                 ModelInputView(input: $modelInput)
             }
         }
+        .sheet(isPresented: $showSeriesNumberInputView) {
+            if let seriesNumberInput {
+                viewModel.addSuggestedSeriesEntryNumber(seriesNumberInput)
+            }
+            seriesNumberInput = nil
+        } content: {
+            NavigationStack {
+                CarSeriesNumberInputView(output: $seriesNumberInput)
+            }
+        }
 
     }
     
@@ -240,6 +252,12 @@ struct ScannerFooterView: View {
                 try fetchUnknownSeries()
             }
             
+            if series.isUnknown == false,
+               let selectedSeriesNumber,
+               selectedSeriesNumber.total > (series.carsCount ?? 0) {
+                series.updateCarsCount(selectedSeriesNumber.total)
+            }
+            
             if checkForDuplicates {
                 let duplicateCars = try fetchCar(for: selectedBrand, make: selectedMake, series: series)
                 if duplicateCars.isEmpty == false {
@@ -251,7 +269,8 @@ struct ScannerFooterView: View {
             let inventoryCar = InventoryCar(
                 brand: selectedBrand,
                 make: selectedMake,
-                series: series
+                series: series,
+                seriesEntryNumber: selectedSeriesNumber
             )
             
             modelContext.insert(inventoryCar)
@@ -259,7 +278,6 @@ struct ScannerFooterView: View {
                 viewModel.clearSuggestions()
             }
 
-            print(">>>Should add to inventory: ", inventoryCar)
         } catch {
             self.error = error
         }
@@ -283,7 +301,8 @@ struct ScannerFooterView: View {
     
     private func fetchUnknownSeries() throws -> Series {
         do {
-            let predicate = #Predicate<Series> { $0.id == "-404" }
+            let unknownSeriesId = AppConstants.Series.Unknown.id
+            let predicate = #Predicate<Series> { $0.id == unknownSeriesId }
             var fetchDescriptor = FetchDescriptor<Series>(predicate: predicate)
             fetchDescriptor.fetchLimit = 1
             guard let unknownSeries = try modelContext.fetch(fetchDescriptor).first else {

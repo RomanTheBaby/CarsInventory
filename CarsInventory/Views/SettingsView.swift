@@ -11,10 +11,19 @@ struct SettingsView: View {
     var body: some View {
         NavigationStack {
             List {
-                NavigationLink {
-                    SeriesListView(showDismissButton: false)
-                } label: {
-                    Text("All Series")
+                Section {
+                    NavigationLink {
+                        SeriesListView(showDismissButton: false)
+                    } label: {
+                        Text("All Series")
+                    }
+                }
+                
+                Section {
+                    Link(
+                        "Leave a review",
+                        destination: URL(string: "https://apps.apple.com/us/app/drillbuddy/id6473848506")!
+                    )
                 }
             }
             .navigationTitle("Settings")

@@ -25,8 +25,8 @@ struct SeriesListView: View {
         series.filter {
             searchText.isEmpty ? true : $0.fullName.lowercased().contains(searchText.lowercased())
         }.sorted { lhs, rhs in
-            if lhs.id == "-404" || rhs.id == "-404" {
-                return lhs.id == "-404"
+            if lhs.isUnknown || rhs.isUnknown {
+                return lhs.isUnknown
             }
             
             return lhs.fullName < rhs.fullName

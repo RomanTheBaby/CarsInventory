@@ -7,21 +7,23 @@
 
 import Foundation
 
+struct SeriesEntryNumber: Hashable, Codable, CustomStringConvertible {
+    var current: Int
+    var total: Int
+    
+    var description: String {
+        "SeriesEntryNumber(current: \(current), total: \(total))"
+    }
+}
+
 struct ScanningSuggestion: Hashable {
     // MARK: - Properties
 
     var brands: [CarBrand]
     var models: [String]
     var series: [Series]
-    var seriesNumber: [Number]
+    var seriesNumber: [SeriesEntryNumber]
     var years: [Int]?
-    
-    // MARK: - Number
-    
-    struct Number: Hashable {
-        var current: Int
-        var total: Int
-    }
     
     // MARK: - Init
     
@@ -29,7 +31,7 @@ struct ScanningSuggestion: Hashable {
         brands: [CarBrand],
         models: [String],
         series: [Series],
-        seriesNumber: [Number],
+        seriesNumber: [SeriesEntryNumber],
         years: [Int]?
     ) {
         guard !brands.isEmpty || !brands.isEmpty || series.isEmpty || seriesNumber.isEmpty || (years ?? []).isEmpty else {
@@ -70,7 +72,7 @@ struct ScanningSuggestion: Hashable {
         self.series = newSeries.unique
     }
 
-    mutating func add(seriesNumber: [Number]) {
+    mutating func add(seriesNumber: [SeriesEntryNumber]) {
         let newSeriesNumber = self.seriesNumber + seriesNumber
         self.seriesNumber = newSeriesNumber.unique
     }

@@ -37,7 +37,7 @@ actor CarsInventoryAppContainerSampleData {
             Series(id: "2", classification: .regular, fullName: "Factory Fresh", displayName: "Factory Fresh"),
             Series(id: "3", classification: .regular, fullName: "Then and Now", displayName: "Then and Now", year: 2024),
             Series(id: "4", classification: .regular, fullName: "MUSTANG 60™", displayName: "MUSTANG 60™", year: 2025),
-            Series(id: "-404", classification: .regular, fullName: "Unknown", displayName: "UNKNOWN"),
+            Series(id: AppConstants.Series.Unknown.id, classification: .regular, name: "Unknown"),
         ]
     }()
     

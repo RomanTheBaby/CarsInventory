@@ -8,7 +8,7 @@
 import Foundation
 
 
-enum CarBrand: String, CaseIterable, Hashable, Identifiable {
+enum CarBrand: String, CaseIterable, Hashable, Identifiable, Codable {
     var displayName: String {
         rawValue
     }

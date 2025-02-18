@@ -115,7 +115,7 @@ class ScannerDataProcessor {
         }
 
         // Getting series number suggestions
-        let seriesNumberSuggestions = transcripts.compactMap { transcript -> ScanningSuggestion.Number? in
+        let seriesNumberSuggestions = transcripts.compactMap { transcript -> SeriesEntryNumber? in
             print(">>>SERIES TRANS: ", transcript)
 //            guard let match = transcript.wholeMatch(of: #"^\d+[:/]\d+$"#),
 //                  let firstMatch = match.first,
@@ -137,7 +137,7 @@ class ScannerDataProcessor {
             
             print(">>>SERIES TRANS2: ", transcript, current, total)
             
-            return ScanningSuggestion.Number(current: current, total: total)
+            return SeriesEntryNumber(current: current, total: total)
         }
         
         return ScanningSuggestion(

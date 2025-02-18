@@ -51,6 +51,11 @@ class Series: Hashable, CustomStringConvertible {
     }
     
     @Transient
+    var isUnknown: Bool {
+        id == AppConstants.Series.Unknown.id
+    }
+    
+    @Transient
     var description: String {
         """
         Series(
@@ -117,6 +122,10 @@ class Series: Hashable, CustomStringConvertible {
     
     func updateYear(_ newYear: Int?) {
         self.year = newYear
+    }
+    
+    func updateCarsCount(_ newCarsCount: Int?) {
+        self.carsCount = newCarsCount
     }
     
 }

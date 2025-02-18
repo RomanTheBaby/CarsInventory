@@ -20,6 +20,7 @@ struct InventoryCarDetailView: View {
     @State private var carColor: ColorOption
     @State private var yearSelection: Int
     @State private var value: Decimal?
+    @State private var seriesEntryNumber: SeriesEntryNumber?
     
     @State private var series: Series
     @State private var seriesSelection: Series?
@@ -27,6 +28,7 @@ struct InventoryCarDetailView: View {
     @State private var showSeriesSelection: Bool = false
     @State private var showBrandSelectionView: Bool = false
     @State private var showDeleteConfirmationDialog: Bool = false
+    @State private var showSeriesNumberInputView: Bool = false
     
     @Environment(\.dismiss) private var dismiss
     @Environment(\.modelContext) private var modelContext: ModelContext
@@ -40,6 +42,8 @@ struct InventoryCarDetailView: View {
         self.carColor = inventoryCar.color
         self.yearSelection = inventoryCar.year ?? 0
         self.series = inventoryCar.series
+        /// Initializing state object explicitly, as otherwise it is not persistig after init for some reason :(
+        self._seriesEntryNumber = State(initialValue: inventoryCar.seriesEntryNumber)
         self.value = inventoryCar.value
     }
     
@@ -92,7 +96,7 @@ struct InventoryCarDetailView: View {
                         Text($0.displayName)
                     }
                 } label: {
-                    Text("Car colour")
+                    Text("Car color")
                     Text("optional")
                         .font(.footnote)
                 }
@@ -100,6 +104,22 @@ struct InventoryCarDetailView: View {
                 YearPickerView(minYear: 1886, reverseOrder: true, selection: $yearSelection) {
                     Text("Car Year")
                     Text("Optional")
+                        .font(.footnote)
+                }
+                
+                LabeledContent {
+                    Button {
+                        showSeriesNumberInputView = true
+                    } label: {
+                        if let seriesEntryNumber = seriesEntryNumber ?? inventoryCar.seriesEntryNumber {
+                            Text("\(seriesEntryNumber.current) out of \(seriesEntryNumber.total)")
+                        } else {
+                            Text("Unknown")
+                        }
+                    }
+                } label: {
+                    Text("Number in series")
+                    Text("optional")
                         .font(.footnote)
                 }
                 
@@ -123,7 +143,7 @@ struct InventoryCarDetailView: View {
                     return
                 }
                 
-                handleSeriesupdateAction()
+                handleSeriesUpdateAction()
             } label: {
                 Text("Update car information")
                     .padding(.horizontal)
@@ -156,6 +176,11 @@ struct InventoryCarDetailView: View {
                     }
             }
         }
+        .sheet(isPresented: $showSeriesNumberInputView) {
+            NavigationStack {
+                CarSeriesNumberInputView(output: $seriesEntryNumber)
+            }
+        }
         .confirmationDialog("Are you sure?", isPresented: $showDeleteConfirmationDialog) {
             Button("Create new", role: .destructive) {
                 modelContext.delete(inventoryCar)
@@ -181,7 +206,7 @@ struct InventoryCarDetailView: View {
     
     // MARK: - Private Methods
     
-    private func handleSeriesupdateAction() {
+    private func handleSeriesUpdateAction() {
         guard make.trimmingCharacters(in: .whitespacesAndNewlines).isEmpty == false else {
             return
         }
@@ -190,6 +215,7 @@ struct InventoryCarDetailView: View {
         inventoryCar.updateMake(make.trimmingCharacters(in: .whitespacesAndNewlines))
         inventoryCar.updateSeries(series)
         inventoryCar.updateColor(carColor)
+        inventoryCar.updateSeriesEntryNumber(seriesEntryNumber)
         inventoryCar.updateYear(yearSelection == 0 ? nil : yearSelection)
         inventoryCar.updateValue(value)
             
