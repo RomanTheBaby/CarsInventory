@@ -21,6 +21,7 @@ struct InventoryCarDetailView: View {
     @State private var yearSelection: Int
     @State private var value: Decimal?
     @State private var seriesEntryNumber: SeriesEntryNumber?
+    @State private var scale: InventoryCar.Scale?
     
     @State private var series: Series
     @State private var seriesSelection: Series?
@@ -44,6 +45,7 @@ struct InventoryCarDetailView: View {
         self.series = inventoryCar.series
         /// Initializing state object explicitly, as otherwise it is not persistig after init for some reason :(
         self._seriesEntryNumber = State(initialValue: inventoryCar.seriesEntryNumber)
+        self._scale = State(initialValue: inventoryCar.scale)
         self.value = inventoryCar.value
     }
     
@@ -123,6 +125,19 @@ struct InventoryCarDetailView: View {
                         .font(.footnote)
                 }
                 
+                Picker(selection: $scale) {
+                    ForEach(InventoryCar.Scale.allCases, id: \.self) {
+                        Text($0.description)
+                            .tag($0 as InventoryCar.Scale?) // This is required for binding to work
+                    }
+                } label: {
+                    Text("Scale")
+                    Text("optional")
+                        .font(.footnote)
+                } currentValueLabel: {
+                    Text(scale?.description ?? "Unspecified")
+                }
+
                 LabeledContent {
                     TextField("Value", value: $value, format: .currency(code: Locale.current.currency?.identifier ?? "USD"))
                         .multilineTextAlignment(.trailing)
@@ -137,7 +152,7 @@ struct InventoryCarDetailView: View {
                     .padding(.vertical, 8)
             }
         }
-        .overlay(alignment: .bottom) {
+        .safeAreaInset(edge: .bottom) {
             Button {
                 guard make.trimmingCharacters(in: .whitespacesAndNewlines).isEmpty == false else {
                     return
@@ -217,6 +232,8 @@ struct InventoryCarDetailView: View {
         inventoryCar.updateColor(carColor)
         inventoryCar.updateSeriesEntryNumber(seriesEntryNumber)
         inventoryCar.updateYear(yearSelection == 0 ? nil : yearSelection)
+        inventoryCar.updateScale(scale)
+        print(">>>Updating to scale: ", scale)
         inventoryCar.updateValue(value)
             
         dismiss()
@@ -232,6 +249,6 @@ struct InventoryCarDetailView: View {
 
 #Preview("From car list view") {
     NavigationStack {
-        InventoryCarsView()
+        InventoryCarsListView()
     }.modelContainer(CarsInventoryAppContainerSampleData.container)
 }

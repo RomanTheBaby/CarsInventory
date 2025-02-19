@@ -16,6 +16,12 @@ struct CarSeriesNumberInputView: View {
     @State private var totalCarsCount: Int = 5
     
     @Environment(\.dismiss) private var dismiss
+    
+    init(output: Binding<SeriesEntryNumber?>) {
+        self._output = output
+        self.currentCarNumber = output.wrappedValue?.current ?? 1
+        self.totalCarsCount = output.wrappedValue?.total ?? 5
+    }
 
     // MARK: - Body
     
@@ -35,6 +41,16 @@ struct CarSeriesNumberInputView: View {
             Spacer()
         }
         .toolbar {
+            ToolbarItem(placement: .topBarLeading) {
+                Button {
+                    dismiss()
+                } label: {
+                    Text("Cancel")
+                        .fontWeight(.bold)
+                }
+
+            }
+            
             ToolbarItem(placement: .topBarTrailing) {
                 Button {
                     output = SeriesEntryNumber(current: currentCarNumber, total: totalCarsCount)

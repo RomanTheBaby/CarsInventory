@@ -1,5 +1,5 @@
 //
-//  InventoryCarsView.swift
+//  InventoryCarsListView.swift
 //  CarsInventory
 //
 //  Created by Roman on 2025-02-12.
@@ -8,11 +8,11 @@
 import SwiftUI
 import SwiftData
 
-struct InventoryCarsView: View {
+struct InventoryCarsListView: View {
     
     // MARK: - CarBrandSection
     
-    struct CarBrandSection: Identifiable {
+    struct CarBrandSection: Identifiable, Hashable {
         var id: UUID = UUID()
         
         var brand: CarBrand
@@ -24,6 +24,7 @@ struct InventoryCarsView: View {
     @Environment(\.modelContext) private var modelContext: ModelContext
     
     @State private var searchText = ""
+    @State private var carsCount: Int = 0
     @State private var sections: [CarBrandSection] = []
     private let series: Series?
     private let title: String
@@ -65,7 +66,7 @@ struct InventoryCarsView: View {
         if searchText.isEmpty {
             VStack {
                 if let series {
-                    Text("You do not have anything in the \(series.fullName) yet.")
+                    Text("You do not have anything in the \(series.displayName) yet.")
                         .multilineTextAlignment(.center)
                 } else {
                     Text("You do not have any cars in the inventory yet.")
@@ -101,6 +102,13 @@ struct InventoryCarsView: View {
             } header: {
                 Text(section.brand.displayName)
                     .listRowInsets(EdgeInsets(top: 4, leading: 8, bottom: 4, trailing: 0))
+            } footer: {
+                if section == sections[sections.count - 1] {
+                    Text("Total: \(carsCount)")
+                        .font(.footnote)
+                        .frame(maxWidth: .infinity)
+                        .padding(.top)
+                }
             }
         }
     }
@@ -125,6 +133,7 @@ struct InventoryCarsView: View {
             result[car.brand, default: []].append(car)
         }
         
+        var totalCarsCount: Int = 0
         sections = Set(inventoryCars.map(\.brand)).sorted(by: { $0.displayName < $1.displayName })
             .compactMap { carBrand -> CarBrandSection? in
                 guard var inventoryCars = carsByBrands[carBrand] else {
@@ -133,21 +142,22 @@ struct InventoryCarsView: View {
                 
                 inventoryCars = inventoryCars.sorted(by: { $0.make < $1.make })
                 
-                if searchText.isEmpty {
-                    return CarBrandSection(brand: carBrand, cars: inventoryCars)
-                } else {
+                if searchText.isEmpty == false {
                     let filteredCars = inventoryCars.filter { car in
                         car.make.lowercased().contains(searchText)
                             || car.brand.displayName.lowercased().contains(searchText)
                     }
-                    
-                    if !filteredCars.isEmpty {
-                        return CarBrandSection(brand: carBrand, cars: filteredCars)
-                    } else {
-                        return nil
-                    }
+                    inventoryCars = filteredCars
                 }
+                
+                if inventoryCars.isEmpty {
+                    return nil
+                }
+                
+                totalCarsCount += inventoryCars.count
+                return CarBrandSection(brand: carBrand, cars: inventoryCars)
             }
+        carsCount = totalCarsCount
     }
 }
 
@@ -155,14 +165,14 @@ struct InventoryCarsView: View {
 
 #Preview("Without series") {
     NavigationStack {
-        InventoryCarsView()
+        InventoryCarsListView()
             .modelContainer(CarsInventoryAppContainerSampleData.container)
     }
 }
 
 #Preview("With series") {
     NavigationStack {
-        InventoryCarsView(series: CarsInventoryAppContainerSampleData.previewSeries[3])
+        InventoryCarsListView(series: CarsInventoryAppContainerSampleData.previewSeries[3])
             .modelContainer(CarsInventoryAppContainerSampleData.container)
     }
 }

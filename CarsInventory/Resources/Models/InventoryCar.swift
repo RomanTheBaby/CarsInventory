@@ -10,6 +10,19 @@ import SwiftData
 
 @Model
 class InventoryCar: Identifiable, Hashable, CustomStringConvertible {
+    // MARK: - Scale
+    
+    enum Scale: Int, Codable, CaseIterable {
+        case scale1
+        case scale12
+        case scale18
+        case scale24
+        case scale32
+        case scale43
+        case scale64
+        case scale87
+    }
+    
     // MARK: - Properties
     
     @Attribute(.unique)
@@ -23,6 +36,8 @@ class InventoryCar: Identifiable, Hashable, CustomStringConvertible {
     private(set) var series: Series
     private(set) var year: Int?
     private(set) var seriesEntryNumber: SeriesEntryNumber?
+    private(set) var scale: Scale?
+    
     private(set) var value: Decimal?
     private(set) var note: String?
     
@@ -52,6 +67,7 @@ class InventoryCar: Identifiable, Hashable, CustomStringConvertible {
         color: ColorOption = .unspecified,
         year: Int? = nil,
         seriesEntryNumber: SeriesEntryNumber? = nil,
+        scale: Scale? = nil,
         value: Decimal? = nil,
         note: String? = nil
     ) {
@@ -92,6 +108,10 @@ class InventoryCar: Identifiable, Hashable, CustomStringConvertible {
         seriesEntryNumber = newSeriesEntryNumber
     }
     
+    func updateScale(_ newScale: Scale?) {
+        scale = newScale
+    }
+    
     func updateValue(_ newValue: Decimal?) {
         value = newValue
     }
@@ -101,3 +121,25 @@ class InventoryCar: Identifiable, Hashable, CustomStringConvertible {
     }
 }
 
+extension InventoryCar.Scale {
+    var description: String {
+        switch self {
+        case .scale1:
+            "1/1"
+        case .scale12:
+            "1/12"
+        case .scale18:
+            "1/18"
+        case .scale24:
+            "1/24"
+        case .scale32:
+            "1/32"
+        case .scale43:
+            "1/43"
+        case .scale64:
+            "1/64"
+        case .scale87:
+            "1/87"
+        }
+    }
+}

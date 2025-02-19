@@ -31,9 +31,9 @@ struct SeriesCreationView: View {
     
     init(series: Series) {
         self._series = Binding.constant(series)
-        name = series.fullName
+        name = series.displayName
         yearSelection = series.year ?? 0
-//        carsCount = series.wrappedValue?.fullName
+        carsCount = series.carsCount
         classificationSelection = series.classification
         
         shouldAutoDismiss = true
@@ -41,9 +41,9 @@ struct SeriesCreationView: View {
     
     init(series: Binding<Series?>? = nil, name: String? = nil) {
         self._series = series ?? Binding.constant(nil)
-        self.name = name ?? series?.wrappedValue?.fullName ?? ""
+        self.name = name ?? series?.wrappedValue?.displayName ?? ""
         self.yearSelection = series?.wrappedValue?.year ?? 0
-//        carsCount = series.wrappedValue?.fullName
+        self.carsCount = series?.wrappedValue?.carsCount
         self.classificationSelection = series?.wrappedValue?.classification ?? .regular
         
         self.shouldAutoDismiss = series == nil
@@ -171,7 +171,7 @@ struct SeriesCreationView: View {
                     let newSeries = Series(
                         id: "\(allSeries.count)",
                         classification: classificationSelection,
-                        name: name.trimmingCharacters(in: .whitespacesAndNewlines),
+                        displayName: name.trimmingCharacters(in: .whitespacesAndNewlines),
                         year: yearSelection == 0 ? nil : yearSelection,
                         carsCount: carsCount
                     )

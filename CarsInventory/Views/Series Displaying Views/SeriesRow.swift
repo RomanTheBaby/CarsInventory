@@ -13,7 +13,7 @@ struct SeriesRow: View {
     var body: some View {
         HStack {
             VStack {
-                Text(series.fullName)
+                Text(series.displayName)
                     .frame(maxWidth: .infinity, alignment: .leading)
                 Text("Cars: \(series.cars.count)")
                     .font(.caption)

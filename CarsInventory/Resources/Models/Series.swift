@@ -26,6 +26,10 @@ class Series: Hashable, CustomStringConvertible {
         }
     }
     
+    private struct AlternativeName: Codable {
+        var name: String
+    }
+    
     // MARK: - Properties
     
     @Attribute(.unique)
@@ -33,19 +37,20 @@ class Series: Hashable, CustomStringConvertible {
     
     private(set) var classification: Classification
     
-    private(set) var fullName: String
     private(set) var displayName: String
     /// Number of cars in a series. NOT number of cars linked to the series
     private(set) var carsCount: Int?
     private(set) var year: Int?
     
+    /// list of names that can be user to lookup the series. i.e during scan.
+    private var alternativeNames: [AlternativeName] = []
+    
     @Relationship(deleteRule: .cascade, inverse: \InventoryCar.series)
-//    @Relationship(inverse: \InventoryCar.series)
     private(set) var cars: [InventoryCar] = []
     
     @Transient
     var allNames: Set<String> {
-        let names = Set<String>([fullName, displayName])
+        let names = Set<String>([displayName] + alternativeNames.map(\.name))
         let trademarkNames = Set<String>(names.map { $0 + "™" })
         return names.union(trademarkNames)
     }
@@ -61,8 +66,8 @@ class Series: Hashable, CustomStringConvertible {
         Series(
             id: \(id), \
             classification: \(classification), \
-            fullName: \(fullName)) \
             displayName: \(displayName) \
+            alternativeNames: \(alternativeNames.map(\.name)) \
             year: \(year?.description ?? "No year") \
             totalCars: \(cars.count) \
             cars: \(cars)
@@ -75,34 +80,17 @@ class Series: Hashable, CustomStringConvertible {
     init(
         id: String,
         classification: Classification,
-        fullName: String,
         displayName: String,
+        alternativeNames: [String] = [],
         year: Int? = nil,
         carsCount: Int? = nil,
         cars: [InventoryCar] = []
     ) {
         self.id = id
         self.classification = classification
-        self.fullName = fullName
         self.displayName = displayName
+        self.alternativeNames = alternativeNames.map(AlternativeName.init(name:))
         self.year = year
-        self.cars = cars
-    }
-//    ™"
-    init(
-        id: String,
-        classification: Classification,
-        name: String,
-        year: Int? = nil,
-        carsCount: Int? = nil,
-        cars: [InventoryCar] = []
-    ) {
-        self.id = id
-        self.classification = classification
-        self.fullName = name
-        self.displayName = name
-        self.year = year
-        self.carsCount = carsCount
         self.cars = cars
     }
     
@@ -110,10 +98,6 @@ class Series: Hashable, CustomStringConvertible {
     
     func updateClassification(_ newClassification: Classification) {
         self.classification = newClassification
-    }
-    
-    func updateFullName(_ newFullName: String) {
-        self.fullName = newFullName
     }
     
     func updateDisplayName(_ newDisplayName: String) {

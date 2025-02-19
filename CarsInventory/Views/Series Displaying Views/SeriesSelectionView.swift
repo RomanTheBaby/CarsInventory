@@ -24,14 +24,14 @@ struct SeriesSelectionView: View {
     
     private var searchResults: [Series] {
         series.filter {
-            searchText.isEmpty ? true : $0.fullName.lowercased().contains(searchText.lowercased())
+            searchText.isEmpty ? true : $0.allNames.contains(searchText.lowercased())
         }
         .sorted { lhs, rhs in
             if lhs.isUnknown || rhs.isUnknown {
                 return lhs.isUnknown
             }
             
-            return lhs.fullName < rhs.fullName
+            return lhs.displayName < rhs.displayName
         }
     }
     

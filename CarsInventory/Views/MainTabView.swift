@@ -14,7 +14,7 @@ struct MainTabView: View {
         TabView {
             Tab("Inventory", systemImage: "car") {
                 NavigationStack {
-                    InventoryCarsView()
+                    InventoryCarsListView()
                         .toolbarBackground(.visible, for: .tabBar)
                 }
             }

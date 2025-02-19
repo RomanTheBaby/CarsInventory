@@ -11,7 +11,7 @@ struct SeriesCarsView: View {
     var series: Series
 
     var body: some View {
-        InventoryCarsView(series: series)
+        InventoryCarsListView(series: series)
             .toolbar {
                 ToolbarItem(placement: .topBarTrailing) {
                     NavigationLink {

@@ -33,11 +33,11 @@ actor CarsInventoryAppContainerSampleData {
     
     @MainActor static let previewSeries: [Series] = {
         [
-            Series(id: "1", classification: .premium, fullName: "HW Race Day", displayName: "RACE DAY"),
-            Series(id: "2", classification: .regular, fullName: "Factory Fresh", displayName: "Factory Fresh"),
-            Series(id: "3", classification: .regular, fullName: "Then and Now", displayName: "Then and Now", year: 2024),
-            Series(id: "4", classification: .regular, fullName: "MUSTANG 60™", displayName: "MUSTANG 60™", year: 2025),
-            Series(id: AppConstants.Series.Unknown.id, classification: .regular, name: "Unknown"),
+            Series(id: "1", classification: .premium, displayName: "RACE DAY", alternativeNames: ["HW Race Day"]),
+            Series(id: "2", classification: .regular, displayName: "Factory Fresh"),
+            Series(id: "3", classification: .regular, displayName: "Then and Now", year: 2024),
+            Series(id: "4", classification: .regular, displayName: "MUSTANG 60", year: 2025, carsCount: 5),
+            Series(id: AppConstants.Series.Unknown.id, classification: .regular, displayName: "Unknown"),
         ]
     }()
     
