@@ -52,6 +52,18 @@ class ScanningViewModel: ObservableObject {
         suggestion.add(seriesNumber: [number])
     }
     
+    func addSuggestedYear(_ year: Int) {
+        suggestion.add(years: [year])
+    }
+    
+    func addSuggestedColor(_ color: ColorOption) {
+        suggestion.add(colors: [color])
+    }
+    
+    func addSuggestedScale(_ scale: InventoryCar.Scale) {
+        suggestion.add(scales: [scale])
+    }
+    
     func clearSuggestions() {
         suggestion = .empty
     }

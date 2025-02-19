@@ -1,0 +1,128 @@
+//
+//  SuggestionSelectionView.swift
+//  CarsInventory
+//
+//  Created by Roman on 2025-02-18.
+//
+
+import SwiftUI
+
+
+// MARK: - FooterSelectionItem
+
+protocol FooterSelectionItem: Equatable {
+    var id: String { get }
+    var displayName: String { get }
+}
+
+// MARK: - SuggestionSelectionView
+
+struct SuggestionSelectionView<Item: FooterSelectionItem & Equatable>: View {
+    var title: String
+    var items: [Item]
+    
+    @Binding var selectedItem: Item?
+    
+    var manualInputActionHandler: (() -> Void)
+    
+    var body: some View {
+        HStack {
+            Text(title)
+                .frame(width: 70, alignment: .leading)
+            
+            ScrollView(.horizontal) {
+                HStack {
+                    ForEach(
+                        items.sorted(by: { lhs, rhs in
+                            lhs.displayName < rhs.displayName
+                        }),
+                        id: \.id
+                    ) { item in
+                        Button {
+                            if selectedItem == item {
+                                selectedItem = nil
+                            } else {
+                                selectedItem = item
+                            }
+                        } label: {
+                            Text(item.displayName)
+                                .foregroundStyle(selectedItem == item ? .white : Color.primary)
+                                .frame(minWidth: 50)
+                                .padding(8)
+                                .background(selectedItem == item ? .blue : Color(uiColor: .lightGray).opacity(0.6))
+                                .cornerRadius(8)
+                        }
+                    }
+                    
+                    Button {
+                        manualInputActionHandler()
+                    } label: {
+                        HStack(spacing: 0) {
+                            Text("Enter manually | ")
+                                .foregroundStyle(Color.primary)
+                            
+                            Image(systemName: "plus")
+                                .foregroundStyle(Color.primary)
+                        }
+                        .frame(minWidth: 50)
+                        .padding(8)
+                        .background(Color(uiColor: .lightGray).opacity(0.6))
+                        .cornerRadius(8)
+                    }
+                }
+            }
+            .scrollIndicators(.hidden)
+            .frame(maxWidth: .infinity, alignment: .leading)
+        }
+    }
+}
+
+// MARK: - Previews
+
+//#Preview {
+//    SuggestionSelectionView()
+//}
+
+extension CarBrand: FooterSelectionItem {}
+extension Series: FooterSelectionItem {}
+extension SeriesEntryNumber: FooterSelectionItem {
+    var id: String {
+        displayName
+    }
+    
+    var displayName: String {
+        "\(current)/\(total)"
+    }
+}
+
+extension String: FooterSelectionItem {
+    var id: String {
+        self
+    }
+    
+    var displayName: String {
+        self
+    }
+}
+
+extension Int: FooterSelectionItem {
+    var id: String {
+        "\(self)"
+    }
+    
+    var displayName: String {
+        "\(self)"
+    }
+}
+
+extension ColorOption: FooterSelectionItem {
+    var id: String {
+        rawValue
+    }
+}
+
+extension InventoryCar.Scale: FooterSelectionItem {
+    var id: String {
+        "\(rawValue)"
+    }
+}

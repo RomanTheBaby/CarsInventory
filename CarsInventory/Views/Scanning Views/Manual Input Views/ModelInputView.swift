@@ -27,6 +27,18 @@ struct ModelInputView: View {
                 dismiss()
             }
             .toolbar {
+                ToolbarItem(placement: .topBarLeading) {
+                    Button {
+                        input = ""
+                        dismiss()
+                    } label: {
+                        Text("Done")
+                            .fontWeight(.bold)
+                            .fontWeight(.medium)
+                    }
+
+                }
+                
                 ToolbarItem(placement: .topBarTrailing) {
                     Button {
                         dismiss()

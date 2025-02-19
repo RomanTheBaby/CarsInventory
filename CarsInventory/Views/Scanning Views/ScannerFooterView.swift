@@ -8,35 +8,6 @@
 import SwiftUI
 import SwiftData
 
-// MARK: - FooterSelectionItem
-
-private protocol FooterSelectionItem: Equatable {
-    var id: String { get }
-    var displayName: String { get }
-}
-
-extension CarBrand: FooterSelectionItem {}
-extension Series: FooterSelectionItem {}
-extension SeriesEntryNumber: FooterSelectionItem {
-    var id: String {
-        displayName
-    }
-    
-    var displayName: String {
-        "\(current)/\(total)"
-    }
-}
-
-extension String: FooterSelectionItem {
-    var id: String {
-        self
-    }
-    
-    var displayName: String {
-        self
-    }
-}
-
 // MARK: - ScannerFooterView
 
 struct ScannerFooterView: View {
@@ -48,6 +19,9 @@ struct ScannerFooterView: View {
     @State private var selectedMake: String?
     @State private var selectedSeries: Series?
     @State private var selectedSeriesNumber: SeriesEntryNumber?
+    @State private var selectedYear: Int?
+    @State private var selectedColor: ColorOption?
+    @State private var selectedScale: InventoryCar.Scale?
     
     @State private var modelInput: String = ""
     @State private var seriesNumberInput: SeriesEntryNumber?
@@ -56,6 +30,9 @@ struct ScannerFooterView: View {
     @State private var showModelInputView = false
     @State private var showSeriesSelectionView = false
     @State private var showSeriesNumberInputView = false
+    @State private var showYearInputView = false
+    @State private var showColorInputView = false
+    @State private var showScaleInputView = false
     
     @State private var animateAddToInventoryButton = false
     @State private var error: Error?
@@ -63,50 +40,71 @@ struct ScannerFooterView: View {
 
     var body: some View {
         VStack {
-            HStack {
-//                Rectangle()
-//                    .clipShape(RoundedRectangle(cornerRadius: 16))
-//                    .frame(width: 100, height: 150)
+            ScrollView {
+                SuggestionSelectionView(
+                    title: "*Make:  ",
+                    items: viewModel.suggestion.brands,
+                    selectedItem: $selectedBrand,
+                    manualInputActionHandler: {
+                        showBrandSelectionView = true
+                    }
+                ).frame(height: 40)
                 
-                VStack(spacing: 8) {
-                    SelectionRow(
-                        title: "*Make:  ",
-                        items: viewModel.suggestion.brands,
-                        selectedItem: $selectedBrand,
-                        manualInputActionHandler: {
-                            showBrandSelectionView = true
-                        }
-                    ).frame(height: 40)
-                    
-                    SelectionRow(
-                        title: "*Model: ",
-                        items: viewModel.suggestion.models,
-                        selectedItem: $selectedMake,
-                        manualInputActionHandler: {
-                            showModelInputView = true
-                        }
-                    ).frame(height: 40)
-                    
-                    SelectionRow(
-                        title: "Series:  ",
-                        items: viewModel.suggestion.series,
-                        selectedItem: $selectedSeries,
-                        manualInputActionHandler: {
-                            showSeriesSelectionView = true
-                        }
-                    ).frame(height: 40)
-                    
-                    SelectionRow(
-                        title: "Number:",
-                        items: viewModel.suggestion.seriesNumber,
-                        selectedItem: $selectedSeriesNumber,
-                        manualInputActionHandler: {
-                            showSeriesNumberInputView = true
-                        }
-                    ).frame(height: 40)
-
-                }.frame(maxWidth: .infinity)
-            }
+                SuggestionSelectionView(
+                    title: "*Model: ",
+                    items: viewModel.suggestion.models,
+                    selectedItem: $selectedMake,
+                    manualInputActionHandler: {
+                        showModelInputView = true
+                    }
+                ).frame(height: 40)
+                
+                SuggestionSelectionView(
+                    title: "Series:  ",
+                    items: viewModel.suggestion.series,
+                    selectedItem: $selectedSeries,
+                    manualInputActionHandler: {
+                        showSeriesSelectionView = true
+                    }
+                ).frame(height: 40)
+                
+                SuggestionSelectionView(
+                    title: "Number:",
+                    items: viewModel.suggestion.seriesNumber,
+                    selectedItem: $selectedSeriesNumber,
+                    manualInputActionHandler: {
+                        showSeriesNumberInputView = true
+                    }
+                ).frame(height: 40)
+                
+                SuggestionSelectionView(
+                    title: "Year:",
+                    items: viewModel.suggestion.years ?? [],
+                    selectedItem: $selectedYear,
+                    manualInputActionHandler: {
+                        showYearInputView = true
+                    }
+                ).frame(height: 40)
+                
+                SuggestionSelectionView(
+                    title: "Color:",
+                    items: viewModel.suggestion.colors ?? [],
+                    selectedItem: $selectedColor,
+                    manualInputActionHandler: {
+                        showColorInputView = true
+                    }
+                ).frame(height: 40)
+                
+                SuggestionSelectionView(
+                    title: "Scale:",
+                    items: viewModel.suggestion.scales ?? [],
+                    selectedItem: $selectedScale,
+                    manualInputActionHandler: {
+                        showScaleInputView = true
+                    }
+                ).frame(height: 40)
+                
+            }.frame(maxWidth: .infinity, maxHeight: 184)
 
             Spacer()
                 .frame(height: 16)
@@ -146,7 +144,7 @@ struct ScannerFooterView: View {
                         return
                     }
 
-                    addCarToInventory()
+                    addCarToInventory(checkForDuplicates: false)
                     
                     withAnimation(.easeIn(duration: 0.3)) {
                         animateAddToInventoryButton = true
@@ -218,7 +216,10 @@ struct ScannerFooterView: View {
                 }
         }
         .sheet(isPresented: $showModelInputView) {
-            viewModel.addSuggestedModel(modelInput)
+            if modelInput.isEmpty == false {
+                viewModel.addSuggestedModel(modelInput)
+                selectedMake = modelInput
+            }
             modelInput = ""
         } content: {
             NavigationStack {
@@ -227,6 +228,7 @@ struct ScannerFooterView: View {
         }
         .sheet(isPresented: $showSeriesNumberInputView) {
             if let seriesNumberInput {
+                selectedSeriesNumber = seriesNumberInput
                 viewModel.addSuggestedSeriesEntryNumber(seriesNumberInput)
             }
             seriesNumberInput = nil
@@ -235,7 +237,34 @@ struct ScannerFooterView: View {
                 CarSeriesNumberInputView(output: $seriesNumberInput)
             }
         }
-
+        .sheet(isPresented: $showYearInputView) {
+            if let selectedYear {
+                viewModel.addSuggestedYear(selectedYear)
+            }
+        } content: {
+            NavigationStack {
+                YearInputView(input: $selectedYear)
+            }
+        }
+        .sheet(isPresented: $showColorInputView) {
+            if let selectedColor {
+                viewModel.addSuggestedColor(selectedColor)
+            }
+        } content: {
+            NavigationStack {
+                ColorInputView(selection: $selectedColor)
+            }
+        }
+        .sheet(isPresented: $showScaleInputView) {
+            if let selectedScale {
+                print(">>>LOLOLO: ", selectedScale)
+                viewModel.addSuggestedScale(selectedScale)
+            }
+        } content: {
+            NavigationStack {
+                ScaleInputView(selection: $selectedScale)
+            }
+        }
     }
     
     // MARK: - Helper Methods
@@ -318,64 +347,6 @@ struct ScannerFooterView: View {
         } catch {
             assertionFailure("PLEASE FIX. Failed to fetch unknown series with error: \(error).")
             throw error
-        }
-    }
-}
-
-// MARK: - SelectionRow
-
-private struct SelectionRow<Item: FooterSelectionItem>: View {
-    var title: String
-    var items: [Item]
-    
-    @Binding var selectedItem: Item?
-
-    var manualInputActionHandler: (() -> Void)
-    
-    var body: some View {
-        HStack {
-            Text(title)
-                .frame(alignment: .leading)
-            
-            ScrollView(.horizontal) {
-                HStack {
-                    ForEach(
-                        items.sorted(by: { lhs, rhs in
-                            lhs.displayName < rhs.displayName
-                        }),
-                        id: \.id
-                    ) { item in
-                        Button {
-                            selectedItem = item
-                        } label: {
-                            Text(item.displayName)
-                                .foregroundStyle(selectedItem == item ? .white : Color.primary)
-                                .frame(minWidth: 50)
-                                .padding(8)
-                                .background(selectedItem == item ? .blue : Color(uiColor: .lightGray))
-                                .cornerRadius(8)
-                        }
-                    }
-                    
-                    Button {
-                        manualInputActionHandler()
-                    } label: {
-                        HStack(spacing: 0) {
-                            Text("Enter manually | ")
-                                .foregroundStyle(Color.primary)
-
-                            Image(systemName: "plus")
-                                .foregroundStyle(Color.primary)
-                        }
-                        .frame(minWidth: 50)
-                        .padding(8)
-                        .background(Color(uiColor: .lightGray))
-                        .cornerRadius(8)
-                    }
-                }
-            }
-            .scrollIndicators(.hidden)
-            .frame(maxWidth: .infinity, alignment: .leading)
         }
     }
 }

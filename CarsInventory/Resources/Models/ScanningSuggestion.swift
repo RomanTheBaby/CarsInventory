@@ -24,6 +24,8 @@ struct ScanningSuggestion: Hashable {
     var series: [Series]
     var seriesNumber: [SeriesEntryNumber]
     var years: [Int]?
+    var colors: [ColorOption]?
+    var scales: [InventoryCar.Scale]?
     
     // MARK: - Init
     
@@ -32,7 +34,9 @@ struct ScanningSuggestion: Hashable {
         models: [String],
         series: [Series],
         seriesNumber: [SeriesEntryNumber],
-        years: [Int]?
+        years: [Int]? = nil,
+        colors: [ColorOption]? = nil,
+        scales: [InventoryCar.Scale]? = nil
     ) {
         guard !brands.isEmpty || !brands.isEmpty || series.isEmpty || seriesNumber.isEmpty || (years ?? []).isEmpty else {
             return nil
@@ -43,14 +47,18 @@ struct ScanningSuggestion: Hashable {
         self.series = series
         self.seriesNumber = seriesNumber
         self.years = years
+        self.colors = colors
+        self.scales = scales
     }
     
     private init() {
-        self.brands = []
-        self.models = []
-        self.series = []
-        self.seriesNumber = []
-        self.years = []
+        brands = []
+        models = []
+        series = []
+        seriesNumber = []
+        years = nil
+        colors = nil
+        scales = nil
     }
     
     static let empty: Self = .init()
@@ -78,8 +86,18 @@ struct ScanningSuggestion: Hashable {
     }
 
     mutating func add(years: [Int]) {
-        let newYears = self.years ?? [] + years
+        let newYears = (self.years ?? []) + years
         self.years = newYears.unique
+    }
+    
+    mutating func add(colors: [ColorOption]) {
+        let newColors = (self.colors ?? []) + colors
+        self.colors = newColors.unique
+    }
+    
+    mutating func add(scales: [InventoryCar.Scale]) {
+        let newScales = (self.scales ?? []) + scales
+        self.scales = newScales.unique
     }
 }
 

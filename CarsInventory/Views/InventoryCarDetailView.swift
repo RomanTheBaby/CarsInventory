@@ -127,7 +127,7 @@ struct InventoryCarDetailView: View {
                 
                 Picker(selection: $scale) {
                     ForEach(InventoryCar.Scale.allCases, id: \.self) {
-                        Text($0.description)
+                        Text($0.displayName)
                             .tag($0 as InventoryCar.Scale?) // This is required for binding to work
                     }
                 } label: {
@@ -135,7 +135,7 @@ struct InventoryCarDetailView: View {
                     Text("optional")
                         .font(.footnote)
                 } currentValueLabel: {
-                    Text(scale?.description ?? "Unspecified")
+                    Text(scale?.displayName ?? "Unspecified")
                 }
 
                 LabeledContent {

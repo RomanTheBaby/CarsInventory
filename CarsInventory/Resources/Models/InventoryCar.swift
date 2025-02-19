@@ -122,7 +122,7 @@ class InventoryCar: Identifiable, Hashable, CustomStringConvertible {
 }
 
 extension InventoryCar.Scale {
-    var description: String {
+    var displayName: String {
         switch self {
         case .scale1:
             "1/1"
