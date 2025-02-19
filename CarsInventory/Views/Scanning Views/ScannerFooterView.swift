@@ -37,10 +37,23 @@ struct ScannerFooterView: View {
     @State private var animateAddToInventoryButton = false
     @State private var error: Error?
     @State private var carDuplicates: Int = 0
+    
+    @State private var isExpanded: Bool = false
 
     var body: some View {
         VStack {
-            ScrollView {
+            
+            Color.secondary
+                .frame(width: 100, height: 8)
+                .clipShape(RoundedRectangle(cornerRadius: 4))
+                .onTapGesture {
+                    withAnimation(.easeInOut(duration: 0.3)) {
+                        isExpanded.toggle()
+                    }
+                }
+                .padding(.bottom)
+            
+            VStack {
                 SuggestionSelectionView(
                     title: "*Make:  ",
                     items: viewModel.suggestion.brands,
@@ -77,34 +90,36 @@ struct ScannerFooterView: View {
                     }
                 ).frame(height: 40)
                 
-                SuggestionSelectionView(
-                    title: "Year:",
-                    items: viewModel.suggestion.years ?? [],
-                    selectedItem: $selectedYear,
-                    manualInputActionHandler: {
-                        showYearInputView = true
-                    }
-                ).frame(height: 40)
+                if isExpanded {
+                    SuggestionSelectionView(
+                        title: "Year:",
+                        items: viewModel.suggestion.years ?? [],
+                        selectedItem: $selectedYear,
+                        manualInputActionHandler: {
+                            showYearInputView = true
+                        }
+                    ).frame(height: 40)
+                    
+                    SuggestionSelectionView(
+                        title: "Color:",
+                        items: viewModel.suggestion.colors ?? [],
+                        selectedItem: $selectedColor,
+                        manualInputActionHandler: {
+                            showColorInputView = true
+                        }
+                    ).frame(height: 40)
+                    
+                    SuggestionSelectionView(
+                        title: "Scale:",
+                        items: viewModel.suggestion.scales ?? [],
+                        selectedItem: $selectedScale,
+                        manualInputActionHandler: {
+                            showScaleInputView = true
+                        }
+                    ).frame(height: 40)
+                }
                 
-                SuggestionSelectionView(
-                    title: "Color:",
-                    items: viewModel.suggestion.colors ?? [],
-                    selectedItem: $selectedColor,
-                    manualInputActionHandler: {
-                        showColorInputView = true
-                    }
-                ).frame(height: 40)
-                
-                SuggestionSelectionView(
-                    title: "Scale:",
-                    items: viewModel.suggestion.scales ?? [],
-                    selectedItem: $selectedScale,
-                    manualInputActionHandler: {
-                        showScaleInputView = true
-                    }
-                ).frame(height: 40)
-                
-            }.frame(maxWidth: .infinity, maxHeight: 184)
+            }.frame(maxWidth: .infinity)
 
             Spacer()
                 .frame(height: 16)
@@ -183,6 +198,20 @@ struct ScannerFooterView: View {
         .padding()
         .background(Color(uiColor: UIColor.systemBackground)) //Color(red: 229 / 255, green: 229 / 255, blue: 229 / 255))
         .clipShape(.rect(topLeadingRadius: 16, topTrailingRadius: 16))
+        .gesture(
+            DragGesture()
+                .onChanged { value in
+                    if value.translation.height < 0, isExpanded == false {
+                        withAnimation(.easeInOut(duration: 0.3)) {
+                            isExpanded = true
+                        }
+                    } else if isExpanded == true {
+                        withAnimation(.easeInOut(duration: 0.3)) {
+                            isExpanded = false
+                        }
+                    }
+                }
+        )
         .errorAlert(error: $error)
         .confirmationDialog("Are yous sure", isPresented: .constant(carDuplicates > 0), actions: {
             Button("Add Duplicate") {
