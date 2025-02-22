@@ -650,6 +650,8 @@ enum CarBrand: String, CaseIterable, Hashable, Identifiable, Codable {
 //    "ZENOS",
 //    "ZENVO",
 //    "ZYTEK",
+    
+    case other = "Other"
 }
 
 private let carBrands = Set<String>(

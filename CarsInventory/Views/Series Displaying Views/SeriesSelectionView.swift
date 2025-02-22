@@ -100,6 +100,6 @@ struct SeriesSelectionView: View {
     @Previewable @State var selectedSeries: Series? = nil
     NavigationStack {
         SeriesSelectionView(showDismissButton: false, selectedSeries: $selectedSeries)
-            .modelContainer(CarsInventoryAppContainerSampleData.container)
+            .modelContainer(CarsInventoryAppPreviewData.container)
     }
 }

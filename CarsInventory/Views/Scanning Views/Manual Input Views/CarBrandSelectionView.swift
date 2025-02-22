@@ -73,12 +73,19 @@ struct CarBrandSelectionView: View {
             List(filteredSections) { section in
                 Section {
                     ForEach(section.brands) { brand in
-                        Text(brand.displayName)
-                            .frame(maxWidth: .infinity, alignment: .leading)
-                            .contentShape(Rectangle())
-                            .onTapGesture {
-                                selectedBrand = brand
+                        HStack {
+                            Text(brand.displayName)
+                                .frame(maxWidth: .infinity, alignment: .leading)
+                            Spacer()
+                            
+                            if let selectedBrand, brand == selectedBrand {
+                                Image(systemName: "checkmark")
                             }
+                        }
+                        .contentShape(Rectangle())
+                        .onTapGesture {
+                            selectedBrand = brand
+                        }
                     }
                 } header: {
                     Text(section.titleLetter)
@@ -106,5 +113,10 @@ struct CarBrandSelectionView: View {
 
 #Preview {
     @Previewable @State var selectedBrand: CarBrand? = nil
+    CarBrandSelectionView(selectedBrand: $selectedBrand)
+}
+
+#Preview("with selected brand") {
+    @Previewable @State var selectedBrand: CarBrand? = .acura
     CarBrandSelectionView(selectedBrand: $selectedBrand)
 }

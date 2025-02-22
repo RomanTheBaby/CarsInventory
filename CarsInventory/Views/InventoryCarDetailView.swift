@@ -233,7 +233,6 @@ struct InventoryCarDetailView: View {
         inventoryCar.updateSeriesEntryNumber(seriesEntryNumber)
         inventoryCar.updateYear(yearSelection == 0 ? nil : yearSelection)
         inventoryCar.updateScale(scale)
-        print(">>>Updating to scale: ", scale)
         inventoryCar.updateValue(value)
             
         dismiss()
@@ -242,13 +241,13 @@ struct InventoryCarDetailView: View {
 
 #Preview {
     NavigationStack {
-        InventoryCarDetailView(inventoryCar: CarsInventoryAppContainerSampleData.previewCars[2])
-            .modelContainer(CarsInventoryAppContainerSampleData.container)
+        InventoryCarDetailView(inventoryCar: CarsInventoryAppPreviewData.previewCars[2])
+            .modelContainer(CarsInventoryAppPreviewData.container)
     }
 }
 
 #Preview("From car list view") {
     NavigationStack {
         InventoryCarsListView()
-    }.modelContainer(CarsInventoryAppContainerSampleData.container)
+    }.modelContainer(CarsInventoryAppPreviewData.container)
 }

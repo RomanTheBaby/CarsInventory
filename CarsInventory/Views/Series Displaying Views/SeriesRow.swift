@@ -30,7 +30,7 @@ struct SeriesRow: View {
 }
 
 #Preview {
-    List(CarsInventoryAppContainerSampleData.previewSeries) { series in
+    List(CarsInventoryAppPreviewData.previewSeries) { series in
         SeriesRow(series: series)
     }
 }

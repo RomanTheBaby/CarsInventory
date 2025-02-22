@@ -34,6 +34,7 @@ class InventoryCar: Identifiable, Hashable, CustomStringConvertible {
     
 //    @Relationship(inverse: \Series.cars)
     private(set) var series: Series
+    private(set) var franchise: Franchise?
     private(set) var year: Int?
     private(set) var seriesEntryNumber: SeriesEntryNumber?
     private(set) var scale: Scale?
@@ -64,6 +65,7 @@ class InventoryCar: Identifiable, Hashable, CustomStringConvertible {
         brand: CarBrand,
         make: String,
         series: Series,
+        franchise: Franchise?,
         color: ColorOption = .unspecified,
         year: Int? = nil,
         seriesEntryNumber: SeriesEntryNumber? = nil,
@@ -75,6 +77,31 @@ class InventoryCar: Identifiable, Hashable, CustomStringConvertible {
         self.brand = brand
         self.make = make
         self.series = series
+        self.franchise = franchise
+        self.color = color
+        self.year = year
+        self.seriesEntryNumber = seriesEntryNumber
+        self.value = value
+        self.note = note
+    }
+    
+    init(
+        id: String = UUID().uuidString,
+        brand: CarBrand,
+        make: String,
+        series: Series,
+        color: ColorOption = .unspecified,
+        year: Int? = nil,
+        seriesEntryNumber: SeriesEntryNumber? = nil,
+        scale: Scale? = nil,
+        value: Decimal? = nil,
+        note: String? = nil
+    ) {
+        self.id = id
+        self.brand = brand
+        self.make = make
+        self.series = series
+        self.franchise = series.franchise
         self.color = color
         self.year = year
         self.seriesEntryNumber = seriesEntryNumber

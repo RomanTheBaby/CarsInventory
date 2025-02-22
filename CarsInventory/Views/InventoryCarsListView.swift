@@ -26,8 +26,12 @@ struct InventoryCarsListView: View {
     @State private var searchText = ""
     @State private var carsCount: Int = 0
     @State private var sections: [CarBrandSection] = []
+    
+    private let franchise: Franchise?
     private let series: Series?
     private let title: String
+    
+    // MARK: - Init
     
     init(
         searchText: String = "",
@@ -35,12 +39,24 @@ struct InventoryCarsListView: View {
     ) {
         self.searchText = searchText
         self.series = series
+        self.franchise = nil
         
         if let series {
             title = series.displayName
         } else {
             title = "My Garage"
         }
+    }
+    
+    init(
+        searchText: String = "",
+        franchise: Franchise
+    ) {
+        self.searchText = searchText
+        self.series = nil
+        self.franchise = franchise
+        
+        title = franchise.displayName
     }
     
     // MARK: - Body
@@ -123,6 +139,11 @@ struct InventoryCarsListView: View {
                 $0.series.id == seriesId
             }
             fetchDescriptor = FetchDescriptor<InventoryCar>(predicate: predicate)
+        } else if let franchiseId = franchise?.id {
+            let predicate = #Predicate<InventoryCar> {
+                $0.franchise?.id == franchiseId
+            }
+            fetchDescriptor = FetchDescriptor<InventoryCar>(predicate: predicate)
         } else {
             fetchDescriptor = FetchDescriptor<InventoryCar>()
         }
@@ -166,13 +187,20 @@ struct InventoryCarsListView: View {
 #Preview("Without series") {
     NavigationStack {
         InventoryCarsListView()
-            .modelContainer(CarsInventoryAppContainerSampleData.container)
+            .modelContainer(CarsInventoryAppPreviewData.container)
     }
 }
 
 #Preview("With series") {
     NavigationStack {
-        InventoryCarsListView(series: CarsInventoryAppContainerSampleData.previewSeries[3])
-            .modelContainer(CarsInventoryAppContainerSampleData.container)
+        InventoryCarsListView(series: CarsInventoryAppPreviewData.previewSeries[3])
+            .modelContainer(CarsInventoryAppPreviewData.container)
+    }
+}
+
+#Preview("With Franchise") {
+    NavigationStack {
+        InventoryCarsListView(franchise: CarsInventoryAppPreviewData.previewFranchises[0])
+            .modelContainer(CarsInventoryAppPreviewData.container)
     }
 }

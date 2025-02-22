@@ -1,5 +1,5 @@
 //
-//  CarsInventoryAppContainerSampleData.swift
+//  CarsInventoryAppPreviewData.swift
 //  CarsInventory
 //
 //  Created by Roman on 2025-01-04.
@@ -8,7 +8,8 @@
 import Foundation
 import SwiftData
 
-actor CarsInventoryAppContainerSampleData {
+
+actor CarsInventoryAppPreviewData {
     
     // MARK: - Public Properties
     
@@ -20,6 +21,10 @@ actor CarsInventoryAppContainerSampleData {
             let modelContainer = try ModelContainer(for: schema, configurations: [configuration])
             
             modelContainer.insertSeries()
+            
+            previewFranchises.forEach { franchise in
+                modelContainer.mainContext.insert(franchise)
+            }
             
             previewCars.forEach { series in
                 modelContainer.mainContext.insert(series)
@@ -33,11 +38,18 @@ actor CarsInventoryAppContainerSampleData {
     
     @MainActor static let previewSeries: [Series] = {
         [
-            Series(id: "1", classification: .premium, displayName: "RACE DAY", alternativeNames: ["HW Race Day"]),
-            Series(id: "2", classification: .regular, displayName: "Factory Fresh"),
-            Series(id: "3", classification: .regular, displayName: "Then and Now", year: 2024),
-            Series(id: "4", classification: .regular, displayName: "MUSTANG 60", year: 2025, carsCount: 5),
-            Series(id: AppConstants.Series.Unknown.id, classification: .regular, displayName: "Unknown"),
+            Series(id: "1", classification: .premium, displayName: "RACE DAY", alternativeNames: ["HW Race Day"], franchise: previewFranchises[0]),
+            Series(id: "2", classification: .regular, displayName: "Factory Fresh", franchise: previewFranchises[0]),
+            Series(id: "3", classification: .regular, displayName: "Then and Now", year: 2024, franchise: previewFranchises[0]),
+            Series(id: "4", classification: .regular, displayName: "MUSTANG 60", year: 2025, carsCount: 5, franchise: previewFranchises[0]),
+            Series(id: "5", classification: .regular, displayName: "CYBERPUNK 2077", alternativeNames: ["CYBERPUNK"], franchise: previewFranchises[0]),
+            Series(id: AppConstants.Series.Unknown.id, classification: .regular, displayName: "Unknown", franchise: previewFranchises[0]),
+        ]
+    }()
+    
+    @MainActor static let previewFranchises: [Franchise] = {
+        [
+            Franchise(id: "1", name: "Hot Wheels"),
         ]
     }()
     
@@ -53,7 +65,7 @@ actor CarsInventoryAppContainerSampleData {
 
 extension ModelContainer {
     @MainActor func insertSeries() {
-        CarsInventoryAppContainerSampleData.previewSeries.forEach { series in
+        CarsInventoryAppPreviewData.previewSeries.forEach { series in
             mainContext.insert(series)
         }
     }

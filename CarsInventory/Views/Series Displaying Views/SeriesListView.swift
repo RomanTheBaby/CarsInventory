@@ -101,6 +101,6 @@ struct SeriesListView: View {
     @Previewable @State var selectedSeries: Series? = nil
     NavigationStack {
         SeriesListView()
-            .modelContainer(CarsInventoryAppContainerSampleData.container)
+            .modelContainer(CarsInventoryAppPreviewData.container)
     }
 }

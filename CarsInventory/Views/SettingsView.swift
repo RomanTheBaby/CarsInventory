@@ -17,6 +17,12 @@ struct SettingsView: View {
                     } label: {
                         Text("All Series")
                     }
+                    
+                    NavigationLink {
+                        SeriesListView(showDismissButton: false)
+                    } label: {
+                        Text("All Franchises")
+                    }
                 }
                 
                 Section {
@@ -33,5 +39,5 @@ struct SettingsView: View {
 
 #Preview {
     SettingsView()
-        .modelContainer(CarsInventoryAppContainerSampleData.container)
+        .modelContainer(CarsInventoryAppPreviewData.container)
 }

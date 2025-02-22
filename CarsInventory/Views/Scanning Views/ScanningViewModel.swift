@@ -28,7 +28,10 @@ class ScanningViewModel: ObservableObject {
         suggestion.add(models: scanningSuggestion.models)
         suggestion.add(series: scanningSuggestion.series)
         suggestion.add(seriesNumber: scanningSuggestion.seriesNumber)
-        suggestion.add(years: scanningSuggestion.years ?? [])
+        suggestion.add(years: scanningSuggestion.years)
+        suggestion.add(colors: scanningSuggestion.colors)
+        suggestion.add(franchises: scanningSuggestion.franchises)
+        suggestion.add(scales: scanningSuggestion.scales)
     }
     
     func addSuggestedBrand(_ brand: CarBrand) {
@@ -62,6 +65,10 @@ class ScanningViewModel: ObservableObject {
     
     func addSuggestedScale(_ scale: InventoryCar.Scale) {
         suggestion.add(scales: [scale])
+    }
+    
+    func addSuggestedFranchise(_ franchise: Franchise) {
+        suggestion.add(franchises: [franchise])
     }
     
     func clearSuggestions() {

@@ -15,13 +15,13 @@ struct CarsInventoryApp: App {
         #if DEBUG
             #if !targetEnvironment(simulator)
 //            let modelContainer = ModelContainer.shared
-            let modelContainer = CarsInventoryAppContainerSampleData.container
+            let modelContainer = CarsInventoryAppPreviewData.container
         print("\(#line)")
             #elseif os(watchOS)
-            let modelContainer = CarsInventoryAppContainerSampleData.container
+            let modelContainer = CarsInventoryAppPreviewData.container
         print("\(#line)")
             #else
-            let modelContainer = CarsInventoryAppContainerSampleData.container
+            let modelContainer = CarsInventoryAppPreviewData.container
         print("\(#line)")
             #endif
         #else

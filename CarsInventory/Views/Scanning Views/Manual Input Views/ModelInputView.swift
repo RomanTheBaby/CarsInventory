@@ -32,7 +32,7 @@ struct ModelInputView: View {
                         input = ""
                         dismiss()
                     } label: {
-                        Text("Done")
+                        Text("Cancel")
                             .fontWeight(.bold)
                             .fontWeight(.medium)
                     }

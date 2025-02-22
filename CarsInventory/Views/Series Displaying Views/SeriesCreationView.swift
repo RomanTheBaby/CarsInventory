@@ -15,12 +15,15 @@ struct SeriesCreationView: View {
     @Environment(\.dismiss) private var dismiss
     @Environment(\.modelContext) var modelContext: ModelContext
     
+    @Query private var franchises: [Franchise]
+    
     @Binding private var series: Series?
     
     @State private var name: String
     @State private var yearSelection: Int
     @State private var carsCount: Int?
     @State private var classificationSelection: Series.Classification = .regular
+    @State private var franchise: Franchise?
     
     @State private var isPresentingConfirmAlert = false
     @State private var error: Error?
@@ -106,6 +109,19 @@ struct SeriesCreationView: View {
                     .font(.footnote)
             }
             
+            Picker(selection: Binding($franchise, deselectTo: nil)) {
+                ForEach(franchises) { franchise in
+                    Text(franchise.name)
+                        .tag(franchise as Franchise?) // This is required for binding to work
+                }
+            } label: {
+                Text("Franchise")
+                Text("optional")
+                    .font(.footnote)
+            } currentValueLabel: {
+                Text(franchise?.name ?? "Unspecified")
+            }
+
             LabeledContent {
                 TextField("Number", value: $carsCount, formatter: NumberFormatter())
                     .keyboardType(.numberPad)
@@ -195,15 +211,30 @@ struct SeriesCreationView: View {
     
 }
 
+// MARK: - Binding Helper
+
+private extension Binding where Value: Equatable {
+    init(_ source: Binding<Value>, deselectTo value: Value) {
+        self.init(
+            get: {
+                source.wrappedValue
+            },
+            set: {
+                source.wrappedValue = $0 == source.wrappedValue ? value : $0
+            }
+        )
+    }
+}
+
 // MARK: - Previews
 
 #Preview("Creating New Series") {
     @Previewable @State var createdSeries: Series? = nil
     SeriesCreationView(series: $createdSeries)
-        .modelContainer(CarsInventoryAppContainerSampleData.container)
+        .modelContainer(CarsInventoryAppPreviewData.container)
 }
 
 #Preview("Updating existing series") {
-    SeriesCreationView(series: CarsInventoryAppContainerSampleData.previewSeries[3])
-        .modelContainer(CarsInventoryAppContainerSampleData.container)
+    SeriesCreationView(series: CarsInventoryAppPreviewData.previewSeries[3])
+        .modelContainer(CarsInventoryAppPreviewData.container)
 }

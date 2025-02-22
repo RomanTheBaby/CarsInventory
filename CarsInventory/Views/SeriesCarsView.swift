@@ -28,14 +28,14 @@ struct SeriesCarsView: View {
 
 #Preview("With Data") {
     NavigationStack {
-        SeriesCarsView(series: CarsInventoryAppContainerSampleData.previewSeries[3])
-            .modelContainer(CarsInventoryAppContainerSampleData.container)
+        SeriesCarsView(series: CarsInventoryAppPreviewData.previewSeries[3])
+            .modelContainer(CarsInventoryAppPreviewData.container)
     }
 }
 
 #Preview("No Data") {
     NavigationStack {
-        SeriesCarsView(series: CarsInventoryAppContainerSampleData.previewSeries[3])
+        SeriesCarsView(series: CarsInventoryAppPreviewData.previewSeries[3])
     }
 }
 
@@ -43,5 +43,5 @@ struct SeriesCarsView: View {
     NavigationStack {
         SeriesListView()
     }
-    .modelContainer(CarsInventoryAppContainerSampleData.container)
+    .modelContainer(CarsInventoryAppPreviewData.container)
 }

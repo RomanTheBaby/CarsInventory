@@ -23,9 +23,10 @@ struct ScanningSuggestion: Hashable {
     var models: [String]
     var series: [Series]
     var seriesNumber: [SeriesEntryNumber]
-    var years: [Int]?
-    var colors: [ColorOption]?
-    var scales: [InventoryCar.Scale]?
+    var years: [Int]
+    var colors: [ColorOption]
+    var scales: [InventoryCar.Scale]
+    var franchises: [Franchise]
     
     // MARK: - Init
     
@@ -34,11 +35,12 @@ struct ScanningSuggestion: Hashable {
         models: [String],
         series: [Series],
         seriesNumber: [SeriesEntryNumber],
-        years: [Int]? = nil,
-        colors: [ColorOption]? = nil,
-        scales: [InventoryCar.Scale]? = nil
+        years: [Int] = [],
+        colors: [ColorOption] = [],
+        scales: [InventoryCar.Scale] = [],
+        franchises: [Franchise] = []
     ) {
-        guard !brands.isEmpty || !brands.isEmpty || series.isEmpty || seriesNumber.isEmpty || (years ?? []).isEmpty else {
+        guard !brands.isEmpty || !brands.isEmpty || !series.isEmpty || !seriesNumber.isEmpty || !years.isEmpty || !colors.isEmpty || !scales.isEmpty || !franchises.isEmpty  else {
             return nil
         }
 
@@ -49,6 +51,7 @@ struct ScanningSuggestion: Hashable {
         self.years = years
         self.colors = colors
         self.scales = scales
+        self.franchises = []
     }
     
     private init() {
@@ -56,9 +59,10 @@ struct ScanningSuggestion: Hashable {
         models = []
         series = []
         seriesNumber = []
-        years = nil
-        colors = nil
-        scales = nil
+        years = []
+        colors = []
+        scales = []
+        franchises = []
     }
     
     static let empty: Self = .init()
@@ -86,18 +90,23 @@ struct ScanningSuggestion: Hashable {
     }
 
     mutating func add(years: [Int]) {
-        let newYears = (self.years ?? []) + years
+        let newYears = self.years + years
         self.years = newYears.unique
     }
     
     mutating func add(colors: [ColorOption]) {
-        let newColors = (self.colors ?? []) + colors
+        let newColors = self.colors + colors
         self.colors = newColors.unique
     }
     
     mutating func add(scales: [InventoryCar.Scale]) {
-        let newScales = (self.scales ?? []) + scales
+        let newScales = self.scales + scales
         self.scales = newScales.unique
+    }
+    
+    mutating func add(franchises: [Franchise]) {
+        let newFranchises = self.franchises + franchises
+        self.franchises = newFranchises.unique
     }
 }
 

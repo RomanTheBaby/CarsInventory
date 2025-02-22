@@ -19,6 +19,7 @@ struct ScannerFooterView: View {
     @State private var selectedMake: String?
     @State private var selectedSeries: Series?
     @State private var selectedSeriesNumber: SeriesEntryNumber?
+    @State private var selectedFranchise: Franchise?
     @State private var selectedYear: Int?
     @State private var selectedColor: ColorOption?
     @State private var selectedScale: InventoryCar.Scale?
@@ -30,6 +31,7 @@ struct ScannerFooterView: View {
     @State private var showModelInputView = false
     @State private var showSeriesSelectionView = false
     @State private var showSeriesNumberInputView = false
+    @State private var showFranchiseSelectionView = false
     @State private var showYearInputView = false
     @State private var showColorInputView = false
     @State private var showScaleInputView = false
@@ -92,8 +94,18 @@ struct ScannerFooterView: View {
                 
                 if isExpanded {
                     SuggestionSelectionView(
+                        title: "Franchise:",
+                        items: viewModel.suggestion.franchises,
+                        selectedItem: $selectedFranchise,
+                        manualInputActionHandler: {
+                            print(">>>DID SET TO TRUE")
+                            showFranchiseSelectionView = true
+                        }
+                    ).frame(height: 40)
+                    
+                    SuggestionSelectionView(
                         title: "Year:",
-                        items: viewModel.suggestion.years ?? [],
+                        items: viewModel.suggestion.years,
                         selectedItem: $selectedYear,
                         manualInputActionHandler: {
                             showYearInputView = true
@@ -102,7 +114,7 @@ struct ScannerFooterView: View {
                     
                     SuggestionSelectionView(
                         title: "Color:",
-                        items: viewModel.suggestion.colors ?? [],
+                        items: viewModel.suggestion.colors,
                         selectedItem: $selectedColor,
                         manualInputActionHandler: {
                             showColorInputView = true
@@ -111,7 +123,7 @@ struct ScannerFooterView: View {
                     
                     SuggestionSelectionView(
                         title: "Scale:",
-                        items: viewModel.suggestion.scales ?? [],
+                        items: viewModel.suggestion.scales,
                         selectedItem: $selectedScale,
                         manualInputActionHandler: {
                             showScaleInputView = true
@@ -230,6 +242,12 @@ struct ScannerFooterView: View {
                         
                         viewModel.addSuggestedSeries(newValue)
                         showSeriesSelectionView = false
+                        
+                        if let seriesFranchise = newValue.franchise {
+                            viewModel.addSuggestedFranchise(seriesFranchise)
+                        }
+                        /// We want to update selected series to match franchise series, even if series has no franchise.
+                        selectedFranchise = newValue.franchise
                     }
             }
         }
@@ -243,6 +261,19 @@ struct ScannerFooterView: View {
                     viewModel.addSuggestedBrand(newValue)
                     showBrandSelectionView = false
                 }
+        }
+        .sheet(isPresented: $showFranchiseSelectionView) {
+            if let selectedFranchise {
+                viewModel.addSuggestedFranchise(selectedFranchise)
+                
+                if let selectedSeries, selectedSeries.franchise != selectedFranchise {
+                    self.selectedSeries = nil
+                }
+            }
+        } content: {
+            NavigationStack {
+                FranchiseSelectionView(selection: $selectedFranchise)
+            }
         }
         .sheet(isPresented: $showModelInputView) {
             if modelInput.isEmpty == false {
@@ -286,7 +317,6 @@ struct ScannerFooterView: View {
         }
         .sheet(isPresented: $showScaleInputView) {
             if let selectedScale {
-                print(">>>LOLOLO: ", selectedScale)
                 viewModel.addSuggestedScale(selectedScale)
             }
         } content: {
@@ -328,7 +358,13 @@ struct ScannerFooterView: View {
                 brand: selectedBrand,
                 make: selectedMake,
                 series: series,
-                seriesEntryNumber: selectedSeriesNumber
+                franchise: selectedFranchise,
+                color: selectedColor ?? .unspecified,
+                year: selectedYear,
+                seriesEntryNumber: selectedSeriesNumber,
+                scale: selectedScale,
+                value: nil,
+                note: nil
             )
             
             modelContext.insert(inventoryCar)
@@ -398,5 +434,5 @@ struct ScannerFooterView: View {
             )
         )
     }
-    .modelContainer(CarsInventoryAppContainerSampleData.container)
+    .modelContainer(CarsInventoryAppPreviewData.container)
 }

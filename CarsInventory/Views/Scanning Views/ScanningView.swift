@@ -95,5 +95,5 @@ struct ScanningView: View {
 
 #Preview {
     ScanningView()
-        .modelContainer(CarsInventoryAppContainerSampleData.container)
+        .modelContainer(CarsInventoryAppPreviewData.container)
 }

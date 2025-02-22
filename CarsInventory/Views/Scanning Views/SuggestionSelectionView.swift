@@ -20,6 +20,7 @@ protocol FooterSelectionItem: Equatable {
 struct SuggestionSelectionView<Item: FooterSelectionItem & Equatable>: View {
     var title: String
     var items: [Item]
+    var titleLabelWidth: CGFloat?
     
     @Binding var selectedItem: Item?
     
@@ -28,7 +29,7 @@ struct SuggestionSelectionView<Item: FooterSelectionItem & Equatable>: View {
     var body: some View {
         HStack {
             Text(title)
-                .frame(width: 70, alignment: .leading)
+                .frame(width: titleLabelWidth, alignment: .leading)
             
             ScrollView(.horizontal) {
                 HStack {
@@ -83,8 +84,16 @@ struct SuggestionSelectionView<Item: FooterSelectionItem & Equatable>: View {
 //    SuggestionSelectionView()
 //}
 
-extension CarBrand: FooterSelectionItem {}
 extension Series: FooterSelectionItem {}
+
+extension CarBrand: FooterSelectionItem {}
+
+extension Franchise: FooterSelectionItem {
+    var displayName: String {
+        name
+    }
+}
+
 extension SeriesEntryNumber: FooterSelectionItem {
     var id: String {
         displayName

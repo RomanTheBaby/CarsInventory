@@ -34,5 +34,5 @@ struct MainTabView: View {
 
 #Preview {
     MainTabView()
-        .modelContainer(CarsInventoryAppContainerSampleData.container)
+        .modelContainer(CarsInventoryAppPreviewData.container)
 }

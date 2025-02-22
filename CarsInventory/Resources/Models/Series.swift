@@ -48,6 +48,9 @@ class Series: Hashable, CustomStringConvertible {
     @Relationship(deleteRule: .cascade, inverse: \InventoryCar.series)
     private(set) var cars: [InventoryCar] = []
     
+    @Relationship(inverse: \Franchise.series)
+    private(set) var franchise: Franchise?
+    
     @Transient
     var allNames: Set<String> {
         let names = Set<String>([displayName] + alternativeNames.map(\.name))
@@ -84,7 +87,8 @@ class Series: Hashable, CustomStringConvertible {
         alternativeNames: [String] = [],
         year: Int? = nil,
         carsCount: Int? = nil,
-        cars: [InventoryCar] = []
+        cars: [InventoryCar] = [],
+        franchise: Franchise? = nil
     ) {
         self.id = id
         self.classification = classification
@@ -92,6 +96,7 @@ class Series: Hashable, CustomStringConvertible {
         self.alternativeNames = alternativeNames.map(AlternativeName.init(name:))
         self.year = year
         self.cars = cars
+        self.franchise = franchise
     }
     
     // MARK: - Public Methods

@@ -29,10 +29,9 @@ struct YearInputView: View {
             .toolbar {
                 ToolbarItem(placement: .topBarLeading) {
                     Button {
-                        input = 0
                         dismiss()
                     } label: {
-                        Text("Done")
+                        Text("Cancel")
                             .fontWeight(.bold)
                             .fontWeight(.medium)
                     }
