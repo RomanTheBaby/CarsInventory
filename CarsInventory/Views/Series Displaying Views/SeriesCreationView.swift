@@ -189,7 +189,8 @@ struct SeriesCreationView: View {
                         classification: classificationSelection,
                         displayName: name.trimmingCharacters(in: .whitespacesAndNewlines),
                         year: yearSelection == 0 ? nil : yearSelection,
-                        carsCount: carsCount
+                        carsCount: carsCount,
+                        franchise: franchise
                     )
                     modelContext.insert(newSeries)
                     series = newSeries

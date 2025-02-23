@@ -22,9 +22,17 @@ struct SeriesListView: View {
     @Environment(\.dismiss) private var dismiss
     
     private var searchResults: [Series] {
-        series.filter {
-            searchText.isEmpty ? true : $0.allNames.contains(searchText.lowercased())
-        }.sorted { lhs, rhs in
+        let trimmedQuery = searchText.trimmingCharacters(in: .whitespacesAndNewlines)
+        
+        let filteredSeries = if searchText.isEmpty {
+            series
+        } else {
+            series.filter {
+                $0.allNames.contains(trimmedQuery.lowercased())
+            }
+        }
+        
+        return filteredSeries.sorted { lhs, rhs in
             if lhs.isUnknown || rhs.isUnknown {
                 return lhs.isUnknown
             }
@@ -56,7 +64,6 @@ struct SeriesListView: View {
                 } label: {
                     Label("Add", systemImage: "plus")
                 }
-
             } else {
                 ForEach(searchResults) { series in
                     NavigationLink {

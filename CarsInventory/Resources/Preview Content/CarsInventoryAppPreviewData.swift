@@ -16,7 +16,7 @@ actor CarsInventoryAppPreviewData {
     @MainActor
     static let container: ModelContainer = {
         do {
-            let schema = Schema([Series.self])
+            let schema = Schema([Series.self, InventoryCar.self, Franchise.self])
             let configuration = ModelConfiguration(isStoredInMemoryOnly: true)
             let modelContainer = try ModelContainer(for: schema, configurations: [configuration])
             
@@ -37,14 +37,22 @@ actor CarsInventoryAppPreviewData {
     }()
     
     @MainActor static let previewSeries: [Series] = {
-        [
-            Series(id: "1", classification: .premium, displayName: "RACE DAY", alternativeNames: ["HW Race Day"], franchise: previewFranchises[0]),
-            Series(id: "2", classification: .regular, displayName: "Factory Fresh", franchise: previewFranchises[0]),
-            Series(id: "3", classification: .regular, displayName: "Then and Now", year: 2024, franchise: previewFranchises[0]),
-            Series(id: "4", classification: .regular, displayName: "MUSTANG 60", year: 2025, carsCount: 5, franchise: previewFranchises[0]),
-            Series(id: "5", classification: .regular, displayName: "CYBERPUNK 2077", alternativeNames: ["CYBERPUNK"], franchise: previewFranchises[0]),
-            Series(id: AppConstants.Series.Unknown.id, classification: .regular, displayName: "Unknown", franchise: previewFranchises[0]),
-        ]
+        let seriesData = try? DefaultDataProvider.hotWheelsSeriesData()
+        let defaultSeries: [Series] = seriesData?.enumerated().map { index, seriesData in
+            Series(
+                id: "\(index)",
+                classification: Series.Classification(rawValue: seriesData.classification) ?? .regular,
+                displayName: seriesData.displayName,
+                alternativeNames: seriesData.alternativeNames,
+                year: seriesData.year,
+                carsCount: seriesData.carsCount,
+                cars: [],
+                franchise: previewFranchises[0]
+            )
+        } ?? []
+        
+        let unknowSeries = Series(id: AppConstants.Series.Unknown.id, classification: .regular, displayName: "Unknown")
+        return defaultSeries + [unknowSeries]
     }()
     
     @MainActor static let previewFranchises: [Franchise] = {

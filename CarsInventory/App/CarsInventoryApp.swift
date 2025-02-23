@@ -11,22 +11,28 @@ import SwiftData
 @main
 struct CarsInventoryApp: App {
     
+    @AppStorage("didLoadData") private var didLoadData: Bool = false
+    
     var body: some Scene {
         #if DEBUG
             #if !targetEnvironment(simulator)
-//            let modelContainer = ModelContainer.shared
             let modelContainer = CarsInventoryAppPreviewData.container
-        print("\(#line)")
-            #elseif os(watchOS)
-            let modelContainer = CarsInventoryAppPreviewData.container
-        print("\(#line)")
+            print("startup at line: \(#line)")
             #else
-            let modelContainer = CarsInventoryAppPreviewData.container
-        print("\(#line)")
+            let modelContainer = ModelContainer.shared
+            print("startup at line: \(#line), didLoadData: ", didLoadData)
+            if didLoadData == false {
+                DefaultDataProvider.populateWithDefaultData(modelContainer: modelContainer)
+                didLoadData = true
+            }
             #endif
         #else
         let modelContainer = ModelContainer.shared
-        print("\(#line)")
+        print("startup at line: \(#line), didLoadData: ", didLoadData)
+        if didLoadData == false {
+            DefaultDataProvider.populateWithDefaultData(modelContainer: modelContainer)
+            didLoadData = true
+        }
         #endif
         
         return WindowGroup {
@@ -42,15 +48,11 @@ private extension ModelContainer {
     @MainActor
     static let shared: ModelContainer = {
         do {
-            let schema = Schema([
-                Series.self,
-            ])
+            let schema = Schema([Series.self, InventoryCar.self, Franchise.self])
             
-            // TODO: - specify group id???
             let modelConfiguration = ModelConfiguration(schema: schema, isStoredInMemoryOnly: false)
             let modelContainer = try ModelContainer(for: schema, configurations: [modelConfiguration])
             
-            modelContainer.insertSeries()
             return modelContainer
         } catch {
             fatalError("Could not create ModelContainer: \(error)")

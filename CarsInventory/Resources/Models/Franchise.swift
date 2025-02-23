@@ -10,6 +10,7 @@ import SwiftData
 
 @Model
 class Franchise: Identifiable, Hashable {
+    @Attribute(.unique)
     var id: String
     var name: String
     

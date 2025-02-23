@@ -19,7 +19,7 @@ struct SettingsView: View {
                     }
                     
                     NavigationLink {
-                        SeriesListView(showDismissButton: false)
+                        FranchiseListView()
                     } label: {
                         Text("All Franchises")
                     }

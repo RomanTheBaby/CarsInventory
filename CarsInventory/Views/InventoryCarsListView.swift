@@ -65,6 +65,7 @@ struct InventoryCarsListView: View {
         Group {
             if sections.isEmpty {
                 emptyView
+                    .padding(.horizontal)
             } else {
                 listView
             }
@@ -81,8 +82,8 @@ struct InventoryCarsListView: View {
     private var emptyView: some View {
         if searchText.isEmpty {
             VStack {
-                if let series {
-                    Text("You do not have anything in the \(series.displayName) yet.")
+                if let displayName = series?.displayName ?? franchise?.displayName {
+                    Text("You do not have anything in the \"\(displayName)\" yet.")
                         .multilineTextAlignment(.center)
                 } else {
                     Text("You do not have any cars in the inventory yet.")
