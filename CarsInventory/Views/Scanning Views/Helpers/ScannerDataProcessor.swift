@@ -110,6 +110,8 @@ class ScannerDataProcessor {
             seriesList.filter { series in
                 series.allNames.contains(where: {
                     $0.lowercased() == transcript.lowercased()
+                        || $0.lowercased().contains(transcript.lowercased())
+                        || transcript.lowercased().contains($0.lowercased())
                 })
             }
         }

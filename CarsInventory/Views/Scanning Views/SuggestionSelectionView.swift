@@ -47,12 +47,22 @@ struct SuggestionSelectionView<Item: FooterSelectionItem & Equatable>: View {
                                 selectedItem = item
                             }
                         } label: {
-                            Text(item.displayName)
-                                .foregroundStyle(selectedItem == item ? .white : Color.primary)
-                                .frame(minWidth: 50)
-                                .padding(8)
-                                .background(selectedItem == item ? .blue : Color(uiColor: .lightGray).opacity(0.6))
-                                .cornerRadius(8)
+                            VStack {
+                                Text(item.displayName)
+                                    .foregroundStyle(selectedItem == item ? .white : Color.primary)
+                                    .multilineTextAlignment(.center)
+                                if let subtitle = item.subtitle {
+                                    Text(subtitle)
+                                        .foregroundStyle(Color.secondary)
+                                        .font(.footnote)
+                                        .frame(maxWidth: .infinity, alignment: .leading)
+                                }
+                                
+                            }
+                            .frame(minWidth: 50)
+                            .padding(8)
+                            .background(selectedItem == item ? .blue : Color(uiColor: .lightGray).opacity(0.6))
+                            .cornerRadius(8)
                         }
                     }
                     
@@ -75,15 +85,44 @@ struct SuggestionSelectionView<Item: FooterSelectionItem & Equatable>: View {
             }
             .scrollIndicators(.hidden)
             .frame(maxWidth: .infinity, alignment: .leading)
+            .fixedSize(horizontal: false, vertical: true)
         }
     }
 }
 
-// MARK: - Previews
+// MARK: - Preview
 
-//#Preview {
-//    SuggestionSelectionView()
-//}
+#Preview {
+    ScanningView()
+        .modelContainer(CarsInventoryAppPreviewData.container)
+}
+
+private extension FooterSelectionItem {
+    var subtitle: String? {
+        guard let series = self as? Series else {
+            return nil
+        }
+        
+        var texts: [String] = []
+        texts.reserveCapacity(2)
+        
+        switch series.classification {
+        case .premium:
+            texts.append(series.classification.displayName)
+        case .regular:
+            break
+        }
+        
+        if let year = series.year {
+            texts.append(String(year))
+        }
+        
+        let subtitle = texts.joined(separator: ", ")
+        return subtitle.isEmpty ? nil : subtitle
+    }
+}
+
+// MARK: Series + FooterSelectionItem
 
 extension Series: FooterSelectionItem {}
 

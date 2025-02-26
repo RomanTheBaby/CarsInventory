@@ -81,7 +81,7 @@ struct ScannerFooterView: View {
                     manualInputActionHandler: {
                         showSeriesSelectionView = true
                     }
-                ).frame(height: 40)
+                ).frame(minHeight: 40)
                 
                 SuggestionSelectionView(
                     title: "Number:",
