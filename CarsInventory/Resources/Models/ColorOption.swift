@@ -7,7 +7,7 @@
 
 import Foundation
 
-enum ColorOption: String, Hashable, CaseIterable, Codable {
+enum ColorOption: String, Hashable, CaseIterable, Codable, Identifiable {
     case amber
     case black
     case blue
@@ -24,6 +24,10 @@ enum ColorOption: String, Hashable, CaseIterable, Codable {
     case white
     case yellow
     case unspecified
+    
+    var id: String {
+        rawValue
+    }
     
     var displayName: String {
         rawValue.capitalized

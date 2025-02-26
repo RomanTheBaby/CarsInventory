@@ -1,0 +1,53 @@
+[
+    {
+        "classification": "premium",
+        "displayName": "RACE DAY",
+        "alternativeNames": ["HW Race Day"],
+        "alternativeNames": [],
+    },
+    {
+        "classification": "regular",
+        "displayName": "Factory Fresh",
+        "alternativeNames": [],
+    },
+    {
+        "classification": "regular",
+        "displayName": "Then and Now",
+        "alternativeNames": [],
+    },
+    {
+        "classification": "regular",
+        "displayName": "MUSTANG 60",
+        "alternativeNames": [],
+    },
+    {
+        "classification": "regular",
+        "displayName": "CYBERPUNK 2077",
+        "alternativeNames": ["CYBERPUNK"],
+    },
+    {
+        "classification": "regular",
+        "displayName": "PORSCHE",
+        "alternativeNames": [],
+    },
+    {
+        "classification": "regular",
+        "displayName": "Baja Blazers",
+        "alternativeNames": [],
+    },
+    {
+        "classification": "regular",
+        "displayName": "Fast & Furious",
+        "alternativeNames": ["Fast", "Fast &", "Fast&", "Furious"],
+    },
+    {
+        "classification": "premium",
+        "displayName": "Fast & Furious",
+        "alternativeNames": ["Fast", "Fast &", "Fast&", "Furious"],
+    },
+    {
+        "classification": "regular",
+        "displayName": "Exotic Envy",
+        "alternativeNames": ["Exotic", "Envy"],
+    },
+]

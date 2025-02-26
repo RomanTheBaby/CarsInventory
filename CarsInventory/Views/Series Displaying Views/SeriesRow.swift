@@ -10,12 +10,27 @@ import SwiftUI
 struct SeriesRow: View {
     var series: Series
     
+    var subtitle: String {
+        var texts: [String] = []
+        
+        switch series.classification {
+        case .premium:
+            texts.append(series.classification.displayName)
+        case .regular:
+            break
+        }
+        
+        texts.append("Cars: \(series.cars.count)")
+        
+        return texts.joined(separator: ", ")
+    }
+    
     var body: some View {
         HStack {
             VStack {
                 Text(series.displayName)
                     .frame(maxWidth: .infinity, alignment: .leading)
-                Text("Cars: \(series.cars.count)")
+                Text(subtitle)
                     .font(.caption)
                     .fontWeight(.light)
                     .frame(maxWidth: .infinity, alignment: .leading)

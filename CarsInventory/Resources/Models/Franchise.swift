@@ -14,6 +14,11 @@ class Franchise: Identifiable, Hashable {
     var id: String
     var name: String
     
+    @Transient
+    var displayName: String {
+        name
+    }
+    
     var series: [Series] = []
     
     init(id: String = UUID().uuidString, name: String) {

@@ -120,7 +120,7 @@ struct InventoryCarsListView: View {
                 Text(section.brand.displayName)
                     .listRowInsets(EdgeInsets(top: 4, leading: 8, bottom: 4, trailing: 0))
             } footer: {
-                if section == sections[sections.count - 1] {
+                if sections.isEmpty || section == sections[sections.count - 1] {
                     Text("Total: \(carsCount)")
                         .font(.footnote)
                         .frame(maxWidth: .infinity)

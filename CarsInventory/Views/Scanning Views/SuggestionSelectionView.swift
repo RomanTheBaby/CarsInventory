@@ -26,6 +26,12 @@ struct SuggestionSelectionView<Item: FooterSelectionItem & Equatable>: View {
     
     var manualInputActionHandler: (() -> Void)
     
+    private var sortedItems: [Item] {
+        items.sorted(by: { lhs, rhs in
+            lhs.displayName < rhs.displayName
+        })
+    }
+    
     var body: some View {
         HStack {
             Text(title)
@@ -33,12 +39,7 @@ struct SuggestionSelectionView<Item: FooterSelectionItem & Equatable>: View {
             
             ScrollView(.horizontal) {
                 HStack {
-                    ForEach(
-                        items.sorted(by: { lhs, rhs in
-                            lhs.displayName < rhs.displayName
-                        }),
-                        id: \.id
-                    ) { item in
+                    ForEach(sortedItems, id: \.id) { item in
                         Button {
                             if selectedItem == item {
                                 selectedItem = nil
@@ -86,13 +87,15 @@ struct SuggestionSelectionView<Item: FooterSelectionItem & Equatable>: View {
 
 extension Series: FooterSelectionItem {}
 
+// MARK: CarBrand + FooterSelectionItem
+
 extension CarBrand: FooterSelectionItem {}
 
-extension Franchise: FooterSelectionItem {
-    var displayName: String {
-        name
-    }
-}
+// MARK: Franchise + FooterSelectionItem
+
+extension Franchise: FooterSelectionItem {}
+
+// MARK: SeriesEntryNumber + FooterSelectionItem
 
 extension SeriesEntryNumber: FooterSelectionItem {
     var id: String {
@@ -104,6 +107,8 @@ extension SeriesEntryNumber: FooterSelectionItem {
     }
 }
 
+// MARK: String + FooterSelectionItem
+
 extension String: FooterSelectionItem {
     var id: String {
         self
@@ -113,6 +118,8 @@ extension String: FooterSelectionItem {
         self
     }
 }
+
+// MARK: Int + FooterSelectionItem
 
 extension Int: FooterSelectionItem {
     var id: String {
@@ -124,11 +131,11 @@ extension Int: FooterSelectionItem {
     }
 }
 
-extension ColorOption: FooterSelectionItem {
-    var id: String {
-        rawValue
-    }
-}
+// MARK: Series + ColorOption
+
+extension ColorOption: FooterSelectionItem {}
+
+// MARK: InventoryCar.Scale + FooterSelectionItem
 
 extension InventoryCar.Scale: FooterSelectionItem {
     var id: String {

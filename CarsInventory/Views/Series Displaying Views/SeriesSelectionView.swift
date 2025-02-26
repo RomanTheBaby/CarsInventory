@@ -23,16 +23,18 @@ struct SeriesSelectionView: View {
     @Query private var series: [Series]
     
     private var searchResults: [Series] {
-        series.filter {
-            searchText.isEmpty ? true : $0.allNames.contains(searchText.lowercased())
+        let filteredSeries = searchText.isEmpty ? series : series.filter { series in
+            series.allNames.contains(where: { $0.lowercased().contains(searchText.lowercased()) })
         }
-        .sorted { lhs, rhs in
-            if lhs.isUnknown || rhs.isUnknown {
-                return lhs.isUnknown
+        
+        return filteredSeries
+            .sorted { lhs, rhs in
+                if lhs.isUnknown || rhs.isUnknown {
+                    return lhs.isUnknown
+                }
+                
+                return lhs.displayName < rhs.displayName
             }
-            
-            return lhs.displayName < rhs.displayName
-        }
     }
     
     // MARK: - Init
@@ -57,11 +59,18 @@ struct SeriesSelectionView: View {
                     Label("Add Custom", systemImage: "plus")
                 }
             } else {
-                ForEach(searchResults) { series in
-                    SeriesRow(series: series)
-                        .onTapGesture {
-                            selectedSeries = series
-                        }
+                Section {
+                    ForEach(searchResults) { series in
+                        SeriesRow(series: series)
+                            .onTapGesture {
+                                selectedSeries = series
+                            }
+                    }
+                } footer: {
+                    Text("Total: \(searchResults.count)")
+                        .font(.footnote)
+                        .frame(maxWidth: .infinity)
+                        .padding(.top)
                 }
             }
         }

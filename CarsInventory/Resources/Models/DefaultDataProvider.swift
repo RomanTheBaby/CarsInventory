@@ -54,25 +54,29 @@ actor DefaultDataProvider {
         let franchise = Franchise(id: "1", name: "Hot Wheels")
         modelContainer.mainContext.insert(franchise)
         
-        let seriesData = try? hotWheelsSeriesData()
-        logger.trace("Did load \(seriesData?.count ?? 0) models for HotWheels series")
-        let defaultSeries: [Series] = seriesData?.enumerated().map { index, seriesData in
-            Series(
-                id: "\(index)",
-                classification: Series.Classification(rawValue: seriesData.classification) ?? .regular,
-                displayName: seriesData.displayName,
-                alternativeNames: seriesData.alternativeNames,
-                year: seriesData.year,
-                carsCount: seriesData.carsCount,
-                cars: [],
-                franchise: franchise
-            )
-        } ?? []
-        
-        let unknowSeries = Series(id: AppConstants.Series.Unknown.id, classification: .regular, displayName: "Unknown")
-        let allSeries = defaultSeries + [unknowSeries]
-        allSeries.forEach(modelContainer.mainContext.insert(_:))
-        
-        logger.trace("Did create \(allSeries.count) series")
+        do {
+            let seriesData = try hotWheelsSeriesData()
+            logger.trace("Did load \(seriesData.count) models for HotWheels series")
+            let defaultSeries: [Series] = seriesData.enumerated().map { index, seriesData in
+                Series(
+                    id: "\(index)",
+                    classification: Series.Classification(rawValue: seriesData.classification) ?? .regular,
+                    displayName: seriesData.displayName,
+                    alternativeNames: seriesData.alternativeNames,
+                    year: seriesData.year,
+                    carsCount: seriesData.carsCount,
+                    cars: [],
+                    franchise: franchise
+                )
+            }
+            
+            let unknowSeries = Series(id: AppConstants.Series.Unknown.id, classification: .regular, displayName: "Unknown")
+            let allSeries = defaultSeries + [unknowSeries]
+            allSeries.forEach(modelContainer.mainContext.insert(_:))
+            
+            logger.trace("Did create \(allSeries.count) series")
+        } catch {
+            logger.critical("Failed to loead default series with error: \(error)")
+        }
     }
 }
