@@ -33,7 +33,7 @@ class InventoryCar: Identifiable, Hashable, CustomStringConvertible {
     private(set) var make: String
     
 //    @Relationship(inverse: \Series.cars)
-    private(set) var series: Series
+    private(set) var series: [Series] // TODO: turn thiso into an array?
     private(set) var franchise: Franchise?
     private(set) var year: Int?
     private(set) var seriesEntryNumber: SeriesEntryNumber?
@@ -76,7 +76,7 @@ class InventoryCar: Identifiable, Hashable, CustomStringConvertible {
         self.id = id
         self.brand = brand
         self.make = make
-        self.series = series
+        self.series = [series]
         self.franchise = franchise
         self.color = color
         self.year = year
@@ -100,7 +100,9 @@ class InventoryCar: Identifiable, Hashable, CustomStringConvertible {
         self.id = id
         self.brand = brand
         self.make = make
-        self.series = series
+        self.series = [series]
+//        let firstNonNilFranchise = series.first(where: { $0.franchise != nil  })?.franchise
+//        self.franchise = series.contains(where: { $0.franchise != firstNonNilFranchise  }) ? nil : firstNonNilFranchise
         self.franchise = series.franchise
         self.color = color
         self.year = year
@@ -120,7 +122,7 @@ class InventoryCar: Identifiable, Hashable, CustomStringConvertible {
     }
     
     func updateSeries(_ newSeries: Series) {
-        series = newSeries
+        series = [newSeries]
     }
     
     func updateColor(_ newColor: ColorOption) {

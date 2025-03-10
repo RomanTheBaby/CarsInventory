@@ -23,7 +23,7 @@ struct InventoryCarDetailView: View {
     @State private var seriesEntryNumber: SeriesEntryNumber?
     @State private var scale: InventoryCar.Scale?
     
-    @State private var series: Series
+    @State private var series: Series?
     @State private var seriesSelection: Series?
     
     @State private var showSeriesSelection: Bool = false
@@ -42,11 +42,11 @@ struct InventoryCarDetailView: View {
         self.make = inventoryCar.make
         self.carColor = inventoryCar.color
         self.yearSelection = inventoryCar.year ?? 0
-        self.series = inventoryCar.series
+        self._series = State(initialValue: inventoryCar.series.first)
         /// Initializing state object explicitly, as otherwise it is not persistig after init for some reason :(
         self._seriesEntryNumber = State(initialValue: inventoryCar.seriesEntryNumber)
         self._scale = State(initialValue: inventoryCar.scale)
-        self.value = inventoryCar.value
+        self._value = State(initialValue: inventoryCar.value)
     }
     
     // MARK: - Body
@@ -85,7 +85,7 @@ struct InventoryCarDetailView: View {
                     Button {
                         showSeriesSelection = true
                     } label: {
-                        Text(series.displayName)
+                        Text(series?.displayName ?? "Unknown")
                     }
                 } label: {
                     Text("Series")
@@ -141,6 +141,7 @@ struct InventoryCarDetailView: View {
                 LabeledContent {
                     TextField("Value", value: $value, format: .currency(code: Locale.current.currency?.identifier ?? "USD"))
                         .multilineTextAlignment(.trailing)
+                        .keyboardType(.numbersAndPunctuation)
                 } label: {
                     Text("Value")
                     Text("optional")
@@ -197,7 +198,7 @@ struct InventoryCarDetailView: View {
             }
         }
         .confirmationDialog("Are you sure?", isPresented: $showDeleteConfirmationDialog) {
-            Button("Create new", role: .destructive) {
+            Button("Delete", role: .destructive) {
                 modelContext.delete(inventoryCar)
                 dismiss()
             }
@@ -228,7 +229,9 @@ struct InventoryCarDetailView: View {
         
         inventoryCar.updateBrand(brand)
         inventoryCar.updateMake(make.trimmingCharacters(in: .whitespacesAndNewlines))
-        inventoryCar.updateSeries(series)
+        if let series {
+            inventoryCar.updateSeries(series)
+        }
         inventoryCar.updateColor(carColor)
         inventoryCar.updateSeriesEntryNumber(seriesEntryNumber)
         inventoryCar.updateYear(yearSelection == 0 ? nil : yearSelection)

@@ -68,12 +68,13 @@ class ScannerDataProcessor {
     
     // This method assumes recognized item come from scanning one box of die cast
     func suggestions(from items: [RecognizedItem]) -> ScanningSuggestion? {
+        let bannedSymbols = Set(["™", "®", "©"])
         let transcripts = items.compactMap { item -> String? in
             guard let transcript = item.textTranscript, ignoredWords.contains(transcript.lowercased()) == false else {
                 return nil
             }
-            
-            return transcript
+            let trimmedTranscript = transcript.filter { bannedSymbols.contains(String($0)) == false }
+            return trimmedTranscript.isEmpty ? nil : trimmedTranscript
         }
         
         var brandSuggestions: Set<CarBrand> = []
@@ -81,11 +82,12 @@ class ScannerDataProcessor {
         var yearSuggestions: Set<Int> = []
         
         transcripts.forEach { transcript  in
+            let trimmedTranscript = transcript.filter { bannedSymbols.contains(String($0)) == false }
             CarBrand.allCases.forEach { brand in
-                if transcript.lowercased().contains(brand.displayName.lowercased()) {
+                if trimmedTranscript.lowercased().contains(brand.displayName.lowercased()) {
                     brandSuggestions.insert(brand)
                     
-                    let components = transcript.lowercased()
+                    let components = trimmedTranscript.lowercased()
                         .components(separatedBy: brand.displayName.lowercased())
                         .filter { $0.isEmpty == false }
                         .map { $0.trimmingCharacters(in: .whitespacesAndNewlines) }
@@ -107,18 +109,22 @@ class ScannerDataProcessor {
         }
 
         let seriesSuggestions = transcripts.flatMap { transcript in
-            seriesList.filter { series in
+            let result = seriesList.filter { series in
                 series.allNames.contains(where: {
-                    $0.lowercased() == transcript.lowercased()
-                        || $0.lowercased().contains(transcript.lowercased())
-                        || transcript.lowercased().contains($0.lowercased())
+//                    $0.lowercased() == trimmedTranscript.lowercased()
+                        $0.lowercased() == transcript.lowercased()
+//                        || $0.lowercased().contains(transcript.lowercased())
+//                        || transcript.lowercased().contains($0.lowercased())
                 })
             }
+            print(">>>FOUND \(result.count): ", result.map(\.displayName))
+            print(">>>")
+            return result
         }
 
         // Getting series number suggestions
         let seriesNumberSuggestions = transcripts.compactMap { transcript -> SeriesEntryNumber? in
-            print(">>>SERIES TRANS: ", transcript)
+//            print(">>>SERIES TRANS: ", transcript)
 //            guard let match = transcript.wholeMatch(of: #"^\d+[:/]\d+$"#),
 //                  let firstMatch = match.first,
 //                  let lastMatch = match.last,
@@ -131,13 +137,13 @@ class ScannerDataProcessor {
             }
             
             let (_, currentEntryValue, totalEntriesValue) = match.output
-            print(">>>SERIES TRANS2: ", transcript, currentEntryValue, totalEntriesValue)
+//            print(">>>SERIES TRANS2: ", transcript, currentEntryValue, totalEntriesValue)
             guard let current = Int(currentEntryValue),
                   let total = Int(totalEntriesValue) else {
                 return nil
             }
             
-            print(">>>SERIES TRANS2: ", transcript, current, total)
+//            print(">>>SERIES TRANS2: ", transcript, current, total)
             
             return SeriesEntryNumber(current: current, total: total)
         }

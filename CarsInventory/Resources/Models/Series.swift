@@ -15,14 +15,10 @@ class Series: Hashable, CustomStringConvertible {
     enum Classification: String, Hashable, Codable, CaseIterable {
         case premium
         case regular
+        case silver
         
         var displayName: String {
-            switch self {
-            case .premium:
-                return "Premium"
-            case .regular:
-                return "Regular"
-            }
+            rawValue.capitalized
         }
     }
     
@@ -45,7 +41,7 @@ class Series: Hashable, CustomStringConvertible {
     /// list of names that can be user to lookup the series. i.e during scan.
     private var alternativeNames: [AlternativeName] = []
     
-    @Relationship(deleteRule: .cascade, inverse: \InventoryCar.series)
+    @Relationship(inverse: \InventoryCar.series)
     private(set) var cars: [InventoryCar] = []
     
     @Relationship(inverse: \Franchise.series)

@@ -25,6 +25,7 @@ struct SuggestionSelectionView<Item: FooterSelectionItem & Equatable>: View {
     @Binding var selectedItem: Item?
     
     var manualInputActionHandler: (() -> Void)
+    var selectionStatusChangeHandler: ((_ isSelected: Bool, _ item: Item) -> Void)? = nil
     
     private var sortedItems: [Item] {
         items.sorted(by: { lhs, rhs in
@@ -35,7 +36,7 @@ struct SuggestionSelectionView<Item: FooterSelectionItem & Equatable>: View {
     var body: some View {
         HStack {
             Text(title)
-                .frame(width: titleLabelWidth, alignment: .leading)
+                .frame(minWidth: titleLabelWidth, alignment: .leading)
             
             ScrollView(.horizontal) {
                 HStack {
@@ -46,6 +47,7 @@ struct SuggestionSelectionView<Item: FooterSelectionItem & Equatable>: View {
                             } else {
                                 selectedItem = item
                             }
+                            selectionStatusChangeHandler?(selectedItem == item, item)
                         } label: {
                             VStack {
                                 Text(item.displayName)
@@ -107,7 +109,7 @@ private extension FooterSelectionItem {
         texts.reserveCapacity(2)
         
         switch series.classification {
-        case .premium:
+        case .premium, .silver:
             texts.append(series.classification.displayName)
         case .regular:
             break

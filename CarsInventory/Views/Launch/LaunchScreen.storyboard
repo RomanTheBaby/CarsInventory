@@ -4,6 +4,7 @@
     <dependencies>
         <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="23506"/>
         <capability name="Safe area layout guides" minToolsVersion="9.0"/>
+        <capability name="System colors in document resources" minToolsVersion="11.0"/>
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
     <scenes>
@@ -15,19 +16,19 @@
                         <rect key="frame" x="0.0" y="0.0" width="393" height="852"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
-                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="launching..." textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="iJh-dL-Ve6">
-                                <rect key="frame" x="16" y="781" width="361" height="21"/>
-                                <fontDescription key="fontDescription" type="system" pointSize="17"/>
-                                <nil key="textColor"/>
-                                <nil key="highlightedColor"/>
-                            </label>
+                            <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="AppIconTransparent" translatesAutoresizingMaskIntoConstraints="NO" id="nAF-nY-0M9">
+                                <rect key="frame" x="26" y="268" width="341.33333333333331" height="341.33333333333326"/>
+                                <constraints>
+                                    <constraint firstAttribute="width" secondItem="nAF-nY-0M9" secondAttribute="height" multiplier="1:1" id="nRV-by-BW8"/>
+                                </constraints>
+                            </imageView>
                         </subviews>
                         <viewLayoutGuide key="safeArea" id="Bcu-3y-fUS"/>
-                        <color key="backgroundColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                        <color key="backgroundColor" systemColor="systemBackgroundColor"/>
                         <constraints>
-                            <constraint firstItem="Bcu-3y-fUS" firstAttribute="bottom" secondItem="iJh-dL-Ve6" secondAttribute="bottom" constant="16" id="RiO-9F-pGL"/>
-                            <constraint firstItem="iJh-dL-Ve6" firstAttribute="leading" secondItem="Bcu-3y-fUS" secondAttribute="leading" constant="16" id="dCq-wS-oOl"/>
-                            <constraint firstItem="Bcu-3y-fUS" firstAttribute="trailing" secondItem="iJh-dL-Ve6" secondAttribute="trailing" constant="16" id="gfb-U0-9i4"/>
+                            <constraint firstItem="nAF-nY-0M9" firstAttribute="leading" relation="greaterThanOrEqual" secondItem="Bcu-3y-fUS" secondAttribute="leading" constant="16" id="AoX-nR-TTB"/>
+                            <constraint firstItem="nAF-nY-0M9" firstAttribute="centerY" secondItem="Bcu-3y-fUS" secondAttribute="centerY" id="Ddj-mg-RV2"/>
+                            <constraint firstItem="nAF-nY-0M9" firstAttribute="centerX" secondItem="Ze5-6b-2t3" secondAttribute="centerXWithinMargins" id="h4A-fQ-nMP"/>
                         </constraints>
                     </view>
                 </viewController>
@@ -36,4 +37,10 @@
             <point key="canvasLocation" x="53" y="375"/>
         </scene>
     </scenes>
+    <resources>
+        <image name="AppIconTransparent" width="341.33334350585938" height="341.33334350585938"/>
+        <systemColor name="systemBackgroundColor">
+            <color white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+        </systemColor>
+    </resources>
 </document>

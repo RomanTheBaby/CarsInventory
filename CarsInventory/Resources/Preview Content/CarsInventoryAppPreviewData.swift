@@ -37,22 +37,27 @@ actor CarsInventoryAppPreviewData {
     }()
     
     @MainActor static let previewSeries: [Series] = {
-        let seriesData = try? DefaultDataProvider.hotWheelsSeriesData()
-        let defaultSeries: [Series] = seriesData?.enumerated().map { index, seriesData in
-            Series(
-                id: "\(index)",
-                classification: Series.Classification(rawValue: seriesData.classification) ?? .regular,
-                displayName: seriesData.displayName,
-                alternativeNames: seriesData.alternativeNames,
-                year: seriesData.year,
-                carsCount: seriesData.carsCount,
-                cars: [],
-                franchise: previewFranchises[0]
-            )
-        } ?? []
-        
-        let unknowSeries = Series(id: AppConstants.Series.Unknown.id, classification: .regular, displayName: "Unknown")
-        return defaultSeries + [unknowSeries]
+        do {
+            let seriesData = try DefaultDataProvider.hotWheelsSeriesData()
+            let defaultSeries: [Series] = seriesData.enumerated().map { index, seriesData in
+                Series(
+                    id: "\(index)",
+                    classification: Series.Classification(rawValue: seriesData.classification) ?? .regular,
+                    displayName: seriesData.displayName,
+                    alternativeNames: seriesData.alternativeNames,
+                    year: seriesData.year,
+                    carsCount: seriesData.carsCount,
+                    cars: [],
+                    franchise: previewFranchises[0]
+                )
+            }
+            
+            let unknowSeries = Series(id: AppConstants.Series.Unknown.id, classification: .regular, displayName: "Unknown")
+            return defaultSeries + [unknowSeries]
+        } catch {
+            assertionFailure("Failed to load preview series data with error: \(error)")
+            return []
+        }
     }()
     
     @MainActor static let previewFranchises: [Franchise] = {

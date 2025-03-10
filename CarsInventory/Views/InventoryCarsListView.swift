@@ -19,6 +19,13 @@ struct InventoryCarsListView: View {
         var cars: [InventoryCar]
     }
     
+    enum FilterOption {
+        case none
+        case franchise(Franchise)
+        case series(Series)
+        case unknownSeries
+    }
+    
     // MARK: - Properties
     
     @Environment(\.modelContext) private var modelContext: ModelContext
@@ -27,36 +34,35 @@ struct InventoryCarsListView: View {
     @State private var carsCount: Int = 0
     @State private var sections: [CarBrandSection] = []
     
-    private let franchise: Franchise?
-    private let series: Series?
     private let title: String
+    private let franchise: Franchise?
+    private let filterOption: FilterOption
     
     // MARK: - Init
     
-    init(
-        searchText: String = "",
-        series: Series? = nil
-    ) {
+    init(searchText: String = "", filterOption: FilterOption = .none) {
         self.searchText = searchText
-        self.series = series
+        self.filterOption = filterOption
         self.franchise = nil
         
-        if let series {
-            title = series.displayName
-        } else {
+        switch filterOption {
+        case .none:
             title = "My Garage"
+        case .franchise(let franchise):
+            title = franchise.displayName
+        case .series(let series):
+            title = series.displayName
+        case .unknownSeries:
+            title = "Unknown"
         }
     }
     
-    init(
-        searchText: String = "",
-        franchise: Franchise
-    ) {
-        self.searchText = searchText
-        self.series = nil
-        self.franchise = franchise
-        
-        title = franchise.displayName
+    init(searchText: String = "", series: Series) {
+        self.init(searchText: searchText, filterOption: .series(series))
+    }
+    
+    init(searchText: String = "", franchise: Franchise) {
+        self.init(searchText: searchText, filterOption: .franchise(franchise))
     }
     
     // MARK: - Body
@@ -82,11 +88,18 @@ struct InventoryCarsListView: View {
     private var emptyView: some View {
         if searchText.isEmpty {
             VStack {
-                if let displayName = series?.displayName ?? franchise?.displayName {
-                    Text("You do not have anything in the \"\(displayName)\" yet.")
-                        .multilineTextAlignment(.center)
-                } else {
+                switch filterOption {
+                case .none:
                     Text("You do not have any cars in the inventory yet.")
+                        .multilineTextAlignment(.center)
+                case .franchise(let franchise):
+                    Text("You do not have anything for the \"\(franchise.displayName)\" franchise yet.")
+                        .multilineTextAlignment(.center)
+                case .series(let series):
+                    Text("You do not have anything in the \"\(series.displayName)\" series yet.")
+                        .multilineTextAlignment(.center)
+                case .unknownSeries:
+                    Text("You do not have any cars in the \"Unknown\" series inventory yet.")
                         .multilineTextAlignment(.center)
                 }
                 Text("Scan a box with a car to add it to your inventory.")
@@ -111,8 +124,13 @@ struct InventoryCarsListView: View {
                             Text("\(car.brand.displayName) - \(car.make)")
                                 .frame(maxWidth: .infinity, alignment: .leading)
                                 .contentShape(Rectangle())
-                            Text("Series: \(car.series.displayName)")
-                                .font(.footnote)
+                            if car.series.isEmpty {
+                                Text("Series: Unknown")
+                                    .font(.footnote)
+                            } else {
+                                Text("Series: \(car.series.map(\.displayName).joined(separator: ", "))")
+                                    .font(.footnote)
+                            }
                         }
                     }
                 }
@@ -135,18 +153,29 @@ struct InventoryCarsListView: View {
     private func reloadSections() {
         let fetchDescriptor: FetchDescriptor<InventoryCar>
         
-        if let seriesId = series?.id {
+        switch filterOption {
+        case .none:
+            fetchDescriptor = FetchDescriptor<InventoryCar>()
+            
+        case .series(let series):
+            let seriesId = series.id
             let predicate = #Predicate<InventoryCar> {
-                $0.series.id == seriesId
+                $0.series.contains(where: { $0.id == seriesId })
             }
             fetchDescriptor = FetchDescriptor<InventoryCar>(predicate: predicate)
-        } else if let franchiseId = franchise?.id {
+            
+        case .franchise(let franchise):
+            let franchiseId = franchise.id
             let predicate = #Predicate<InventoryCar> {
                 $0.franchise?.id == franchiseId
             }
             fetchDescriptor = FetchDescriptor<InventoryCar>(predicate: predicate)
-        } else {
-            fetchDescriptor = FetchDescriptor<InventoryCar>()
+            
+        case .unknownSeries:
+            let predicate = #Predicate<InventoryCar> {
+                $0.series.isEmpty
+            }
+            fetchDescriptor = FetchDescriptor<InventoryCar>(predicate: predicate)
         }
         
         let inventoryCars = (try? modelContext.fetch(fetchDescriptor)) ?? []
@@ -195,6 +224,13 @@ struct InventoryCarsListView: View {
 #Preview("With series") {
     NavigationStack {
         InventoryCarsListView(series: CarsInventoryAppPreviewData.previewSeries[3])
+            .modelContainer(CarsInventoryAppPreviewData.container)
+    }
+}
+
+#Preview("Unknown series") {
+    NavigationStack {
+        InventoryCarsListView(filterOption: .unknownSeries)
             .modelContainer(CarsInventoryAppPreviewData.container)
     }
 }

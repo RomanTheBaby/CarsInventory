@@ -1,6 +1,66 @@
 [
     {
         "classification": "regular",
+        "displayName": "HW Gassers",
+        "alternativeNames": [],
+    },
+    {
+        "classification": "premium",
+        "displayName": "Spettacolare",
+        "alternativeNames": [],
+    },
+    {
+        "classification": "premium",
+        "displayName": "Knight Rider",
+        "alternativeNames": ["Knight"],
+    },
+    {
+        "classification": "premium",
+        "displayName": "Canyon Warriors",
+        "alternativeNames": ["Canyon"],
+    },
+    {
+        "classification": "regular",
+        "displayName": "HW Metro",
+        "alternativeNames": [],
+    },
+    {
+        "classification": "regular",
+        "displayName": "HW Dirt",
+        "alternativeNames": [],
+    },
+    {
+        "classification": "regular",
+        "displayName": "HW Rolling Metal",
+        "alternativeNames": ["Rolling Metal"],
+    },
+    {
+        "classification": "premium",
+        "displayName": "The Dark Knigh Trilogy",
+        "alternativeNames": ["The Dark Knigh"],
+    },
+    {
+        "classification": "regular",
+        "displayName": "HW Celebration Racers",
+        "alternativeNames": ["Celebration Racers"],
+    },
+    {
+        "classification": "regular",
+        "displayName": "HW Slammed",
+        "alternativeNames": [],
+    },
+    {
+        "classification": "premium",
+        "displayName": "Japan Historics",
+        "alternativeNames": [],
+    },
+    {
+        "classification": "regular",
+        "displayName": "HW Art Cars",
+        "alternativeNames": [],
+    },
+    {
+        "classification": "regular",
         "displayName": "Exotic Envy",
         "alternativeNames": ["Exotic", "Envy"],
     },
@@ -12,13 +72,37 @@
     {
         "classification": "premium",
         "displayName": "RACE DAY",
-        "alternativeNames": ["HW Race Day"],
+        "alternativeNames": [],
+        "alternativeNames": [],
+    },
+    {
+        "classification": "regular",
+        "displayName": "HW Race Day",
+        "alternativeNames": ["Race Day"],
         "alternativeNames": [],
     },
     {
         "classification": "regular",
         "displayName": "'90s Street Scene",
         "alternativeNames": ["90s", "scene"],
+        "url": "https://hotwheels.fandom.com/wiki/Category:Hot_Wheels_by_Series"
+    },
+    {
+        "classification": "regular",
+        "displayName": "HW: The '80s",
+        "alternativeNames": ["the '80s", "HW The '80s"],
+        "url": "https://hotwheels.fandom.com/wiki/Category:Hot_Wheels_by_Series"
+    },
+    {
+        "classification": "regular",
+        "displayName": "HW: The '90s",
+        "alternativeNames": ["the '90s", "HW The '90s"],
+        "url": "https://hotwheels.fandom.com/wiki/Category:Hot_Wheels_by_Series"
+    },
+    {
+        "classification": "regular",
+        "displayName": "HW First Responders",
+        "alternativeNames": ["First Responders"],
         "url": "https://hotwheels.fandom.com/wiki/Category:Hot_Wheels_by_Series"
     },
     {
@@ -370,8 +454,8 @@
     },
     {
         "classification": "regular",
-        "displayName": "50th Anniversary Race Team Mini Collection",
-        "alternativeNames": ["HW 50 Anniversary Race Team", "HW 50ᵗʰ Anniversary Race Team"],
+        "displayName": "HW 50th Anniversary Race Team Mini Collection",
+        "alternativeNames": ["50 Anniversary Race Team", "HW 50ᵗʰ Anniversary Race Team"],
         "url": "https://hotwheels.fandom.com/wiki/Category:Hot_Wheels_by_Series"
     },
     {
@@ -1319,6 +1403,14 @@
         "classification": "regular",
         "displayName": "Corvette 60th Anniversary Series",
         "alternativeNames": ["Corvette", "Corvette 60"],
+        "year": 2013,
+        "carsCount": 8,
+        "url": "https://hotwheels.fandom.com/wiki/Category:Hot_Wheels_by_Series?from=C"
+    },
+    {
+        "classification": "regular",
+        "displayName": "Corvette 70",
+        "alternativeNames": ["Corvette", "Corvette 70"],
         "url": "https://hotwheels.fandom.com/wiki/Category:Hot_Wheels_by_Series?from=C"
     },
     {
@@ -1425,8 +1517,8 @@
     },
     {
         "classification": "regular",
-        "displayName": "Daredevils",
-        "alternativeNames": ["HW Daredevils"],
+        "displayName": "HW Daredevils",
+        "alternativeNames": ["Daredevils"],
         "url": "https://hotwheels.fandom.com/wiki/Category:Hot_Wheels_by_Series?from=D"
     },
     {
@@ -1580,8 +1672,8 @@
     },
     {
         "classification": "regular",
-        "displayName": "Drag Strip",
-        "alternativeNames": ["HW Drag Strip"],
+        "displayName": "HW Drag Strip",
+        "alternativeNames": ["Drag Strip"],
         "url": "https://hotwheels.fandom.com/wiki/Category:Hot_Wheels_by_Series?from=D"
     },
     {
@@ -1604,8 +1696,8 @@
     },
     {
         "classification": "regular",
-        "displayName": "Dream Garage",
-        "alternativeNames": ["HW Dream Garage"],
+        "displayName": "HW Dream Garage",
+        "alternativeNames": ["Dream Garage"],
         "url": "https://hotwheels.fandom.com/wiki/Category:Hot_Wheels_by_Series?from=D"
     },
     {
@@ -1736,8 +1828,8 @@
     },
     {
         "classification": "regular",
-        "displayName": "Exotics",
-        "alternativeNames": ["HW Exotics"],
+        "displayName": "HW Exotics",
+        "alternativeNames": ["Exotics"],
         "url": "https://hotwheels.fandom.com/wiki/Category:Hot_Wheels_by_Series?from=E"
     },
     {
@@ -1754,8 +1846,8 @@
     },
     {
         "classification": "regular",
-        "displayName": "Extreme Racing",
-        "alternativeNames": ["Extreme Race", "HW Extreme Race", "HW Extreme Racing"],
+        "displayName": "HW Extreme Racing",
+        "alternativeNames": ["Extreme Race"],
         "url": "https://hotwheels.fandom.com/wiki/Category:Hot_Wheels_by_Series?from=E"
     },
     {
@@ -1766,8 +1858,8 @@
     },
     {
         "classification": "regular",
-        "displayName": "Extreme Sports",
-        "alternativeNames": ["HW Extreme Sports"],
+        "displayName": "HW Extreme Sports",
+        "alternativeNames": ["Extreme Sports"],
         "url": "https://hotwheels.fandom.com/wiki/Category:Hot_Wheels_by_Series?from=E"
     },
     {
@@ -1913,7 +2005,7 @@
         "url": "https://hotwheels.fandom.com/wiki/Category:Hot_Wheels_by_Series?from=F"
     },
     {
-        "classification": "regular",
+        "classification": "silver",
         "displayName": "Fast & Furious: Dominic Toretto",
         "alternativeNames": [
             "Fast &",
@@ -1941,12 +2033,13 @@
             "Furious",
             "2Fast",
             "The Fast",
-            "HW Decades"
+            "HW Decades",
+            "HW DECADES OF FAST™"
         ],
         "url": "https://hotwheels.fandom.com/wiki/Category:Hot_Wheels_by_Series?from=F"
     },
     {
-        "classification": "regular",
+        "classification": "silver",
         "displayName": "Fast & Furious: Racing Series",
         "alternativeNames": [
             "Fast &",
@@ -2338,8 +2431,8 @@
     },
     {
         "classification": "regular",
-        "displayName": "Fun Park",
-        "alternativeNames": ["HW Fun Park"],
+        "displayName": "HW Fun Park",
+        "alternativeNames": ["Fun Park"],
         "url": "https://hotwheels.fandom.com/wiki/Category:Hot_Wheels_by_Series?from=F"
     },
     {
@@ -2375,8 +2468,8 @@
     },
     {
         "classification": "regular",
-        "displayName": "Games",
-        "alternativeNames": ["HW Games"],
+        "displayName": "HW Games",
+        "alternativeNames": ["Games"],
         "url": "https://hotwheels.fandom.com/wiki/Category:Hot_Wheels_by_Series?from=G"
     },
     {
@@ -2500,8 +2593,8 @@
     },
     {
         "classification": "regular",
-        "displayName": "Green Speed",
-        "alternativeNames": ["HW Green Speed"],
+        "displayName": "HW Green Speed",
+        "alternativeNames": ["Green Speed"],
         "url": "https://hotwheels.fandom.com/wiki/Category:Hot_Wheels_by_Series?from=G"
     },
     {
@@ -2578,8 +2671,8 @@
     },
     {
         "classification": "regular",
-        "displayName": "Hatchbacks",
-        "alternativeNames": ["HW Hatchbacks"],
+        "displayName": "HW Hatchbacks",
+        "alternativeNames": ["Hatchbacks"],
         "url": "https://hotwheels.fandom.com/wiki/Category:Hot_Wheels_by_Series?from=H"
     },
     {
@@ -2796,8 +2889,8 @@
     },
     {
         "classification": "regular",
-        "displayName": "City",
-        "alternativeNames": ["HW City"],
+        "displayName": "HW City",
+        "alternativeNames": ["City"],
         "url": "https://hotwheels.fandom.com/wiki/Category:Hot_Wheels_by_Series?from=H"
     },
     {
@@ -3063,12 +3156,6 @@
     },
     {
         "classification": "regular",
-        "displayName": "Forza Motorsport",
-        "alternativeNames": ["Forza", "Motorsport"],
-        "url": "https://hotwheels.fandom.com/wiki/Category:Hot_Wheels_by_Series?from=H"
-    },
-    {
-        "classification": "regular",
         "displayName": "Hot Wheels Garage",
         "alternativeNames": ["Garage"],
         "url": "https://hotwheels.fandom.com/wiki/Category:Hot_Wheels_by_Series?from=H"
@@ -3093,9 +3180,15 @@
         "url": "https://hotwheels.fandom.com/wiki/Category:Hot_Wheels_by_Series?from=H"
     },
     {
+        "classification": "silver",
+        "displayName": "HW J-Imports",
+        "alternativeNames": ["J-Imports"],
+        "url": "https://hotwheels.fandom.com/wiki/Category:Hot_Wheels_by_Series?from=H"
+    },
+    {
         "classification": "regular",
-        "displayName": "J-Imports",
-        "alternativeNames": [],
+        "displayName": "HW J-Imports",
+        "alternativeNames": ["J-Imports"],
         "url": "https://hotwheels.fandom.com/wiki/Category:Hot_Wheels_by_Series?from=H"
     },
     {
@@ -3223,9 +3316,15 @@
         "url": "https://hotwheels.fandom.com/wiki/Category:Hot_Wheels_by_Series?from=J"
     },
     {
+        "classification": "premium",
+        "displayName": "James Bond",
+        "alternativeNames": ["007", "Spectre"],
+        "url": "https://hotwheels.fandom.com/wiki/Category:Hot_Wheels_by_Series?from=J"
+    },
+    {
         "classification": "regular",
         "displayName": "James Bond",
-        "alternativeNames": ["007"],
+        "alternativeNames": ["007", "The Spy Who Loved Me"],
         "url": "https://hotwheels.fandom.com/wiki/Category:Hot_Wheels_by_Series?from=J"
     },
     {
@@ -3512,8 +3611,8 @@
     },
     {
         "classification": "regular",
-        "displayName": "Main Street",
-        "alternativeNames": ["HW Main Street"],
+        "displayName": "HW Main Street",
+        "alternativeNames": ["Main Street"],
         "url": "https://hotwheels.fandom.com/wiki/Category:Hot_Wheels_by_Series?from=M"
     },
     {
@@ -3668,8 +3767,8 @@
     },
     {
         "classification": "regular",
-        "displayName": "Mild to Wild",
-        "alternativeNames": ["HW Mild to Wild"],
+        "displayName": "HW Mild to Wild",
+        "alternativeNames": ["Mild to Wild"],
         "url": "https://hotwheels.fandom.com/wiki/Category:Hot_Wheels_by_Series?from=M"
     },
     {
@@ -3742,8 +3841,8 @@
     },
     {
         "classification": "regular",
-        "displayName": "Modified",
-        "alternativeNames": ["HW Modified"],
+        "displayName": "HW Modified",
+        "alternativeNames": ["Modified"],
         "url": "https://hotwheels.fandom.com/wiki/Category:Hot_Wheels_by_Series?from=M"
     },
     {
@@ -3820,8 +3919,8 @@
     },
     {
         "classification": "regular",
-        "displayName": "Moto",
-        "alternativeNames": ["HW Moto"],
+        "displayName": "HW Moto",
+        "alternativeNames": ["Moto"],
         "url": "https://hotwheels.fandom.com/wiki/Category:Hot_Wheels_by_Series?from=M"
     },
     {
@@ -3880,8 +3979,8 @@
     },
     {
         "classification": "regular",
-        "displayName": "Xtreme Sports",
-        "alternativeNames": ["HW Xtreme Sports"],
+        "displayName": "HW Xtreme Sports",
+        "alternativeNames": ["Xtreme Sports"],
     },
     {
         "classification": "regular",
@@ -4056,9 +4155,15 @@
         "url": "https://hotwheels.fandom.com/wiki/Category:Hot_Wheels_by_Series?from=N"
     },
     {
+        "classification": "premium",
+        "displayName": "HW Off Road",
+        "alternativeNames": ["Off-Road", "HW Off-Road", "Off Road"],
+        "url": "https://hotwheels.fandom.com/wiki/Category:Hot_Wheels_by_Series?from=O"
+    },
+    {
         "classification": "regular",
-        "displayName": "Off Road",
-        "alternativeNames": ["Off-Road", "HW Off-Road", "HW Off Road"],
+        "displayName": "HW Off Road",
+        "alternativeNames": ["Off-Road", "HW Off-Road", "Off Road"],
         "url": "https://hotwheels.fandom.com/wiki/Category:Hot_Wheels_by_Series?from=O"
     },
     {
@@ -4634,8 +4739,8 @@
     },
     {
         "classification": "regular",
-        "displayName": "Roadsters",
-        "alternativeNames": ["HW Roadsters"],
+        "displayName": "HW Roadsters",
+        "alternativeNames": ["Roadsters"],
         "url": "https://hotwheels.fandom.com/wiki/Category:Hot_Wheels_by_Series?from=R"
     },
     {
@@ -4646,8 +4751,8 @@
     },
     {
         "classification": "regular",
-        "displayName": "Robots",
-        "alternativeNames": ["HW Robots"],
+        "displayName": "HW Robots",
+        "alternativeNames": ["Robots"],
         "url": "https://hotwheels.fandom.com/wiki/Category:Hot_Wheels_by_Series?from=R"
     },
     {
@@ -4760,8 +4865,8 @@
     },
     {
         "classification": "regular",
-        "displayName": "Screen Time",
-        "alternativeNames": ["HW Screen Time"],
+        "displayName": "HW Screen Time",
+        "alternativeNames": ["Screen Time"],
     },
     {
         "classification": "regular",
@@ -4795,8 +4900,8 @@
     },
     {
         "classification": "regular",
-        "displayName": "Showroom",
-        "alternativeNames": ["HW Showroom"],
+        "displayName": "HW Showroom",
+        "alternativeNames": ["Showroom"],
         "url": "https://hotwheels.fandom.com/wiki/Category:Hot_Wheels_by_Series?from=S"
     },
     {
@@ -4992,7 +5097,7 @@
         "url": "https://hotwheels.fandom.com/wiki/Category:Hot_Wheels_by_Series?from=S"
     },
     {
-        "classification": "regular",
+        "classification": "premium",
         "displayName": "Speed Machines",
         "alternativeNames": [],
         "url": "https://hotwheels.fandom.com/wiki/Category:Hot_Wheels_by_Series?from=S"
@@ -5017,8 +5122,8 @@
     },
     {
         "classification": "regular",
-        "displayName": "Speed Team",
-        "alternativeNames": ["HW Speed Team"],
+        "displayName": "HW Speed Team",
+        "alternativeNames": ["Speed Team"],
         "url": "https://hotwheels.fandom.com/wiki/Category:Hot_Wheels_by_Series?from=S"
     },
     {
@@ -5299,8 +5404,8 @@
     },
     {
         "classification": "regular",
-        "displayName": "Stunt",
-        "alternativeNames": ["HW Stunt"],
+        "displayName": "HW Stunt",
+        "alternativeNames": ["Stunt"],
         "url": "https://hotwheels.fandom.com/wiki/Category:Hot_Wheels_by_Series?from=S"
     },
     {
@@ -5751,8 +5856,8 @@
     },
     {
         "classification": "regular",
-        "displayName": "Turbo",
-        "alternativeNames": ["HW Turbo"],
+        "displayName": "HW Turbo",
+        "alternativeNames": ["Turbo"],
     },
     {
         "classification": "regular",
@@ -5798,6 +5903,11 @@
     },
     {
         "classification": "regular",
+        "displayName": "HW Vans",
+        "alternativeNames": ["Vans"]
+    },
+    {
+        "classification": "regular",
         "displayName": "Valentine's Day",
         "alternativeNames": ["Valentine", "Valentine's"],
         "url": "https://hotwheels.fandom.com/wiki/Category:Hot_Wheels_by_Series?from=V"
@@ -5835,13 +5945,13 @@
     {
         "classification": "regular",
         "displayName": "Vintage Racing",
-        "alternativeNames": [],
+        "alternativeNames": ["Vintage"],
         "url": "https://hotwheels.fandom.com/wiki/Category:Hot_Wheels_by_Series?from=V"
     },
     {
-        "classification": "regular",
+        "classification": "silver",
         "displayName": "Vintage Racing Club",
-        "alternativeNames": [],
+        "alternativeNames": ["Vintage"],
         "url": "https://hotwheels.fandom.com/wiki/Category:Hot_Wheels_by_Series?from=V"
     },
     {
@@ -5948,8 +6058,8 @@
     },
     {
         "classification": "regular",
-        "displayName": "Workshop",
-        "alternativeNames": ["HW Workshop"],
+        "displayName": "HW Workshop",
+        "alternativeNames": ["Workshop"],
         "url": "https://hotwheels.fandom.com/wiki/Category:Hot_Wheels_by_Series?from=W"
     },
     {

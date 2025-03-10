@@ -14,7 +14,7 @@ struct SeriesRow: View {
         var texts: [String] = []
         
         switch series.classification {
-        case .premium:
+        case .premium, .silver:
             texts.append(series.classification.displayName)
         case .regular:
             break

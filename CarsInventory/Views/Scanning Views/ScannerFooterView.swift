@@ -59,6 +59,7 @@ struct ScannerFooterView: View {
                 SuggestionSelectionView(
                     title: "*Make:  ",
                     items: viewModel.suggestion.brands,
+                    titleLabelWidth: 70,
                     selectedItem: $selectedBrand,
                     manualInputActionHandler: {
                         showBrandSelectionView = true
@@ -68,6 +69,7 @@ struct ScannerFooterView: View {
                 SuggestionSelectionView(
                     title: "*Model: ",
                     items: viewModel.suggestion.models,
+                    titleLabelWidth: 70,
                     selectedItem: $selectedMake,
                     manualInputActionHandler: {
                         showModelInputView = true
@@ -77,15 +79,24 @@ struct ScannerFooterView: View {
                 SuggestionSelectionView(
                     title: "Series:  ",
                     items: viewModel.suggestion.series,
+                    titleLabelWidth: 70,
                     selectedItem: $selectedSeries,
                     manualInputActionHandler: {
                         showSeriesSelectionView = true
+                    },
+                    selectionStatusChangeHandler: { isSelected, series in
+                        if isSelected, let seriesFranchise = series.franchise {
+                            viewModel.addSuggestedFranchise(seriesFranchise)
+                        }
+                        /// We want to update selected series to match franchise series, even if series has no franchise.
+                        selectedFranchise = series.franchise
                     }
                 ).frame(minHeight: 40)
                 
                 SuggestionSelectionView(
                     title: "Number:",
                     items: viewModel.suggestion.seriesNumber,
+                    titleLabelWidth: 70,
                     selectedItem: $selectedSeriesNumber,
                     manualInputActionHandler: {
                         showSeriesNumberInputView = true
@@ -96,9 +107,9 @@ struct ScannerFooterView: View {
                     SuggestionSelectionView(
                         title: "Franchise:",
                         items: viewModel.suggestion.franchises,
+                        titleLabelWidth: 70,
                         selectedItem: $selectedFranchise,
                         manualInputActionHandler: {
-                            print(">>>DID SET TO TRUE")
                             showFranchiseSelectionView = true
                         }
                     ).frame(height: 40)
@@ -106,6 +117,7 @@ struct ScannerFooterView: View {
                     SuggestionSelectionView(
                         title: "Year:",
                         items: viewModel.suggestion.years,
+                        titleLabelWidth: 70,
                         selectedItem: $selectedYear,
                         manualInputActionHandler: {
                             showYearInputView = true
@@ -115,6 +127,7 @@ struct ScannerFooterView: View {
                     SuggestionSelectionView(
                         title: "Color:",
                         items: viewModel.suggestion.colors,
+                        titleLabelWidth: 70,
                         selectedItem: $selectedColor,
                         manualInputActionHandler: {
                             showColorInputView = true
@@ -124,6 +137,7 @@ struct ScannerFooterView: View {
                     SuggestionSelectionView(
                         title: "Scale:",
                         items: viewModel.suggestion.scales,
+                        titleLabelWidth: 70,
                         selectedItem: $selectedScale,
                         manualInputActionHandler: {
                             showScaleInputView = true
@@ -137,7 +151,7 @@ struct ScannerFooterView: View {
                 .frame(height: 16)
             
             HStack(spacing: 16) {
-                Button(action: {
+                ScalingButton(action: {
                     viewModel.clearSuggestions()
                 }, label: {
                     Image(systemName: "multiply.circle.fill")
@@ -146,10 +160,8 @@ struct ScannerFooterView: View {
                         .padding(6)
                         .frame(width: 40, height: 40)
                 })
-                .buttonStyle(.borderedProminent)
-                .clipShape(RoundedRectangle(cornerRadius: 8))
                 
-                Button(action: {
+                ScalingButton(action: {
                     viewModel.isScanning.toggle()
                     
                     if viewModel.isScanning {
@@ -163,10 +175,8 @@ struct ScannerFooterView: View {
                         .padding(6)
                         .frame(width: 40, height: 40)
                 })
-                .buttonStyle(.borderedProminent)
-                .clipShape(RoundedRectangle(cornerRadius: 8))
                 
-                Button(action: {
+                ScalingButton(action: {
                     guard animateAddToInventoryButton == false else {
                         return
                     }
@@ -202,10 +212,8 @@ struct ScannerFooterView: View {
                         .frame(height: 40)
                     }
                 })
-                .buttonStyle(.borderedProminent)
-                .disabled(selectedBrand == nil || selectedMake == nil)
-                .frame(height: 50)
             }
+            .frame(height: 40)
         }
         .padding()
         .background(Color(uiColor: UIColor.systemBackground)) //Color(red: 229 / 255, green: 229 / 255, blue: 229 / 255))
@@ -416,6 +424,40 @@ struct ScannerFooterView: View {
     }
 }
 
+// MARK: - ScalingButton
+
+private struct ScalingButton<Label> : View where Label : View {
+    private var action: @MainActor () -> Void
+    private var label: () -> Label
+    
+    @State private var scale = 1.0
+    
+    init(action: @escaping @MainActor () -> Void, @ViewBuilder label: @escaping () -> Label) {
+        self.action = action
+        self.label = label
+    }
+    
+    var body: some View {
+        Button(
+            action: {
+                withAnimation(.easeOut(duration: 0.1)) {
+                    scale = 0.9
+                }
+                        
+                action()
+                
+                withAnimation(.easeOut(duration: 0.1).delay(0.1)) {
+                    scale = 1.0
+                }
+            },
+            label: label
+        )
+        .buttonStyle(.borderedProminent)
+        .clipShape(RoundedRectangle(cornerRadius: 8))
+        .scaleEffect(scale)
+    }
+}
+
 // MARK: - Preview
 
 #Preview {
@@ -427,7 +469,7 @@ struct ScannerFooterView: View {
                 suggestion: ScanningSuggestion(
                     brands: [.bmw, .audi, .abarth],
                     models: ["Skyline"],
-                    series: [],
+                    series: [CarsInventoryAppPreviewData.previewSeries[10]],
                     seriesNumber: [],
                     years: []
                 ) ?? .empty

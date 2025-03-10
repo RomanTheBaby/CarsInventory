@@ -9,6 +9,38 @@ import SwiftUI
 import SwiftData
 
 struct SeriesListView: View {
+    
+    private enum RowItem: Identifiable {
+        case unknownSeries
+        case series(Series)
+        
+        var id: String {
+            switch self {
+            case .unknownSeries:
+                return "Unknown"
+            case .series(let series):
+                return series.id
+            }
+        }
+        
+        var displayName: String {
+            switch self {
+            case .unknownSeries:
+                return "Unknown"
+            case .series(let series):
+                return series.displayName
+            }
+        }
+        
+        var allNames: Set<String> {
+            switch self {
+            case .unknownSeries:
+                return ["Unknown"]
+            case .series(let series):
+                return series.allNames
+            }
+        }
+    }
 
     // MARK: - Properties
     
@@ -17,28 +49,27 @@ struct SeriesListView: View {
     private let title: String
     
     @State private var searchText = ""
-    @Query private var series: [Series]
+    @Query(sort: \Series.displayName) private var series: [Series]
     
     @Environment(\.dismiss) private var dismiss
     
-    private var searchResults: [Series] {
+    private var rowItems: [RowItem] {
         let trimmedQuery = searchText.trimmingCharacters(in: .whitespacesAndNewlines)
         
-        let filteredSeries = if searchText.isEmpty {
-            series
-        } else {
-            series.filter {
-                $0.allNames.contains(trimmedQuery.lowercased())
-            }
+        if searchText.isEmpty {
+            return [RowItem.unknownSeries] + series.map(RowItem.series(_:))
         }
         
-        return filteredSeries.sorted { lhs, rhs in
-            if lhs.isUnknown || rhs.isUnknown {
-                return lhs.isUnknown
-            }
-            
-            return lhs.displayName < rhs.displayName
+        let rowItems = series.filter {
+            $0.allNames.contains(where: { $0.lowercased().contains(trimmedQuery.lowercased())
+            })
+        }.map(RowItem.series(_:))
+        
+        if RowItem.unknownSeries.allNames.contains(searchText) {
+            return [RowItem.unknownSeries] + rowItems
         }
+        
+        return rowItems
     }
     
     // MARK: - Init
@@ -58,23 +89,38 @@ struct SeriesListView: View {
     
     var body: some View {
         List {
-            if searchResults.isEmpty {
+            if rowItems.isEmpty {
                 NavigationLink {
                     SeriesCreationView(name: searchText)
                 } label: {
                     Label("Add", systemImage: "plus")
                 }
             } else {
-                ForEach(searchResults) { series in
+                ForEach(rowItems) { rowItem in
                     NavigationLink {
-                        SeriesCarsView(series: series)
+                        switch rowItem {
+                        case .series(let series):
+                            SeriesCarsView(series: series)
+                            
+                        case .unknownSeries:
+                            InventoryCarsListView(filterOption: .unknownSeries)
+                        }
                     } label: {
-                        SeriesRow(series: series)
+                        switch rowItem {
+                        case .series(let series):
+                            SeriesRow(series: series)
+                            
+                        case .unknownSeries:
+                            Text(rowItem.displayName)
+                                .frame(maxWidth: .infinity, alignment: .leading)
+                        }
                     }
                 }
             }
         }
         .navigationTitle(title)
+        .searchable(text: $searchText, placement: .navigationBarDrawer(displayMode: .always))
+        .toolbarVisibility(.visible, for: .navigationBar)
         .toolbar {
             if showAddNewButton {
                 ToolbarItem(placement: showDismissButton ? .topBarLeading : .topBarTrailing) {
@@ -97,8 +143,24 @@ struct SeriesListView: View {
                 }
             }
         }
-        .searchable(text: $searchText)
-        .toolbarVisibility(.visible, for: .navigationBar)
+    }
+}
+
+private struct SeriesCarsView: View {
+    
+    var series: Series
+    
+    var body: some View {
+        InventoryCarsListView(series: series)
+            .toolbar {
+                ToolbarItem(placement: .topBarTrailing) {
+                    NavigationLink {
+                        SeriesCreationView(series: series)
+                    } label: {
+                        Text("Edit Series")
+                    }
+                }
+            }
     }
 }
 

@@ -57,7 +57,7 @@ actor DefaultDataProvider {
         do {
             let seriesData = try hotWheelsSeriesData()
             logger.trace("Did load \(seriesData.count) models for HotWheels series")
-            let defaultSeries: [Series] = seriesData.enumerated().map { index, seriesData in
+            let allSeries: [Series] = seriesData.enumerated().map { index, seriesData in
                 Series(
                     id: "\(index)",
                     classification: Series.Classification(rawValue: seriesData.classification) ?? .regular,
@@ -70,8 +70,8 @@ actor DefaultDataProvider {
                 )
             }
             
-            let unknowSeries = Series(id: AppConstants.Series.Unknown.id, classification: .regular, displayName: "Unknown")
-            let allSeries = defaultSeries + [unknowSeries]
+//            let unknowSeries = Series(id: AppConstants.Series.Unknown.id, classification: .regular, displayName: "Unknown")
+//            let allSeries = defaultSeries + [unknowSeries]
             allSeries.forEach(modelContainer.mainContext.insert(_:))
             
             logger.trace("Did create \(allSeries.count) series")
