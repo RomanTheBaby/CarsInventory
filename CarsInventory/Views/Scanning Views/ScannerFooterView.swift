@@ -42,6 +42,9 @@ struct ScannerFooterView: View {
     
     @State private var isExpanded: Bool = false
 
+    @Environment(\.modelsSuggestionProvider)
+    private var modelsSuggestionProvider: ModelsSuggestionProvider
+
     var body: some View {
         VStack {
             
@@ -152,7 +155,7 @@ struct ScannerFooterView: View {
             
             HStack(spacing: 16) {
                 ScalingButton(action: {
-                    viewModel.clearSuggestions()
+                    clearSelections()
                 }, label: {
                     Image(systemName: "multiply.circle.fill")
                         .resizable()
@@ -165,7 +168,7 @@ struct ScannerFooterView: View {
                     viewModel.isScanning.toggle()
                     
                     if viewModel.isScanning {
-                        viewModel.clearSuggestions()
+                        clearSelections()
                     }
                     
                 }, label: {
@@ -291,7 +294,7 @@ struct ScannerFooterView: View {
             modelInput = ""
         } content: {
             NavigationStack {
-                ModelInputView(input: $modelInput)
+                ModelInputView(brand: selectedBrand, input: $modelInput)
             }
         }
         .sheet(isPresented: $showSeriesNumberInputView) {
@@ -342,30 +345,25 @@ struct ScannerFooterView: View {
         }
         
         do {
-            let series = if let selectedSeries {
-                selectedSeries
-            } else {
-                try fetchUnknownSeries()
-            }
-            
-            if series.isUnknown == false,
+            if let series = selectedSeries,
+               series.isUnknown == false,
                let selectedSeriesNumber,
                selectedSeriesNumber.total > (series.carsCount ?? 0) {
                 series.updateCarsCount(selectedSeriesNumber.total)
             }
             
             if checkForDuplicates {
-                let duplicateCars = try fetchCar(for: selectedBrand, make: selectedMake, series: series)
-                if duplicateCars.isEmpty == false {
-                    carDuplicates = duplicateCars.count
-                    return
-                }
+//                let duplicateCars = try fetchCar(for: selectedBrand, make: selectedMake, series: series)
+//                if duplicateCars.isEmpty == false {
+//                    carDuplicates = duplicateCars.count
+//                    return
+//                }
             }
 
             let inventoryCar = InventoryCar(
                 brand: selectedBrand,
                 make: selectedMake,
-                series: series,
+                series: selectedSeries,
                 franchise: selectedFranchise,
                 color: selectedColor ?? .unspecified,
                 year: selectedYear,
@@ -376,8 +374,9 @@ struct ScannerFooterView: View {
             )
             
             modelContext.insert(inventoryCar)
+            modelsSuggestionProvider.recordModel(selectedMake, for: selectedBrand)
             if isInPreview == false {
-                viewModel.clearSuggestions()
+                clearSelections()
             }
 
         } catch {
@@ -401,26 +400,25 @@ struct ScannerFooterView: View {
         }
     }
     
-    private func fetchUnknownSeries() throws -> Series {
-        do {
-            let unknownSeriesId = AppConstants.Series.Unknown.id
-            let predicate = #Predicate<Series> { $0.id == unknownSeriesId }
-            var fetchDescriptor = FetchDescriptor<Series>(predicate: predicate)
-            fetchDescriptor.fetchLimit = 1
-            guard let unknownSeries = try modelContext.fetch(fetchDescriptor).first else {
-                assertionFailure("PLEASE FIX. No unknown series In storage.")
-                throw LocalizedErrorInfo(
-                    failureReason: "Failed to assign unknown series when adding new car to the inventory",
-                    errorDescription: "Make sure you have latest app version and try again",
-                    recoverySuggestion: "Make sure you have latest app version and try again"
-                )
-            }
-            
-            return unknownSeries
-        } catch {
-            assertionFailure("PLEASE FIX. Failed to fetch unknown series with error: \(error).")
-            throw error
-        }
+    private func clearSelections() {
+        selectedBrand = nil
+        selectedMake = nil
+        selectedSeries = nil
+        selectedSeriesNumber = nil
+        selectedFranchise = nil
+        selectedYear = nil
+        selectedColor = nil
+        selectedScale = nil
+        
+        modelInput = ""
+        seriesNumberInput = nil
+        
+        error = nil
+        carDuplicates = 0
+        
+//        isExpanded = false
+        
+        viewModel.clearSuggestions()
     }
 }
 

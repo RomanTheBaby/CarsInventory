@@ -5,7 +5,7 @@
 //  Created by Roman on 2025-01-06.
 //
 
-import Foundation
+import SwiftUICore
 
 class ScanningViewModel: ObservableObject {
     

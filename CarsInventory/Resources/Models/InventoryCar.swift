@@ -64,7 +64,7 @@ class InventoryCar: Identifiable, Hashable, CustomStringConvertible {
         id: String = UUID().uuidString,
         brand: CarBrand,
         make: String,
-        series: Series,
+        series: Series?,
         franchise: Franchise?,
         color: ColorOption = .unspecified,
         year: Int? = nil,
@@ -76,7 +76,9 @@ class InventoryCar: Identifiable, Hashable, CustomStringConvertible {
         self.id = id
         self.brand = brand
         self.make = make
-        self.series = [series]
+        self.series = series.map {
+            [$0]
+        } ?? []
         self.franchise = franchise
         self.color = color
         self.year = year
@@ -89,7 +91,7 @@ class InventoryCar: Identifiable, Hashable, CustomStringConvertible {
         id: String = UUID().uuidString,
         brand: CarBrand,
         make: String,
-        series: Series,
+        series: Series?,
         color: ColorOption = .unspecified,
         year: Int? = nil,
         seriesEntryNumber: SeriesEntryNumber? = nil,
@@ -100,10 +102,12 @@ class InventoryCar: Identifiable, Hashable, CustomStringConvertible {
         self.id = id
         self.brand = brand
         self.make = make
-        self.series = [series]
+        self.series = series.map {
+            [$0]
+        } ?? []
 //        let firstNonNilFranchise = series.first(where: { $0.franchise != nil  })?.franchise
 //        self.franchise = series.contains(where: { $0.franchise != firstNonNilFranchise  }) ? nil : firstNonNilFranchise
-        self.franchise = series.franchise
+        self.franchise = series?.franchise
         self.color = color
         self.year = year
         self.seriesEntryNumber = seriesEntryNumber
