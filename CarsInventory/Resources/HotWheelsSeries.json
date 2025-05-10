@@ -1,6 +1,11 @@
 [
     {
         "classification": "regular",
+        "displayName": "HW: '70S VS. '90S",
+        "alternativeNames": ["HW: 70S VS. '90S", "'70S VS. '90S"],
+    },
+    {
+        "classification": "regular",
         "displayName": "HW Gassers",
         "alternativeNames": [],
     },

@@ -5,12 +5,20 @@
 //  Created by Roman on 2025-01-05.
 //
 
+import OSLog
 import SwiftUI
 import SwiftData
+import TipKit
 
 // MARK: - ScannerFooterView
 
 struct ScannerFooterView: View {
+    // MARK: - Properties
+    
+    private let logger = Logger(
+        subsystem: Bundle.main.bundleIdentifier ?? String(describing: Self.self),
+        category: String(describing: Self.self)
+    )
     
     @ObservedObject var viewModel: ScanningViewModel
     @Environment(\.modelContext) private var modelContext
@@ -44,108 +52,39 @@ struct ScannerFooterView: View {
 
     @Environment(\.modelsSuggestionProvider)
     private var modelsSuggestionProvider: ModelsSuggestionProvider
+    
+    private let scanningControlsExpansionTip = ScanningControlsExpansionTip()
+    private let scanningControlsTip = ScanningControlsTip()
+    
+    // MARK: - Init
+    
+    init(viewModel: ScanningViewModel) {
+        self.viewModel = viewModel
+    }
 
+    // MARK: - View
+    
     var body: some View {
         VStack {
-            
-            Color.secondary
-                .frame(width: 100, height: 8)
-                .clipShape(RoundedRectangle(cornerRadius: 4))
-                .onTapGesture {
-                    withAnimation(.easeInOut(duration: 0.3)) {
-                        isExpanded.toggle()
+            VStack {
+                Color.secondary
+                    .frame(width: 100, height: 8)
+                    .clipShape(RoundedRectangle(cornerRadius: 4))
+                    .onTapGesture {
+                        scanningControlsExpansionTip.invalidate(reason: .actionPerformed)
+                        withAnimation(.easeInOut(duration: 0.3)) {
+                            isExpanded.toggle()
+                        }
                     }
-                }
-                .padding(.bottom)
+                
+                TipView(scanningControlsExpansionTip, arrowEdge: .top)
+            }.padding(.bottom)
             
             VStack {
-                SuggestionSelectionView(
-                    title: "*Make:  ",
-                    items: viewModel.suggestion.brands,
-                    titleLabelWidth: 70,
-                    selectedItem: $selectedBrand,
-                    manualInputActionHandler: {
-                        showBrandSelectionView = true
-                    }
-                ).frame(height: 40)
-                
-                SuggestionSelectionView(
-                    title: "*Model: ",
-                    items: viewModel.suggestion.models,
-                    titleLabelWidth: 70,
-                    selectedItem: $selectedMake,
-                    manualInputActionHandler: {
-                        showModelInputView = true
-                    }
-                ).frame(height: 40)
-                
-                SuggestionSelectionView(
-                    title: "Series:  ",
-                    items: viewModel.suggestion.series,
-                    titleLabelWidth: 70,
-                    selectedItem: $selectedSeries,
-                    manualInputActionHandler: {
-                        showSeriesSelectionView = true
-                    },
-                    selectionStatusChangeHandler: { isSelected, series in
-                        if isSelected, let seriesFranchise = series.franchise {
-                            viewModel.addSuggestedFranchise(seriesFranchise)
-                        }
-                        /// We want to update selected series to match franchise series, even if series has no franchise.
-                        selectedFranchise = series.franchise
-                    }
-                ).frame(minHeight: 40)
-                
-                SuggestionSelectionView(
-                    title: "Number:",
-                    items: viewModel.suggestion.seriesNumber,
-                    titleLabelWidth: 70,
-                    selectedItem: $selectedSeriesNumber,
-                    manualInputActionHandler: {
-                        showSeriesNumberInputView = true
-                    }
-                ).frame(height: 40)
+                mainInputsView
                 
                 if isExpanded {
-                    SuggestionSelectionView(
-                        title: "Franchise:",
-                        items: viewModel.suggestion.franchises,
-                        titleLabelWidth: 70,
-                        selectedItem: $selectedFranchise,
-                        manualInputActionHandler: {
-                            showFranchiseSelectionView = true
-                        }
-                    ).frame(height: 40)
-                    
-                    SuggestionSelectionView(
-                        title: "Year:",
-                        items: viewModel.suggestion.years,
-                        titleLabelWidth: 70,
-                        selectedItem: $selectedYear,
-                        manualInputActionHandler: {
-                            showYearInputView = true
-                        }
-                    ).frame(height: 40)
-                    
-                    SuggestionSelectionView(
-                        title: "Color:",
-                        items: viewModel.suggestion.colors,
-                        titleLabelWidth: 70,
-                        selectedItem: $selectedColor,
-                        manualInputActionHandler: {
-                            showColorInputView = true
-                        }
-                    ).frame(height: 40)
-                    
-                    SuggestionSelectionView(
-                        title: "Scale:",
-                        items: viewModel.suggestion.scales,
-                        titleLabelWidth: 70,
-                        selectedItem: $selectedScale,
-                        manualInputActionHandler: {
-                            showScaleInputView = true
-                        }
-                    ).frame(height: 40)
+                    expandedInputsView
                 }
                 
             }.frame(maxWidth: .infinity)
@@ -153,70 +92,22 @@ struct ScannerFooterView: View {
             Spacer()
                 .frame(height: 16)
             
-            HStack(spacing: 16) {
-                ScalingButton(action: {
-                    clearSelections()
-                }, label: {
-                    Image(systemName: "multiply.circle.fill")
-                        .resizable()
-                        .scaledToFit()
-                        .padding(6)
-                        .frame(width: 40, height: 40)
+            TipView(scanningControlsTip)
+                .onChange(of: scanningControlsTip.status, { oldValue, newValue in
+                    switch newValue {
+                    case .available, .invalidated:
+                        break
+                    case .pending:
+                        scanningControlsTip.invalidate(reason: .actionPerformed)
+                    @unknown default:
+                        print("Unknown status: \(newValue)")
+                    }
+                    
                 })
-                
-                ScalingButton(action: {
-                    viewModel.isScanning.toggle()
-                    
-                    if viewModel.isScanning {
-                        clearSelections()
-                    }
-                    
-                }, label: {
-                    Image(systemName: viewModel.isScanning ? "stop.circle.fill" : "doc.text.viewfinder")
-                        .resizable()
-                        .scaledToFit()
-                        .padding(6)
-                        .frame(width: 40, height: 40)
-                })
-                
-                ScalingButton(action: {
-                    guard animateAddToInventoryButton == false else {
-                        return
-                    }
-
-                    addCarToInventory(checkForDuplicates: false)
-                    
-                    withAnimation(.easeIn(duration: 0.3)) {
-                        animateAddToInventoryButton = true
-                    }
-                    
-                    DispatchQueue.main.asyncAfter(deadline: .now() + 1) {
-                        withAnimation(.easeIn(duration: 0.3)) {
-                            animateAddToInventoryButton = false
-                        }
-                    }
-
-                }, label: {
-                    if animateAddToInventoryButton {
-                        Image(systemName: "checkmark.circle")
-                            .frame(maxWidth: .infinity, maxHeight: 40)
-                    } else {
-                        HStack(spacing: -8) {
-                            Image(systemName: "plus.circle.fill")
-                                .resizable()
-                                .scaledToFit()
-                                .padding(6)
-                            Text("Add to inventory")
-                                .frame(maxWidth: .infinity)
-                                .fixedSize(horizontal: false, vertical: true)
-                                .multilineTextAlignment(.leading)
-                        }
-                        .padding(.horizontal, 4)
-                        .frame(height: 40)
-                    }
-                })
-            }
-            .frame(height: 40)
+                .padding(.bottom, 16)
+            
+            mainControlsView
+                .frame(height: 40)
         }
         .padding()
         .background(Color(uiColor: UIColor.systemBackground)) //Color(red: 229 / 255, green: 229 / 255, blue: 229 / 255))
@@ -225,6 +116,7 @@ struct ScannerFooterView: View {
             DragGesture()
                 .onChanged { value in
                     if value.translation.height < 0, isExpanded == false {
+                        scanningControlsExpansionTip.invalidate(reason: .actionPerformed)
                         withAnimation(.easeInOut(duration: 0.3)) {
                             isExpanded = true
                         }
@@ -337,6 +229,171 @@ struct ScannerFooterView: View {
         }
     }
     
+    var mainInputsView: some View {
+        Group {
+            SuggestionSelectionView(
+                title: "*Make:  ",
+                items: viewModel.suggestion.brands,
+                titleLabelWidth: 70,
+                selectedItem: $selectedBrand,
+                manualInputActionHandler: {
+                    showBrandSelectionView = true
+                }
+            ).frame(height: 40)
+            
+            SuggestionSelectionView(
+                title: "*Model: ",
+                items: viewModel.suggestion.models,
+                titleLabelWidth: 70,
+                selectedItem: $selectedMake,
+                manualInputActionHandler: {
+                    showModelInputView = true
+                }
+            ).frame(height: 40)
+            
+            SuggestionSelectionView(
+                title: "Series:  ",
+                items: viewModel.suggestion.series,
+                titleLabelWidth: 70,
+                selectedItem: $selectedSeries,
+                manualInputActionHandler: {
+                    showSeriesSelectionView = true
+                },
+                selectionStatusChangeHandler: { isSelected, series in
+                    if isSelected, let seriesFranchise = series.franchise {
+                        viewModel.addSuggestedFranchise(seriesFranchise)
+                    }
+                    /// We want to update selected series to match franchise series, even if series has no franchise.
+                    selectedFranchise = series.franchise
+                }
+            ).frame(minHeight: 40)
+            
+            SuggestionSelectionView(
+                title: "Number:",
+                items: viewModel.suggestion.seriesNumber,
+                titleLabelWidth: 70,
+                selectedItem: $selectedSeriesNumber,
+                manualInputActionHandler: {
+                    showSeriesNumberInputView = true
+                }
+            ).frame(height: 40)
+        }
+    }
+    
+    var expandedInputsView: some View {
+        Group {
+            SuggestionSelectionView(
+                title: "Franchise:",
+                items: viewModel.suggestion.franchises,
+                titleLabelWidth: 70,
+                selectedItem: $selectedFranchise,
+                manualInputActionHandler: {
+                    showFranchiseSelectionView = true
+                }
+            ).frame(height: 40)
+            
+            SuggestionSelectionView(
+                title: "Year:",
+                items: viewModel.suggestion.years,
+                titleLabelWidth: 70,
+                selectedItem: $selectedYear,
+                manualInputActionHandler: {
+                    showYearInputView = true
+                }
+            ).frame(height: 40)
+            
+            SuggestionSelectionView(
+                title: "Color:",
+                items: viewModel.suggestion.colors,
+                titleLabelWidth: 70,
+                selectedItem: $selectedColor,
+                manualInputActionHandler: {
+                    showColorInputView = true
+                }
+            ).frame(height: 40)
+            
+            SuggestionSelectionView(
+                title: "Scale:",
+                items: viewModel.suggestion.scales,
+                titleLabelWidth: 70,
+                selectedItem: $selectedScale,
+                manualInputActionHandler: {
+                    showScaleInputView = true
+                }
+            ).frame(height: 40)
+        }
+    }
+    
+    var mainControlsView: some View {
+        HStack(spacing: 16) {
+            ScalingButton(action: {
+                ScanningControlsTip.didUseControls.sendDonation()
+                clearSelections()
+            }, label: {
+                Image(systemName: "multiply.circle.fill")
+                    .resizable()
+                    .scaledToFit()
+                    .padding(6)
+                    .frame(width: 40, height: 40)
+            })
+            
+            ScalingButton(action: {
+                ScanningControlsTip.didUseControls.sendDonation()
+                
+                viewModel.isScanning.toggle()
+                
+                if viewModel.isScanning {
+                    clearSelections()
+                }
+                
+            }, label: {
+                Image(systemName: viewModel.isScanning ? "stop.circle.fill" : "doc.text.viewfinder")
+                    .resizable()
+                    .scaledToFit()
+                    .padding(6)
+                    .frame(width: 40, height: 40)
+            })
+            
+            ScalingButton(action: {
+                ScanningControlsTip.didUseControls.sendDonation()
+                guard animateAddToInventoryButton == false, selectedBrand != nil, selectedMake != nil else {
+                    return
+                }
+
+                addCarToInventory(checkForDuplicates: false)
+                
+                withAnimation(.easeIn(duration: 0.3)) {
+                    animateAddToInventoryButton = true
+                }
+                
+                DispatchQueue.main.asyncAfter(deadline: .now() + 1) {
+                    withAnimation(.easeIn(duration: 0.3)) {
+                        animateAddToInventoryButton = false
+                    }
+                }
+
+            }, label: {
+                if animateAddToInventoryButton {
+                    Image(systemName: "checkmark.circle")
+                        .frame(maxWidth: .infinity, maxHeight: 40)
+                } else {
+                    HStack(spacing: -8) {
+                        Image(systemName: "plus.circle.fill")
+                            .resizable()
+                            .scaledToFit()
+                            .padding(6)
+                        Text("Add to inventory")
+                            .frame(maxWidth: .infinity)
+                            .fixedSize(horizontal: false, vertical: true)
+                            .multilineTextAlignment(.leading)
+                    }
+                    .padding(.horizontal, 4)
+                    .frame(height: 40)
+                }
+            })
+        }
+    }
+    
     // MARK: - Helper Methods
     
     private func addCarToInventory(checkForDuplicates: Bool = true) {
@@ -372,6 +429,8 @@ struct ScannerFooterView: View {
                 value: nil,
                 note: nil
             )
+            
+            logger.info("Did add car to inventory: \(inventoryCar)")
             
             modelContext.insert(inventoryCar)
             modelsSuggestionProvider.recordModel(selectedMake, for: selectedBrand)
@@ -475,4 +534,27 @@ private struct ScalingButton<Label> : View where Label : View {
         )
     }
     .modelContainer(CarsInventoryAppPreviewData.container)
+}
+
+#Preview("Tips") {
+    VStack(spacing: -16) {
+        Color.red
+            .ignoresSafeArea(.all, edges: .top)
+        ScannerFooterView(
+            viewModel: ScanningViewModel(
+                suggestion: ScanningSuggestion(
+                    brands: [.bmw, .audi, .abarth],
+                    models: ["Skyline"],
+                    series: [CarsInventoryAppPreviewData.previewSeries[10]],
+                    seriesNumber: [],
+                    years: []
+                ) ?? .empty
+            )
+        )
+    }
+    .modelContainer(CarsInventoryAppPreviewData.container)
+    .task {
+        try? Tips.resetDatastore()
+        Tips.showAllTipsForTesting()
+    }
 }

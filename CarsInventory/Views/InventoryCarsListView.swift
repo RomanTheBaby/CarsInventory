@@ -19,6 +19,8 @@ struct InventoryCarsListView: View {
         var cars: [InventoryCar]
     }
     
+    // MARK: - FilterOption
+    
     enum FilterOption {
         case none
         case franchise(Franchise)
@@ -118,20 +120,7 @@ struct InventoryCarsListView: View {
                     NavigationLink {
                         InventoryCarDetailView(inventoryCar: car)
                     } label: {
-                        LabeledContent {
-                            Text("")
-                        } label: {
-                            Text("\(car.brand.displayName) - \(car.make)")
-                                .frame(maxWidth: .infinity, alignment: .leading)
-                                .contentShape(Rectangle())
-                            if car.series.isEmpty {
-                                Text("Series: Unknown")
-                                    .font(.footnote)
-                            } else {
-                                Text("Series: \(car.series.map(\.displayName).joined(separator: ", "))")
-                                    .font(.footnote)
-                            }
-                        }
+                        CarInfoRow(car: car)
                     }
                 }
             } header: {
@@ -209,6 +198,32 @@ struct InventoryCarsListView: View {
                 return CarBrandSection(brand: carBrand, cars: inventoryCars)
             }
         carsCount = totalCarsCount
+    }
+}
+
+private struct CarInfoRow: View, Equatable {
+    var car: InventoryCar
+    
+    var body: some View {
+        LabeledContent {
+            Text("")
+        } label: {
+            Text("\(car.brand.displayName) - \(car.make)")
+                .frame(maxWidth: .infinity, alignment: .leading)
+                .contentShape(Rectangle())
+            if car.series.isEmpty {
+                Text("Series: Unknown")
+                    .font(.footnote)
+            } else {
+                Text("Series(\(car.series.count)): \(Set(car.series.map(\.displayName)).sorted().joined(separator: ", "))")
+                    .font(.footnote)
+            }
+        }
+    }
+    
+    static func == (lhs: CarInfoRow, rhs: CarInfoRow) -> Bool {
+        lhs.car.brand.displayName == rhs.car.brand.displayName
+            && lhs.car.series.map(\.displayName) == rhs.car.series.map(\.displayName)
     }
 }
 

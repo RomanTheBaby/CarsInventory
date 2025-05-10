@@ -18,6 +18,8 @@ protocol FooterSelectionItem: Equatable {
 // MARK: - SuggestionSelectionView
 
 struct SuggestionSelectionView<Item: FooterSelectionItem & Equatable>: View {
+    // MARK: - Properties
+    
     var title: String
     var items: [Item]
     var titleLabelWidth: CGFloat?
@@ -32,6 +34,8 @@ struct SuggestionSelectionView<Item: FooterSelectionItem & Equatable>: View {
             lhs.displayName < rhs.displayName
         })
     }
+    
+    // MARK: - Body
     
     var body: some View {
         HStack {

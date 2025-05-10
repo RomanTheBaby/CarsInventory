@@ -8,6 +8,10 @@
 import Foundation
 import SwiftData
 
+private struct SeriesAlternativeName: Codable {
+    var name: String
+}
+
 @Model
 class Series: Hashable, CustomStringConvertible {
     // MARK: - Classification
@@ -20,10 +24,6 @@ class Series: Hashable, CustomStringConvertible {
         var displayName: String {
             rawValue.capitalized
         }
-    }
-    
-    private struct AlternativeName: Codable {
-        var name: String
     }
     
     // MARK: - Properties
@@ -39,7 +39,7 @@ class Series: Hashable, CustomStringConvertible {
     private(set) var year: Int?
     
     /// list of names that can be user to lookup the series. i.e during scan.
-    private var alternativeNames: [AlternativeName] = []
+    private var alternativeNames: [SeriesAlternativeName] = []
     
     @Relationship(inverse: \InventoryCar.series)
     private(set) var cars: [InventoryCar] = []
@@ -63,13 +63,13 @@ class Series: Hashable, CustomStringConvertible {
     var description: String {
         """
         Series(
-            id: \(id), \
-            classification: \(classification), \
-            displayName: \(displayName) \
-            alternativeNames: \(alternativeNames.map(\.name)) \
-            year: \(year?.description ?? "No year") \
-            totalCars: \(cars.count) \
-            cars: \(cars)
+        id: \(id), \
+        classification: \(classification), \
+        displayName: \(displayName), \
+        alternativeNames: \(alternativeNames), \
+        year: \(year?.description ?? "No year"), \
+        totalCars: \(cars.count), \
+        cars: \(cars)\
         )
         """
     }
@@ -89,7 +89,7 @@ class Series: Hashable, CustomStringConvertible {
         self.id = id
         self.classification = classification
         self.displayName = displayName
-        self.alternativeNames = alternativeNames.map(AlternativeName.init(name:))
+        self.alternativeNames = alternativeNames.map(SeriesAlternativeName.init(name:))
         self.year = year
         self.cars = cars
         self.franchise = franchise

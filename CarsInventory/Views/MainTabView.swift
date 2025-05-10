@@ -12,7 +12,7 @@ struct MainTabView: View {
     
     var body: some View {
         TabView {
-            Tab("Inventory", systemImage: "car") {
+            Tab("My Garage", systemImage: "car") {
                 NavigationStack {
                     InventoryCarsListView()
                         .toolbarBackground(.visible, for: .tabBar)

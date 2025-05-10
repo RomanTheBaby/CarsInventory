@@ -22,21 +22,8 @@ struct SeriesSelectionView: View {
     @State private var searchText = ""
     @Query private var series: [Series]
     
-    private var searchResults: [Series] {
-        let filteredSeries = searchText.isEmpty ? series : series.filter { series in
-            series.allNames.contains(where: { $0.lowercased().contains(searchText.lowercased()) })
-        }
-        
-        return filteredSeries
-            .sorted { lhs, rhs in
-                if lhs.isUnknown || rhs.isUnknown {
-                    return lhs.isUnknown
-                }
-                
-                return lhs.displayName < rhs.displayName
-            }
-    }
-    
+    @State private var searchResults: [Series] = []
+
     // MARK: - Init
     
     init(
@@ -99,6 +86,20 @@ struct SeriesSelectionView: View {
             if view == "Add" {
                 SeriesCreationView(series: $selectedSeries, name: searchText)
             }
+        }
+        .onReceive(searchText.publisher.throttle(for: 0.3, scheduler: RunLoop.main, latest: true)) { _ in
+            let filteredSeries = searchText.isEmpty ? series : series.filter { series in
+                series.allNames.contains(where: { $0.lowercased().contains(searchText.lowercased()) })
+            }
+
+            searchResults = filteredSeries
+                .sorted { lhs, rhs in
+                    if lhs.isUnknown || rhs.isUnknown {
+                        return lhs.isUnknown
+                    }
+                    
+                    return lhs.displayName < rhs.displayName
+                }
         }
     }
 }

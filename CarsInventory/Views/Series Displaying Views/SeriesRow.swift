@@ -7,22 +7,26 @@
 
 import SwiftUI
 
-struct SeriesRow: View {
-    var series: Series
+struct SeriesRow: View, Equatable {
+    let series: Series
+    let subtitle: String
     
-    var subtitle: String {
-        var texts: [String] = []
-        
-        switch series.classification {
-        case .premium, .silver:
-            texts.append(series.classification.displayName)
-        case .regular:
-            break
-        }
-        
-        texts.append("Cars: \(series.cars.count)")
-        
-        return texts.joined(separator: ", ")
+    init(series: Series) {
+        self.series = series
+        self.subtitle = {
+            var texts: [String] = []
+            
+            switch series.classification {
+            case .premium, .silver:
+                texts.append(series.classification.displayName)
+            case .regular:
+                break
+            }
+            
+            texts.append("Cars: \(series.cars.count)")
+            
+            return texts.joined(separator: ", ")
+        }()
     }
     
     var body: some View {
@@ -41,6 +45,12 @@ struct SeriesRow: View {
                     .font(.callout)
             }
         }
+    }
+    
+    static func == (lhs: SeriesRow, rhs: SeriesRow) -> Bool {
+        lhs.series.displayName == rhs.series.displayName
+            && lhs.subtitle == rhs.subtitle
+            && lhs.series.year == rhs.series.year
     }
 }
 

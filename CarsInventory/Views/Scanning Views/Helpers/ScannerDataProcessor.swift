@@ -6,10 +6,11 @@
 //
 
 import Foundation
+import OSLog
 import RegexBuilder
-import VisionKit
 import SwiftData
 import SwiftUI
+import VisionKit
 
 // Possible formats:
 // BMW 320 Group 5
@@ -18,6 +19,11 @@ import SwiftUI
 // Porsche 911 Carrera RS 2.7
 // '73 JEEP J10
 class ScannerDataProcessor {
+    private lazy var logger = Logger(
+        subsystem: Bundle.main.bundleIdentifier ?? String(describing: Self.self),
+        category: String(describing: Self.self)
+    )
+    
     private let ignoredWords: Set<String> = ["mattel", "hot wheels"]
     
     // MARK: - Properties
@@ -60,10 +66,6 @@ class ScannerDataProcessor {
             assertionFailure("PLEASE FIX. Failed to fetch series with error: \(error).")
             seriesList = []
         }
-    }
-    
-    deinit {
-        print(">>>\(#function)")
     }
     
     // This method assumes recognized item come from scanning one box of die cast
@@ -117,8 +119,7 @@ class ScannerDataProcessor {
 //                        || transcript.lowercased().contains($0.lowercased())
                 })
             }
-            print(">>>FOUND \(result.count): ", result.map(\.displayName))
-            print(">>>")
+            logger.log(level: .info, "Series suggestion search for \(transcript) found \(result.count) match(es)")
             return result
         }
 

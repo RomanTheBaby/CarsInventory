@@ -33,7 +33,7 @@ class InventoryCar: Identifiable, Hashable, CustomStringConvertible {
     private(set) var make: String
     
 //    @Relationship(inverse: \Series.cars)
-    private(set) var series: [Series] // TODO: turn thiso into an array?
+    private(set) var series: [Series]
     private(set) var franchise: Franchise?
     private(set) var year: Int?
     private(set) var seriesEntryNumber: SeriesEntryNumber?
@@ -46,14 +46,14 @@ class InventoryCar: Identifiable, Hashable, CustomStringConvertible {
     var description: String {
         """
         InventoryCar(id: \(id), \
-            brand: \(brand), \
-            make: \(make), \
-            series: \(series), \
-            color: \(color)
-            year: \(year?.description ?? "nil"), \
-            seriesEntryNumber: \(seriesEntryNumber?.description ?? "nothing")
-            value: \(value?.description ?? "nil"), \
-            note: \(note ?? "nil")
+        brand: \(brand), \
+        make: \(make), \
+        series: \(series), \
+        color: \(color), \
+        year: \(year?.description ?? "nil"), \
+        seriesEntryNumber: \(seriesEntryNumber?.description ?? "nothing")
+        value: \(value?.description ?? "nil"), \
+        note: \(note ?? "nil")\
         )
         """
     }
@@ -76,9 +76,11 @@ class InventoryCar: Identifiable, Hashable, CustomStringConvertible {
         self.id = id
         self.brand = brand
         self.make = make
-        self.series = series.map {
-            [$0]
-        } ?? []
+        self.series = if let series {
+            [series]
+        } else {
+            []
+        }
         self.franchise = franchise
         self.color = color
         self.year = year
@@ -102,9 +104,11 @@ class InventoryCar: Identifiable, Hashable, CustomStringConvertible {
         self.id = id
         self.brand = brand
         self.make = make
-        self.series = series.map {
-            [$0]
-        } ?? []
+        self.series = if let series {
+            [series]
+        } else {
+            []
+        }
 //        let firstNonNilFranchise = series.first(where: { $0.franchise != nil  })?.franchise
 //        self.franchise = series.contains(where: { $0.franchise != firstNonNilFranchise  }) ? nil : firstNonNilFranchise
         self.franchise = series?.franchise

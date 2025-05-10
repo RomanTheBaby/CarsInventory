@@ -42,7 +42,7 @@ struct DataScannerView: UIViewControllerRepresentable {
                 do {
                     try scannerViewController.startScanning()
                 } catch {
-                    assertionFailure("Please fix. Failed to start scan with error: \(error)")
+                    print("Please fix. Failed to start scan with error: \(error)")
                 }
             } else {
                 scannerViewController.stopScanning()

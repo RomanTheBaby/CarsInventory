@@ -5,9 +5,17 @@
 //  Created by Roman on 2025-01-12.
 //
 
+import OSLog
 import SwiftUI
 
 struct SettingsView: View {
+    // MARK: - Properties
+    
+    private let logger = Logger(
+        subsystem: Bundle.main.bundleIdentifier ?? String(describing: Self.self),
+        category: String(describing: Self.self)
+    )
+    
     var body: some View {
         NavigationStack {
             List {
@@ -24,6 +32,16 @@ struct SettingsView: View {
                         Text("All Franchises")
                     }
                 }
+                
+                #if DEBUG
+                Section {
+                    NavigationLink {
+                        DebugSettingsView()
+                    } label: {
+                        Text("Debug Settings")
+                    }
+                }
+                #endif
                 
                 Section {
                     Link(
