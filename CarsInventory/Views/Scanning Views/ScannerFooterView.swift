@@ -24,7 +24,7 @@ struct ScannerFooterView: View {
     @Environment(\.modelContext) private var modelContext
     
     @State private var selectedBrand: CarBrand?
-    @State private var selectedMake: String?
+    @State private var selectedModel: String?
     @State private var selectedSeries: Series?
     @State private var selectedSeriesNumber: SeriesEntryNumber?
     @State private var selectedFranchise: Franchise?
@@ -181,7 +181,7 @@ struct ScannerFooterView: View {
         .sheet(isPresented: $showModelInputView) {
             if modelInput.isEmpty == false {
                 viewModel.addSuggestedModel(modelInput)
-                selectedMake = modelInput
+                selectedModel = modelInput
             }
             modelInput = ""
         } content: {
@@ -245,7 +245,7 @@ struct ScannerFooterView: View {
                 title: "*Model: ",
                 items: viewModel.suggestion.models,
                 titleLabelWidth: 70,
-                selectedItem: $selectedMake,
+                selectedItem: $selectedModel,
                 manualInputActionHandler: {
                     showModelInputView = true
                 }
@@ -277,10 +277,18 @@ struct ScannerFooterView: View {
                     showSeriesNumberInputView = true
                 }
             ).frame(height: 40)
+            
+            if isExpanded == false, viewModel.suggestion.years.isEmpty == false {
+                yearInputView
+            }
+            
+            if isExpanded == false, viewModel.suggestion.scales.isEmpty == false {
+                scaleInputView
+            }
         }
     }
     
-    var expandedInputsView: some View {
+    private var expandedInputsView: some View {
         Group {
             SuggestionSelectionView(
                 title: "Franchise:",
@@ -292,16 +300,9 @@ struct ScannerFooterView: View {
                 }
             ).frame(height: 40)
             
-            SuggestionSelectionView(
-                title: "Year:",
-                items: viewModel.suggestion.years,
-                titleLabelWidth: 70,
-                selectedItem: $selectedYear,
-                manualInputActionHandler: {
-                    showYearInputView = true
-                }
-            ).frame(height: 40)
-            
+            yearInputView
+            scaleInputView
+
             SuggestionSelectionView(
                 title: "Color:",
                 items: viewModel.suggestion.colors,
@@ -311,20 +312,34 @@ struct ScannerFooterView: View {
                     showColorInputView = true
                 }
             ).frame(height: 40)
-            
-            SuggestionSelectionView(
-                title: "Scale:",
-                items: viewModel.suggestion.scales,
-                titleLabelWidth: 70,
-                selectedItem: $selectedScale,
-                manualInputActionHandler: {
-                    showScaleInputView = true
-                }
-            ).frame(height: 40)
         }
     }
     
-    var mainControlsView: some View {
+    private var yearInputView: some View {
+        SuggestionSelectionView(
+            title: "Year:",
+            items: viewModel.suggestion.years,
+            titleLabelWidth: 70,
+            selectedItem: $selectedYear,
+            manualInputActionHandler: {
+                showYearInputView = true
+            }
+        ).frame(height: 40)
+    }
+    
+    private var scaleInputView: some View {
+        SuggestionSelectionView(
+            title: "Scale:",
+            items: viewModel.suggestion.scales,
+            titleLabelWidth: 70,
+            selectedItem: $selectedScale,
+            manualInputActionHandler: {
+                showScaleInputView = true
+            }
+        ).frame(height: 40)
+    }
+    
+    private var mainControlsView: some View {
         HStack(spacing: 16) {
             ScalingButton(action: {
                 ScanningControlsTip.didUseControls.sendDonation()
@@ -347,7 +362,7 @@ struct ScannerFooterView: View {
                 }
                 
             }, label: {
-                Image(systemName: viewModel.isScanning ? "stop.circle.fill" : "doc.text.viewfinder")
+                Image(systemName: viewModel.isScanning ? "stop.circle.fill" : "play")
                     .resizable()
                     .scaledToFit()
                     .padding(6)
@@ -356,7 +371,7 @@ struct ScannerFooterView: View {
             
             ScalingButton(action: {
                 ScanningControlsTip.didUseControls.sendDonation()
-                guard animateAddToInventoryButton == false, selectedBrand != nil, selectedMake != nil else {
+                guard animateAddToInventoryButton == false, selectedBrand != nil, selectedModel != nil else {
                     return
                 }
 
@@ -375,7 +390,8 @@ struct ScannerFooterView: View {
             }, label: {
                 if animateAddToInventoryButton {
                     Image(systemName: "checkmark.circle")
-                        .frame(maxWidth: .infinity, maxHeight: 40)
+                        .frame(maxWidth: .infinity)
+                        .frame(height: 40)
                 } else {
                     HStack(spacing: -8) {
                         Image(systemName: "plus.circle.fill")
@@ -391,13 +407,14 @@ struct ScannerFooterView: View {
                     .frame(height: 40)
                 }
             })
+            .disabled(selectedBrand == nil || selectedModel == nil)
         }
     }
     
     // MARK: - Helper Methods
     
     private func addCarToInventory(checkForDuplicates: Bool = true) {
-        guard let selectedBrand, let selectedMake else {
+        guard let selectedBrand, let selectedModel else {
             return
         }
         
@@ -410,7 +427,7 @@ struct ScannerFooterView: View {
             }
             
             if checkForDuplicates {
-//                let duplicateCars = try fetchCar(for: selectedBrand, make: selectedMake, series: series)
+//                let duplicateCars = try fetchCar(for: selectedBrand, model: selectedModel, series: series)
 //                if duplicateCars.isEmpty == false {
 //                    carDuplicates = duplicateCars.count
 //                    return
@@ -419,7 +436,7 @@ struct ScannerFooterView: View {
 
             let inventoryCar = InventoryCar(
                 brand: selectedBrand,
-                make: selectedMake,
+                model: selectedModel,
                 series: selectedSeries,
                 franchise: selectedFranchise,
                 color: selectedColor ?? .unspecified,
@@ -433,7 +450,7 @@ struct ScannerFooterView: View {
             logger.info("Did add car to inventory: \(inventoryCar)")
             
             modelContext.insert(inventoryCar)
-            modelsSuggestionProvider.recordModel(selectedMake, for: selectedBrand)
+            modelsSuggestionProvider.recordModel(selectedModel, for: selectedBrand)
             if isInPreview == false {
                 clearSelections()
             }
@@ -443,25 +460,25 @@ struct ScannerFooterView: View {
         }
     }
     
-    private func fetchCar(for brand: CarBrand, make: String, series: Series) throws -> [InventoryCar] {
+    private func fetchCar(for brand: CarBrand, model: String, series: Series) throws -> [InventoryCar] {
         do {
             let predicate = #Predicate<InventoryCar> { car in
-//                car.brand == brand && car.make == make && car.series == series
-                car.make == make// && car.series == series
+//                car.brand == brand && car.model == model && car.series == series
+                car.model == model// && car.series == series
             }
             
             let fetchDescriptor = FetchDescriptor<InventoryCar>(predicate: predicate)
             return try modelContext.fetch(fetchDescriptor)
             
         } catch {
-            assertionFailure("PLEASE FIX. Failed to fetch car for brand: \(brand), make: \(make) series \(series) with error: \(error).")
+            assertionFailure("PLEASE FIX. Failed to fetch car for brand: \(brand), model: \(model) series \(series) with error: \(error).")
             throw error
         }
     }
     
     private func clearSelections() {
         selectedBrand = nil
-        selectedMake = nil
+        selectedModel = nil
         selectedSeries = nil
         selectedSeriesNumber = nil
         selectedFranchise = nil
@@ -524,8 +541,8 @@ private struct ScalingButton<Label> : View where Label : View {
         ScannerFooterView(
             viewModel: ScanningViewModel(
                 suggestion: ScanningSuggestion(
-                    brands: [.bmw, .audi, .abarth],
-                    models: ["Skyline"],
+                    brands: Array(CarsInventoryAppPreviewData.previewCarBrands.prefix(5)),
+                    models: ["Skyline", "159"],
                     series: [CarsInventoryAppPreviewData.previewSeries[10]],
                     seriesNumber: [],
                     years: []
@@ -543,8 +560,8 @@ private struct ScalingButton<Label> : View where Label : View {
         ScannerFooterView(
             viewModel: ScanningViewModel(
                 suggestion: ScanningSuggestion(
-                    brands: [.bmw, .audi, .abarth],
-                    models: ["Skyline"],
+                    brands: Array(CarsInventoryAppPreviewData.previewCarBrands.prefix(5)),
+                    models: ["Skyline", "159"],
                     series: [CarsInventoryAppPreviewData.previewSeries[10]],
                     seriesNumber: [],
                     years: []

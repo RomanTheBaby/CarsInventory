@@ -97,6 +97,6 @@ struct ModelInputView: View {
 #Preview("With brand") {
     @Previewable @State var input: String = ""
     NavigationStack {
-        ModelInputView(brand: .ford, input: $input)
+        ModelInputView(brand: CarsInventoryAppPreviewData.previewCarBrands[4], input: $input)
     }
 }

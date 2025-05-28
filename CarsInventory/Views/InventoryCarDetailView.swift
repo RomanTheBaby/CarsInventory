@@ -16,7 +16,7 @@ struct InventoryCarDetailView: View {
     
     @State private var brand: CarBrand
     @State private var brandSelection: CarBrand?
-    @State private var make: String
+    @State private var model: String
     @State private var carColor: ColorOption
     @State private var yearSelection: Int
     @State private var value: Decimal?
@@ -39,7 +39,7 @@ struct InventoryCarDetailView: View {
     init(inventoryCar: InventoryCar) {
         self.inventoryCar = inventoryCar
         self.brand = inventoryCar.brand
-        self.make = inventoryCar.make
+        self.model = inventoryCar.model
         self.carColor = inventoryCar.color
         self.yearSelection = inventoryCar.year ?? 0
         self._series = State(initialValue: inventoryCar.series.first)
@@ -67,7 +67,7 @@ struct InventoryCarDetailView: View {
                 }
                 
                 LabeledContent {
-                    TextField("Model", text: $make)
+                    TextField("Model", text: $model)
                         .multilineTextAlignment(.trailing)
                 } label: {
                     Text("Model")
@@ -155,7 +155,7 @@ struct InventoryCarDetailView: View {
         }
         .safeAreaInset(edge: .bottom) {
             Button {
-                guard make.trimmingCharacters(in: .whitespacesAndNewlines).isEmpty == false else {
+                guard model.trimmingCharacters(in: .whitespacesAndNewlines).isEmpty == false else {
                     return
                 }
                 
@@ -166,7 +166,7 @@ struct InventoryCarDetailView: View {
                     .frame(height: 50)
             }
             .buttonStyle(.borderedProminent)
-            .disabled(make.trimmingCharacters(in: .whitespacesAndNewlines).isEmpty)
+            .disabled(model.trimmingCharacters(in: .whitespacesAndNewlines).isEmpty)
             .padding(.bottom, 8)
         }
         .sheet(isPresented: $showBrandSelectionView) {
@@ -223,12 +223,12 @@ struct InventoryCarDetailView: View {
     // MARK: - Private Methods
     
     private func handleSeriesUpdateAction() {
-        guard make.trimmingCharacters(in: .whitespacesAndNewlines).isEmpty == false else {
+        guard model.trimmingCharacters(in: .whitespacesAndNewlines).isEmpty == false else {
             return
         }
         
         inventoryCar.updateBrand(brand)
-        inventoryCar.updateMake(make.trimmingCharacters(in: .whitespacesAndNewlines))
+        inventoryCar.updateModel(model.trimmingCharacters(in: .whitespacesAndNewlines))
         if let series {
             inventoryCar.updateSeries(series)
         }

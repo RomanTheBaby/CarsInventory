@@ -20,6 +20,16 @@ actor DefaultDataProvider {
         var carsCount: Int? = nil
     }
     
+    // MARK: - ManufacturerData
+    
+    struct ManufacturerData: Codable {
+        var name: String
+        var displayName: String
+        var knownModels: [String]
+        var alternativeNames: [String]?
+        var isHidden: Bool?
+    }
+    
     // MARK: - Properties
     
     private static let logger = Logger(
@@ -48,7 +58,39 @@ actor DefaultDataProvider {
         return try decoder.decode([SeriesData].self, from: seriesFileData)
     }
     
+    @MainActor
+    static func getAllCarBrands() throws -> [CarBrand] {
+        let manufacturers = try loadManufacturersData()
+        logger.trace("Did load \(manufacturers.count) models for manufacturers")
+        
+        return manufacturers.enumerated().compactMap { index, manufacturerData -> CarBrand? in
+            guard (manufacturerData.isHidden ?? false) != true else {
+                return nil
+            }
+            return CarBrand(
+                id: index,
+                name: manufacturerData.name,
+                displayName: manufacturerData.displayName,
+                alternativeNames: manufacturerData.alternativeNames ?? [],
+                knownModels: manufacturerData.knownModels
+            )
+        }
+    }
+    
     // MARK: - Private Methods
+    
+    @MainActor
+    private static func loadManufacturersData() throws -> [ManufacturerData] {
+        let decoder = JSONDecoder()
+        
+        guard let fileURL = Bundle.main.url(forResource: "ManufacturersList", withExtension: "json") else {
+            logger.critical("Failed to get url for ManufacturersList.json")
+            throw LocalizedErrorInfo(failureReason: "Failed to load default manufacturers")
+        }
+        
+        let fileData = try Data(contentsOf: fileURL)
+        return try decoder.decode([ManufacturerData].self, from: fileData)
+    }
     
     @MainActor private static func populateHotWheelsData(for modelContainer: ModelContainer) {
         let franchise = Franchise(id: "1", name: "Hot Wheels")
@@ -70,13 +112,14 @@ actor DefaultDataProvider {
                 )
             }
             
-//            let unknowSeries = Series(id: AppConstants.Series.Unknown.id, classification: .regular, displayName: "Unknown")
-//            let allSeries = defaultSeries + [unknowSeries]
-            allSeries.forEach(modelContainer.mainContext.insert(_:))
+            let carBrands = try getAllCarBrands()
             
-            logger.trace("Did create \(allSeries.count) series")
+            allSeries.forEach(modelContainer.mainContext.insert(_:))
+            carBrands.forEach(modelContainer.mainContext.insert(_:))
+            
+            logger.trace("Did insert \(allSeries.count) series and \(carBrands.count) manufacturers models")
         } catch {
-            logger.critical("Failed to loead default series with error: \(error)")
+            logger.critical("Failed to loead default data with error: \(error)")
         }
     }
 }

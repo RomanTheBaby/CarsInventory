@@ -21,15 +21,21 @@ struct SettingsView: View {
             List {
                 Section {
                     NavigationLink {
-                        SeriesListView(showDismissButton: false)
+                        CarBrandsListView()
                     } label: {
-                        Text("All Series")
+                        Text("All Makes")
                     }
                     
                     NavigationLink {
                         FranchiseListView()
                     } label: {
                         Text("All Franchises")
+                    }
+                    
+                    NavigationLink {
+                        SeriesListView(showDismissButton: false)
+                    } label: {
+                        Text("All Series")
                     }
                 }
                 

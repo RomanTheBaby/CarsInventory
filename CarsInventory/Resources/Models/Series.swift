@@ -59,6 +59,21 @@ class Series: Hashable, CustomStringConvertible {
         id == AppConstants.Series.Unknown.id
     }
     
+//    @Transient
+//    var description: String {
+//        """
+//        Series(
+//        id: \(id), \
+//        classification: \(classification), \
+//        displayName: \(displayName), \
+//        alternativeNames: \(alternativeNames), \ // printing this cases errors for some reason
+//        year: \(year?.description ?? "No year"), \
+//        totalCars: \(cars.count), \
+//        cars: \(cars)\
+//        )
+//        """
+//    }
+    
     @Transient
     var description: String {
         """
@@ -66,12 +81,26 @@ class Series: Hashable, CustomStringConvertible {
         id: \(id), \
         classification: \(classification), \
         displayName: \(displayName), \
-        alternativeNames: \(alternativeNames), \
         year: \(year?.description ?? "No year"), \
         totalCars: \(cars.count), \
         cars: \(cars)\
         )
         """
+    }
+    
+    @Transient
+    private var carsDescription: String {
+        cars.map { car in
+            """
+            \(String(describing: InventoryCar.self))(\
+            id: \(car.id), \
+            brand: \(car.brand.displayName), \
+            model: \(car.model), \
+            year: \(car.year?.description ?? "nil"),
+            SeriesEntryNumber: \(car.seriesEntryNumber?.description ?? "nil")\
+            )
+            """
+        }.joined(separator: ", ")
     }
     
     // MARK: - Init

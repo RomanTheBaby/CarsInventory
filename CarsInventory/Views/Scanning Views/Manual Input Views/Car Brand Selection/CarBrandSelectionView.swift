@@ -5,72 +5,30 @@
 //  Created by Roman on 2025-02-12.
 //
 
+import SwiftData
 import SwiftUI
 
 struct CarBrandSelectionView: View {
-    
-    // MARK: - Section
-
-    struct BrandSection: Identifiable {
-        var id: UUID = UUID()
-        
-        var titleLetter: String
-        var brands: [CarBrand]
-    }
-    
     
     // MARK: - Properties
     
     @Environment(\.dismiss) private var dismiss
     
     @Binding var selectedBrand: CarBrand?
-    @State private var searchText = ""
-    
-    private let allSections: [BrandSection]
-    private var filteredSections: [BrandSection] {
-        guard searchText.isEmpty == false else {
-            return allSections
-        }
-        
-        return allSections.compactMap { section -> BrandSection? in
-            let filteredBrands = section.brands.filter { brand in
-                brand.displayName.lowercased().contains(searchText.lowercased())
-            }
-            
-            if filteredBrands.isEmpty {
-                return nil
-            } else {
-                return BrandSection(titleLetter: section.titleLetter, brands: filteredBrands)
-            }
-        }
-    }
+    @Query private var brands: [CarBrand]
+    @StateObject private var viewModel = CarBrandListViewModel()
     
     // MARK: - Init
     
     init(selectedBrand: Binding<CarBrand?>? = nil) {
         self._selectedBrand = selectedBrand ?? Binding.constant(nil)
-        
-        let brandsMap = CarBrand.allCases.reduce(into: [String: [CarBrand]]()) { partialResult, carBrand in
-            guard let firstCharacter = carBrand.displayName.first else {
-                return
-            }
-            partialResult[String(firstCharacter).uppercased(), default: []].append(carBrand)
-        }
-        
-        allSections = "abcdefghijklmnopqrstuvwxyz".compactMap { character -> BrandSection? in
-            guard let brands = brandsMap[String(character).uppercased()] else {
-                return nil
-            }
-            
-            return BrandSection(titleLetter: String(character).uppercased(), brands: brands)
-        }
     }
     
     // MARK: - View
     
     var body: some View {
         NavigationStack {
-            List(filteredSections) { section in
+            List(viewModel.sections) { section in
                 Section {
                     ForEach(section.brands) { brand in
                         HStack {
@@ -103,10 +61,15 @@ struct CarBrandSelectionView: View {
                     }
                 }
             }
+            .onChange(of: viewModel.debouncedSearchText, { _, newValue in
+                viewModel.updateSections(for: newValue, brands: brands)
+            })
+            .onAppear {
+                viewModel.updateSections(for: viewModel.searchText, brands: brands)
+            }
         }
-        .searchable(text: $searchText)
+        .searchable(text: $viewModel.searchText)
     }
-    
 }
 
 // MARK: - Preview
@@ -114,9 +77,11 @@ struct CarBrandSelectionView: View {
 #Preview {
     @Previewable @State var selectedBrand: CarBrand? = nil
     CarBrandSelectionView(selectedBrand: $selectedBrand)
+        .modelContainer(CarsInventoryAppPreviewData.container)
 }
 
 #Preview("with selected brand") {
-    @Previewable @State var selectedBrand: CarBrand? = .acura
+    @Previewable @State var selectedBrand: CarBrand? = CarsInventoryAppPreviewData.previewCarBrands[4]
     CarBrandSelectionView(selectedBrand: $selectedBrand)
+        .modelContainer(CarsInventoryAppPreviewData.container)
 }

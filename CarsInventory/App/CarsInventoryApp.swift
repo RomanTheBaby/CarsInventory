@@ -20,7 +20,8 @@ struct CarsInventoryApp: App {
         category: String(describing: CarsInventoryApp.self)
     )
     
-    @AppStorage("didLoadData") private var didLoadData: Bool = false
+    @AppStorage("didLoadData")
+    private var didLoadData: Bool = false
     
     // MARK: - Body
     
@@ -39,7 +40,7 @@ struct CarsInventoryApp: App {
         #if DEBUG
             #if targetEnvironment(simulator)
                 let modelContainer = CarsInventoryAppPreviewData.container
-                logger.info("Startup in debug configuration. Target environment - simulator")
+                logger.info("Startup in debug configuration. Target environment - simulator. didLoadData: \(didLoadData)")
             #else
                 let modelContainer = ModelContainer.shared
                 logger.info("Startup in debug configuration. Target environment - unknown. didLoadData: \(didLoadData)")
@@ -62,11 +63,11 @@ struct CarsInventoryApp: App {
     private func configureTips() {
         do {
 //#if DEBUG
-            do {
+//            do {
 //                try Tips.resetDatastore()
-            } catch {
-                logger.log(level: .fault, "Failed to reset tips data store with error: \(error)")
-            }
+//            } catch {
+//                logger.log(level: .fault, "Failed to reset tips data store with error: \(error)")
+//            }
 //            Tips.showAllTipsForTesting()
 //#endif
             try Tips.configure([

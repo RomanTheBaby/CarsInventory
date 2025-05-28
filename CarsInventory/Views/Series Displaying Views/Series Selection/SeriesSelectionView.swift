@@ -13,16 +13,15 @@ struct SeriesSelectionView: View {
 
     // MARK: - Properties
     
-    private var showDismissButton: Bool = true
     private let title: String
+    private var showDismissButton: Bool = true
     
     @Environment(\.dismiss) private var dismiss
     
     @Binding var selectedSeries: Series?
-    @State private var searchText = ""
     @Query private var series: [Series]
     
-    @State private var searchResults: [Series] = []
+    @StateObject private var viewModel = SeriesSelectionViewModel()
 
     // MARK: - Init
     
@@ -34,27 +33,26 @@ struct SeriesSelectionView: View {
         self.title = title
         self.showDismissButton = showDismissButton
         self._selectedSeries = selectedSeries ?? Binding.constant(nil)
-        self.searchText = searchText
     }
     
     // MARK: - Body
     
     var body: some View {
         List {
-            if searchResults.isEmpty {
+            if viewModel.seriesList.isEmpty {
                 NavigationLink(value: "Add") {
                     Label("Add Custom", systemImage: "plus")
                 }
             } else {
                 Section {
-                    ForEach(searchResults) { series in
+                    ForEach(viewModel.seriesList) { series in
                         SeriesRow(series: series)
                             .onTapGesture {
                                 selectedSeries = series
                             }
                     }
                 } footer: {
-                    Text("Total: \(searchResults.count)")
+                    Text("Total: \(viewModel.seriesList.count)")
                         .font(.footnote)
                         .frame(maxWidth: .infinity)
                         .padding(.top)
@@ -80,26 +78,18 @@ struct SeriesSelectionView: View {
                 }
             }
         }
-        .searchable(text: $searchText)
+        .searchable(text: $viewModel.searchText)
         .toolbarVisibility(.visible, for: .navigationBar)
         .navigationDestination(for: String.self) { view in
             if view == "Add" {
-                SeriesCreationView(series: $selectedSeries, name: searchText)
+                SeriesCreationView(series: $selectedSeries, name: viewModel.searchText)
             }
         }
-        .onReceive(searchText.publisher.throttle(for: 0.3, scheduler: RunLoop.main, latest: true)) { _ in
-            let filteredSeries = searchText.isEmpty ? series : series.filter { series in
-                series.allNames.contains(where: { $0.lowercased().contains(searchText.lowercased()) })
-            }
-
-            searchResults = filteredSeries
-                .sorted { lhs, rhs in
-                    if lhs.isUnknown || rhs.isUnknown {
-                        return lhs.isUnknown
-                    }
-                    
-                    return lhs.displayName < rhs.displayName
-                }
+        .onChange(of: viewModel.debouncedSearchText, { _, newValue in
+            viewModel.updateDisplayedItems(for: newValue, series: series)
+        })
+        .onAppear {
+            viewModel.updateDisplayedItems(for: viewModel.searchText, series: series)
         }
     }
 }

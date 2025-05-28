@@ -29,6 +29,7 @@ class ScannerDataProcessor {
     // MARK: - Properties
     
     private let seriesList: [Series]
+    private let carBrands: [CarBrand]
     private let modelContext: ModelContext
     
     private lazy var seriesRegex = Regex {
@@ -66,6 +67,14 @@ class ScannerDataProcessor {
             assertionFailure("PLEASE FIX. Failed to fetch series with error: \(error).")
             seriesList = []
         }
+        
+        do {
+            let fetchDescriptor = FetchDescriptor<CarBrand>()
+            carBrands = try modelContext.fetch(fetchDescriptor)
+        } catch {
+            assertionFailure("PLEASE FIX. Failed to fetch series with error: \(error).")
+            carBrands = []
+        }
     }
     
     // This method assumes recognized item come from scanning one box of die cast
@@ -85,25 +94,30 @@ class ScannerDataProcessor {
         
         transcripts.forEach { transcript  in
             let trimmedTranscript = transcript.filter { bannedSymbols.contains(String($0)) == false }
-            CarBrand.allCases.forEach { brand in
-                if trimmedTranscript.lowercased().contains(brand.displayName.lowercased()) {
-                    brandSuggestions.insert(brand)
+            for brand in carBrands {
+                print(">>>transcript: \(transcript), trimmed: \(trimmedTranscript)")
+                guard brand.isBrandNameMatching(trimmedTranscript) else {
+                    logger.trace("For transcript: \(transcript) found no brands")
+                    continue
+                }
+                logger.trace("For transcript: \(transcript) found brand: \(brand.displayName), brand alternative names: \(brand.alternativeNames)")
+                brandSuggestions.insert(brand)
                     
-                    let components = trimmedTranscript.lowercased()
-                        .components(separatedBy: brand.displayName.lowercased())
-                        .filter { $0.isEmpty == false }
-                        .map { $0.trimmingCharacters(in: .whitespacesAndNewlines) }
+                let components = trimmedTranscript.lowercased()
+                    .components(separatedBy: brand.displayName.lowercased())
+                    .filter { $0.isEmpty == false }
+                    .map { $0.trimmingCharacters(in: .whitespacesAndNewlines) }
+                logger.trace("For transcript: \(transcript) & brand: \(brand.displayName), components: \(components)")
+                
+                if let makeInformation = components.last, makeInformation.isEmpty == false {
+                    modelSuggestions.insert(makeInformation.uppercased())
                     
-                    if let makeInformation = components.last, makeInformation.isEmpty == false {
-                        modelSuggestions.insert(makeInformation.uppercased())
-                        
-                        if components.count >= 2, let yearString = components.first {
-                            // If there are more than 2 components, then potentially the first one is year
-                            if let yearSuggestion = Int(yearString) {
-                                yearSuggestions.insert(yearSuggestion)
-                            } else if let match = yearString.firstMatch(of: carYearRegex), let yearSuggestion = Int("19\(match.1)") {
-                                yearSuggestions.insert(yearSuggestion)
-                            }
+                    if components.count >= 2, let yearString = components.first {
+                        // If there are more than 2 components, then potentially the first one is year
+                        if let yearSuggestion = Int(yearString) {
+                            yearSuggestions.insert(yearSuggestion)
+                        } else if let match = yearString.firstMatch(of: carYearRegex), let yearSuggestion = Int("19\(match.1)") {
+                            yearSuggestions.insert(yearSuggestion)
                         }
                     }
                 }
@@ -156,6 +170,15 @@ class ScannerDataProcessor {
             seriesNumber: seriesNumberSuggestions,
             years: Array(yearSuggestions)
         )
+    }
+}
+
+private extension CarBrand {
+    func isBrandNameMatching(_ query: String) -> Bool {
+        allNames.contains(where: {
+            $0.lowercased().contains(query.lowercased())
+                || query.lowercased().contains($0.lowercased())
+        })
     }
 }
 

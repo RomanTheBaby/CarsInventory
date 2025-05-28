@@ -11,7 +11,7 @@ import SwiftUI
 // MARK: - FooterSelectionItem
 
 protocol FooterSelectionItem: Equatable {
-    var id: String { get }
+    var comparingId: String { get }
     var displayName: String { get }
 }
 
@@ -44,54 +44,75 @@ struct SuggestionSelectionView<Item: FooterSelectionItem & Equatable>: View {
             
             ScrollView(.horizontal) {
                 HStack {
-                    ForEach(sortedItems, id: \.id) { item in
-                        Button {
+                    ForEach(sortedItems, id: \.comparingId) { item in
+                        SuggestionButton(displayName: item.displayName, subtitle: item.subtitle, isSelected: selectedItem == item) {
                             if selectedItem == item {
                                 selectedItem = nil
                             } else {
                                 selectedItem = item
                             }
                             selectionStatusChangeHandler?(selectedItem == item, item)
-                        } label: {
-                            VStack {
-                                Text(item.displayName)
-                                    .foregroundStyle(selectedItem == item ? .white : Color.primary)
-                                    .multilineTextAlignment(.center)
-                                if let subtitle = item.subtitle {
-                                    Text(subtitle)
-                                        .foregroundStyle(Color.secondary)
-                                        .font(.footnote)
-                                        .frame(maxWidth: .infinity, alignment: .leading)
-                                }
-                                
-                            }
-                            .frame(minWidth: 50)
-                            .padding(8)
-                            .background(selectedItem == item ? .blue : Color(uiColor: .lightGray).opacity(0.6))
-                            .cornerRadius(8)
                         }
                     }
                     
-                    Button {
-                        manualInputActionHandler()
-                    } label: {
-                        HStack(spacing: 0) {
-                            Text("Enter manually | ")
-                                .foregroundStyle(Color.primary)
-                            
-                            Image(systemName: "plus")
-                                .foregroundStyle(Color.primary)
-                        }
-                        .frame(minWidth: 50)
-                        .padding(8)
-                        .background(Color(uiColor: .lightGray).opacity(0.6))
-                        .cornerRadius(8)
-                    }
+                    manuInputView
                 }
             }
             .scrollIndicators(.hidden)
             .frame(maxWidth: .infinity, alignment: .leading)
             .fixedSize(horizontal: false, vertical: true)
+        }
+    }
+    
+    var manuInputView: some View {
+        Button {
+            manualInputActionHandler()
+        } label: {
+            HStack(spacing: 0) {
+                Text("Enter manually | ")
+                    .foregroundStyle(Color.primary)
+                
+                Image(systemName: "plus")
+                    .foregroundStyle(Color.primary)
+            }
+            .frame(minWidth: 50)
+            .padding(8)
+            .background(Color(uiColor: .lightGray).opacity(0.6))
+            .cornerRadius(8)
+        }
+    }
+}
+
+// MARK: - SuggestionButton
+
+private struct SuggestionButton: View {
+    var displayName: String
+    var subtitle: String?
+    
+    var isSelected: Bool
+    
+    var action: (() -> Void)
+    
+    var body: some View {
+        Button {
+            action()
+        } label: {
+            VStack {
+                Text(displayName)
+                    .foregroundStyle(isSelected ? .white : Color.primary)
+                    .multilineTextAlignment(.center)
+                if let subtitle {
+                    Text(subtitle)
+                        .foregroundStyle(Color.secondary)
+                        .font(.footnote)
+                        .frame(maxWidth: .infinity, alignment: .leading)
+                }
+                
+            }
+            .frame(minWidth: 50)
+            .padding(8)
+            .background(isSelected ? .blue : Color(uiColor: .lightGray).opacity(0.6))
+            .cornerRadius(8)
         }
     }
 }
@@ -102,6 +123,8 @@ struct SuggestionSelectionView<Item: FooterSelectionItem & Equatable>: View {
     ScanningView()
         .modelContainer(CarsInventoryAppPreviewData.container)
 }
+
+// MARK: - FooterSelectionItem
 
 private extension FooterSelectionItem {
     var subtitle: String? {
@@ -130,20 +153,26 @@ private extension FooterSelectionItem {
 
 // MARK: Series + FooterSelectionItem
 
-extension Series: FooterSelectionItem {}
+extension Series: FooterSelectionItem {
+    var comparingId: String { id }
+}
 
 // MARK: CarBrand + FooterSelectionItem
 
-extension CarBrand: FooterSelectionItem {}
+extension CarBrand: FooterSelectionItem {
+    var comparingId: String { "\(id)" }
+}
 
 // MARK: Franchise + FooterSelectionItem
 
-extension Franchise: FooterSelectionItem {}
+extension Franchise: FooterSelectionItem {
+    var comparingId: String { id }
+}
 
 // MARK: SeriesEntryNumber + FooterSelectionItem
 
 extension SeriesEntryNumber: FooterSelectionItem {
-    var id: String {
+    var comparingId: String {
         displayName
     }
     
@@ -155,7 +184,7 @@ extension SeriesEntryNumber: FooterSelectionItem {
 // MARK: String + FooterSelectionItem
 
 extension String: FooterSelectionItem {
-    var id: String {
+    var comparingId: String {
         self
     }
     
@@ -167,7 +196,7 @@ extension String: FooterSelectionItem {
 // MARK: Int + FooterSelectionItem
 
 extension Int: FooterSelectionItem {
-    var id: String {
+    var comparingId: String {
         "\(self)"
     }
     
@@ -178,12 +207,16 @@ extension Int: FooterSelectionItem {
 
 // MARK: Series + ColorOption
 
-extension ColorOption: FooterSelectionItem {}
+extension ColorOption: FooterSelectionItem {
+    var comparingId: String {
+        id
+    }
+}
 
 // MARK: InventoryCar.Scale + FooterSelectionItem
 
 extension InventoryCar.Scale: FooterSelectionItem {
-    var id: String {
+    var comparingId: String {
         "\(rawValue)"
     }
 }

@@ -23,6 +23,7 @@ struct InventoryCarsListView: View {
     
     enum FilterOption {
         case none
+        case carBrand(CarBrand)
         case franchise(Franchise)
         case series(Series)
         case unknownSeries
@@ -54,6 +55,8 @@ struct InventoryCarsListView: View {
             title = franchise.displayName
         case .series(let series):
             title = series.displayName
+        case .carBrand(let brand):
+            title = brand.displayName
         case .unknownSeries:
             title = "Unknown"
         }
@@ -94,18 +97,27 @@ struct InventoryCarsListView: View {
                 case .none:
                     Text("You do not have any cars in the inventory yet.")
                         .multilineTextAlignment(.center)
+                        .font(.headline)
                 case .franchise(let franchise):
                     Text("You do not have anything for the \"\(franchise.displayName)\" franchise yet.")
                         .multilineTextAlignment(.center)
+                        .font(.headline)
                 case .series(let series):
                     Text("You do not have anything in the \"\(series.displayName)\" series yet.")
                         .multilineTextAlignment(.center)
-                case .unknownSeries:
-                    Text("You do not have any cars in the \"Unknown\" series inventory yet.")
+                        .font(.headline)
+                case .carBrand(let brand):
+                    Text("You do not have anything for the \"\(brand.displayName)\" yet.")
                         .multilineTextAlignment(.center)
+                        .font(.headline)
+                case .unknownSeries:
+                    Text("You do not have any cars in the \"Unknown\" series yet.")
+                        .multilineTextAlignment(.center)
+                        .font(.headline)
                 }
                 Text("Scan a box with a car to add it to your inventory.")
                     .multilineTextAlignment(.center)
+                    .font(.subheadline)
             }
         } else {
             Text("Nothing in inventory that would contain \"\(searchText)\"")
@@ -160,6 +172,13 @@ struct InventoryCarsListView: View {
             }
             fetchDescriptor = FetchDescriptor<InventoryCar>(predicate: predicate)
             
+        case .carBrand(let brand):
+            let brandId = brand.id
+            let predicate = #Predicate<InventoryCar> {
+                $0.brand.id == brandId
+            }
+            fetchDescriptor = FetchDescriptor<InventoryCar>(predicate: predicate)
+            
         case .unknownSeries:
             let predicate = #Predicate<InventoryCar> {
                 $0.series.isEmpty
@@ -180,11 +199,11 @@ struct InventoryCarsListView: View {
                     return nil
                 }
                 
-                inventoryCars = inventoryCars.sorted(by: { $0.make < $1.make })
+                inventoryCars = inventoryCars.sorted(by: { $0.model < $1.model })
                 
                 if searchText.isEmpty == false {
                     let filteredCars = inventoryCars.filter { car in
-                        car.make.lowercased().contains(searchText)
+                        car.model.lowercased().contains(searchText)
                             || car.brand.displayName.lowercased().contains(searchText)
                     }
                     inventoryCars = filteredCars
@@ -208,7 +227,7 @@ private struct CarInfoRow: View, Equatable {
         LabeledContent {
             Text("")
         } label: {
-            Text("\(car.brand.displayName) - \(car.make)")
+            Text("\(car.brand.displayName) - \(car.model)")
                 .frame(maxWidth: .infinity, alignment: .leading)
                 .contentShape(Rectangle())
             if car.series.isEmpty {

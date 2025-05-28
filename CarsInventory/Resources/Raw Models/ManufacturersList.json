@@ -1,0 +1,1700 @@
+[
+  {
+    "name": "AAC",
+    "displayName": "AAC",
+    "originCountry": "Italy",
+    "knownModels": [
+      "Tipo 815"
+    ]
+  },
+  {
+    "name": "ABARTH",
+    "displayName": "Abarth",
+    "originCountry": "Italy",
+    "knownModels": [
+      "500",
+      "595",
+      "695",
+      "Punto",
+      "124 Spider"
+    ]
+  },
+  {
+    "name": "AC",
+    "displayName": "AC",
+    "originCountry": "United Kingdom",
+    "knownModels": [
+      "Cobra",
+      "Ace",
+      "Aceca",
+      "Greyhound",
+      "428"
+    ]
+  },
+  {
+    "name": "ACURA",
+    "displayName": "Acura",
+    "originCountry": "Japan",
+    "knownModels": [
+      "NSX",
+      "Integra",
+      "TLX",
+      "MDX",
+      "RDX"
+    ]
+  },
+  {
+    "name": "AEON",
+    "displayName": "Aeon",
+    "originCountry": "United Kingdom",
+    "knownModels": [
+      "GT3",
+      "GT"
+    ]
+  },
+  {
+    "name": "ALFA-ROMEO",
+    "displayName": "Alfa Romeo",
+    "originCountry": "Italy",
+    "knownModels": [
+      "Giulia",
+      "Stelvio",
+      "4C",
+      "8C Competizione",
+      "Spider"
+    ]
+  },
+  {
+    "name": "ALLARD",
+    "displayName": "Allard",
+    "originCountry": "United Kingdom",
+    "knownModels": [
+      "J2X",
+      "K2",
+      "L",
+      "P1",
+      "M"
+    ]
+  },
+  {
+    "name": "ALPINA",
+    "displayName": "Alpina",
+    "originCountry": "Germany",
+    "knownModels": [
+      "B3",
+      "B5",
+      "B7",
+      "XD3",
+      "D5 S"
+    ]
+  },
+  {
+    "name": "ALPINE",
+    "displayName": "Alpine",
+    "originCountry": "France",
+    "knownModels": [
+      "A110",
+      "A310",
+      "A610",
+      "GTA",
+      "Vision"
+    ]
+  },
+  {
+    "name": "ALVIS",
+    "displayName": "Alvis",
+    "originCountry": "United Kingdom",
+    "knownModels": [
+      "Speed 20",
+      "Speed 25",
+      "TF21",
+      "TD21",
+      "TA21"
+    ]
+  },
+  {
+    "name": "AMERICAN MOTORS",
+    "displayName": "American Motors",
+    "alternativeNames": [
+      "AMC"
+    ],
+    "originCountry": "United States",
+    "knownModels": [
+      "AMX",
+      "Javelin",
+      "Gremlin",
+      "Pacer",
+      "Matador"
+    ]
+  },
+  {
+    "name": "AMILCAR",
+    "displayName": "Amilcar",
+    "originCountry": "France",
+    "knownModels": [
+      "CGSS",
+      "C6"
+    ]
+  },
+  {
+    "name": "APOLLO",
+    "displayName": "Apollo",
+    "originCountry": "Italy",
+    "knownModels": [
+      "Intensa Emozione",
+      "Nathalie",
+      "Arrow"
+    ]
+  },
+  {
+    "name": "ARASH",
+    "displayName": "Arash",
+    "originCountry": "United Kingdom",
+    "knownModels": [
+      "AF8",
+      "AF10"
+    ]
+  },
+  {
+    "name": "ARCH",
+    "displayName": "Arch",
+    "originCountry": "United States",
+    "knownModels": [
+      "KRGT-1"
+    ]
+  },
+  {
+    "name": "ARIEL",
+    "displayName": "Ariel",
+    "originCountry": "United Kingdom",
+    "knownModels": [
+      "Atom",
+      "Nomad",
+      "Hipercar"
+    ]
+  },
+  {
+    "name": "ARTEGA",
+    "displayName": "Artega",
+    "originCountry": "Germany",
+    "knownModels": [
+      "GT",
+      "Scalo",
+      "Karo"
+    ]
+  },
+  {
+    "name": "ASCARI",
+    "displayName": "Ascari",
+    "originCountry": "United Kingdom",
+    "knownModels": [
+      "KZ1",
+      "A10",
+      "Ecosse"
+    ]
+  },
+  {
+    "name": "ASL",
+    "displayName": "ASL",
+    "originCountry": "Japan",
+    "knownModels": [
+      "Garaiya"
+    ]
+  },
+  {
+    "name": "ASTON MARTIN",
+    "displayName": "Aston Martin",
+    "originCountry": "United Kingdom",
+    "knownModels": [
+      "DB5",
+      "DB11",
+      "Vantage",
+      "Vanquish",
+      "Rapide"
+    ]
+  },
+  {
+    "name": "ATS",
+    "displayName": "ATS",
+    "originCountry": "Italy",
+    "knownModels": [
+      "2500 GT",
+      "GT",
+      "Sport"
+    ]
+  },
+  {
+    "name": "AUBURN",
+    "displayName": "Auburn",
+    "originCountry": "United States",
+    "knownModels": [
+      "Boattail Speedster",
+      "851",
+      "Cord"
+    ]
+  },
+  {
+    "name": "AUDI",
+    "displayName": "Audi",
+    "originCountry": "Germany",
+    "knownModels": [
+      "A4",
+      "A6",
+      "Q5",
+      "R8",
+      "RS7"
+    ]
+  },
+  {
+    "name": "AUTO UNION",
+    "displayName": "Auto Union",
+    "originCountry": "Germany",
+    "knownModels": [
+      "Type C",
+      "Type D",
+      "1000"
+    ]
+  },
+  {
+    "name": "BAC",
+    "displayName": "BAC",
+    "originCountry": "United Kingdom",
+    "knownModels": [
+      "Mono"
+    ]
+  },
+  {
+    "name": "BAOJUN",
+    "displayName": "Baojun",
+    "originCountry": "China",
+    "knownModels": [
+      "510",
+      "530",
+      "E100"
+    ]
+  },
+  {
+    "name": "BENTLEY",
+    "displayName": "Bentley",
+    "originCountry": "United Kingdom",
+    "knownModels": [
+      "Continental GT",
+      "Bentayga",
+      "Flying Spur",
+      "Mulsanne"
+    ]
+  },
+  {
+    "name": "BENELLI",
+    "displayName": "Benelli",
+    "originCountry": "Italy",
+    "knownModels": [
+      "TNT 600",
+      "Leoncino",
+      "TRK 502"
+    ]
+  },
+  {
+    "name": "BENZ",
+    "displayName": "Benz",
+    "originCountry": "Germany",
+    "knownModels": [
+      "Patent-Motorwagen",
+      "Velo"
+    ]
+  },
+  {
+    "name": "BETA",
+    "displayName": "Beta Motorcycles",
+    "originCountry": "Italy",
+    "knownModels": [
+      "RR 300",
+      "Xtrainer",
+      "Evo 300",
+      "RR 125"
+    ]
+  },
+  {
+    "name": "BIZZARRINI",
+    "displayName": "Bizzarrini",
+    "originCountry": "Italy",
+    "knownModels": [
+      "5300 GT",
+      "P538",
+      "Strada"
+    ]
+  },
+  {
+    "name": "BMW",
+    "displayName": "BMW",
+    "alternativeNames": [
+      "Bimmer",
+      "Beemer",
+      "Beamer"
+    ],
+    "originCountry": "Germany",
+    "knownModels": [
+      "3 Series",
+      "5 Series",
+      "M3",
+      "i8",
+      "Z4",
+      "X5"
+    ]
+  },
+  {
+    "name": "BMW MOTORRAD",
+    "displayName": "BMW Motorrad",
+    "originCountry": "Germany",
+    "knownModels": [
+      "R1250GS",
+      "S1000RR",
+      "F850GS",
+      "G310R",
+      "K1600"
+    ]
+  },
+  {
+    "name": "BOVENSIEPEN",
+    "displayName": "Bovensiepen",
+    "originCountry": "Germany",
+    "knownModels": [
+      "Zagato",
+    ]
+  },
+  {
+    "name": "BSA",
+    "displayName": "BSA Motorcycles",
+    "originCountry": "United Kingdom",
+    "knownModels": [
+      "Gold Star",
+      "Bantam",
+      "A65"
+    ]
+  },
+  {
+    "name": "BUGATTI",
+    "displayName": "Bugatti",
+    "originCountry": "France",
+    "knownModels": [
+      "Veyron",
+      "Chiron",
+      "Divo",
+      "EB110",
+      "Type 35"
+    ]
+  },
+  {
+    "name": "BUICK",
+    "displayName": "Buick",
+    "originCountry": "United States",
+    "knownModels": [
+      "Regal",
+      "Riviera",
+      "Skylark",
+      "Grand National",
+      "Enclave"
+    ]
+  },
+  {
+    "name": "BYD",
+    "displayName": "BYD",
+    "originCountry": "China",
+    "knownModels": [
+      "Han",
+      "Tang",
+      "Atto 3",
+      "Dolphin",
+      "Seal"
+    ]
+  },
+  {
+    "name": "CADILLAC",
+    "displayName": "Cadillac",
+    "alternativeNames": [
+      "Caddy"
+    ],
+    "originCountry": "United States",
+    "knownModels": [
+      "Escalade",
+      "CT5",
+      "CTS-V",
+      "XLR",
+      "Eldorado"
+    ]
+  },
+  {
+    "name": "CATERHAM",
+    "displayName": "Caterham",
+    "originCountry": "United Kingdom",
+    "knownModels": [
+      "Seven 160",
+      "Seven 620R",
+      "CSR"
+    ]
+  },
+  {
+    "name": "CFMOTO",
+    "displayName": "CFMoto",
+    "originCountry": "China",
+    "knownModels": [
+      "650NK",
+      "300SR",
+      "800MT"
+    ]
+  },
+  {
+    "name": "CHERY",
+    "displayName": "Chery",
+    "originCountry": "China",
+    "knownModels": [
+      "Tiggo 8",
+      "Arrizo 5",
+      "QQ"
+    ]
+  },
+  {
+    "name": "CHEVROLET",
+    "displayName": "Chevrolet",
+    "alternativeNames": [
+      "Chevy"
+    ],
+    "originCountry": "United States",
+    "knownModels": [
+      "Camaro",
+      "Corvette",
+      "Impala",
+      "Malibu",
+      "Silverado"
+    ]
+  },
+  {
+    "name": "CHRYSLER",
+    "displayName": "Chrysler",
+    "originCountry": "United States",
+    "knownModels": [
+      "300",
+      "PT Cruiser",
+      "Crossfire",
+      "Town & Country"
+    ]
+  },
+  {
+    "name": "CISITALIA",
+    "displayName": "Cisitalia",
+    "originCountry": "Italy",
+    "knownModels": [
+      "202",
+      "202 MM"
+    ]
+  },
+  {
+    "name": "CIZETA",
+    "displayName": "Cizeta",
+    "originCountry": "Italy",
+    "knownModels": [
+      "V16T"
+    ]
+  },
+  {
+    "name": "CITROËN",
+    "displayName": "Citroën",
+    "originCountry": "France",
+    "knownModels": [
+      "2CV",
+      "DS",
+      "CX",
+      "SM",
+      "C3",
+      "C4"
+    ]
+  },
+  {
+    "name": "Dacia",
+    "displayName": "Dacia",
+    "originCountry": "Romania",
+    "knownModels": [
+      "Duster",
+      "Sandero",
+      "Logan"
+    ]
+  },
+  {
+    "name": "DAEWOO",
+    "displayName": "Daewoo",
+    "originCountry": "South Korea",
+    "knownModels": [
+      "Lanos",
+      "Nubira",
+      "Leganza",
+      "Matiz"
+    ]
+  },
+  {
+    "name": "DAIHATSU",
+    "displayName": "Daihatsu",
+    "originCountry": "Japan",
+    "knownModels": [
+      "Copen",
+      "Hijet",
+      "Mira",
+      "Charade"
+    ]
+  },
+  {
+    "name": "DATSUN",
+    "displayName": "Datsun",
+    "originCountry": "Japan",
+    "knownModels": [
+      "240Z"
+    ]
+  },
+  {
+    "name": "DELOREAN",
+    "displayName": "DeLorean",
+    "originCountry": "United States",
+    "knownModels": [
+      "DMC-12"
+    ]
+  },
+  {
+    "name": "DODGE",
+    "displayName": "Dodge",
+    "originCountry": "United States",
+    "knownModels": [
+      "Charger",
+      "Challenger",
+      "Viper",
+      "Ram",
+      "Durango"
+    ]
+  },
+  {
+    "name": "DONKERVOORT",
+    "displayName": "Donkervoort",
+    "originCountry": "Netherlands",
+    "knownModels": [
+      "D8 GTO",
+      "S8",
+      "F22"
+    ]
+  },
+  {
+    "name": "DUCATI",
+    "displayName": "Ducati",
+    "originCountry": "Italy",
+    "knownModels": [
+      "Panigale",
+      "Monster",
+      "Multistrada",
+      "Scrambler",
+      "Diavel"
+    ]
+  },
+  {
+    "name": "DUESENBERG",
+    "displayName": "Duesenberg",
+    "originCountry": "United States",
+    "knownModels": [
+      "Model J",
+      "Model SJ"
+    ]
+  },
+  {
+    "name": "FERRARI",
+    "displayName": "Ferrari",
+    "originCountry": "Italy",
+    "knownModels": [
+      "488 GTB",
+      "F40",
+      "F50",
+      "LaFerrari",
+      "812 Superfast"
+    ]
+  },
+  {
+    "name": "FIAT",
+    "displayName": "Fiat",
+    "originCountry": "Italy",
+    "knownModels": [
+      "500",
+      "Punto",
+      "Tipo",
+      "124 Spider"
+    ]
+  },
+  {
+    "name": "FISKER",
+    "displayName": "Fisker",
+    "originCountry": "United States",
+    "knownModels": [
+      "Karma",
+      "Ocean"
+    ]
+  },
+  {
+    "name": "FORD",
+    "displayName": "Ford",
+    "originCountry": "United States",
+    "knownModels": [
+      "Mustang",
+      "F-150",
+      "GT",
+      "Focus",
+      "Explorer"
+    ]
+  },
+  {
+    "name": "FOTON",
+    "displayName": "Foton",
+    "originCountry": "China",
+    "knownModels": [
+      "Tunland",
+      "Sauvana"
+    ]
+  },
+  {
+    "name": "GASGAS",
+    "displayName": "GasGas",
+    "originCountry": "Spain",
+    "knownModels": [
+      "EC 300",
+      "MC 450F",
+      "TXT Racing 300"
+    ]
+  },
+  {
+    "name": "GEELY",
+    "displayName": "Geely",
+    "originCountry": "China",
+    "knownModels": [
+      "Emgrand",
+      "Coolray",
+      "Atlas",
+      "Binrui",
+      "Geometry C"
+    ]
+  },
+  {
+    "name": "GENESIS",
+    "displayName": "Genesis",
+    "originCountry": "South Korea",
+    "knownModels": [
+      "G70",
+      "G80",
+      "G90",
+      "GV70",
+      "GV80"
+    ]
+  },
+  {
+    "name": "GINETTA",
+    "displayName": "Ginetta",
+    "originCountry": "United Kingdom",
+    "knownModels": [
+      "G40",
+      "G50",
+      "G55",
+      "Akula"
+    ]
+  },
+  {
+    "name": "GMC",
+    "displayName": "GMC",
+    "originCountry": "United States",
+    "knownModels": [
+      "Sierra",
+      "Canyon",
+      "Yukon",
+      "Terrain",
+      "Acadia"
+    ]
+  },
+  {
+    "name": "GREAT WALL",
+    "displayName": "Great Wall",
+    "originCountry": "China",
+    "knownModels": [
+      "Haval H6",
+      "Wingle",
+      "Poer"
+    ]
+  },
+  {
+    "name": "GUMPERT",
+    "displayName": "Gumpert",
+    "originCountry": "Germany",
+    "knownModels": [
+      "Apollo",
+      "Apollo S",
+      "Apollo Sport"
+    ]
+  },
+  {
+    "name": "HARLEY-DAVIDSON",
+    "displayName": "Harley-Davidson",
+    "originCountry": "United States",
+    "knownModels": [
+      "Sportster",
+      "Softail",
+      "Touring",
+      "Street Glide",
+      "Fat Boy"
+    ]
+  },
+  {
+    "name": "HAVAL",
+    "displayName": "Haval",
+    "originCountry": "China",
+    "knownModels": [
+      "H6",
+      "Jolion",
+      "F7"
+    ]
+  },
+  {
+    "name": "HISPANO-SUIZA",
+    "displayName": "Hispano-Suiza",
+    "originCountry": "Spain",
+    "knownModels": [
+      "Carmen",
+      "H6"
+    ]
+  },
+  {
+    "name": "HOLDEN",
+    "displayName": "Holden",
+    "originCountry": "Australia",
+    "knownModels": [
+      "Commodore",
+      "Monaro",
+      "Ute",
+      "Statesman"
+    ]
+  },
+  {
+    "name": "HONDA",
+    "displayName": "Honda",
+    "originCountry": "Japan",
+    "knownModels": [
+      "Civic",
+      "Accord",
+      "CR-V",
+      "Fit",
+      "NSX"
+    ]
+  },
+  {
+    "name": "HUDSON",
+    "displayName": "Hudson",
+    "originCountry": "United States",
+    "knownModels": [
+      "Hornet",
+      "Commodore",
+      "Terraplane"
+    ]
+  },
+  {
+    "name": "HUSQVARNA",
+    "displayName": "Husqvarna Motorcycles",
+    "originCountry": "Sweden",
+    "knownModels": [
+      "Vitpilen 401",
+      "Svartpilen 401",
+      "701 Supermoto",
+      "FE 501",
+      "TE 300i"
+    ]
+  },
+  {
+    "name": "HYUNDAI",
+    "displayName": "Hyundai",
+    "alternativeNames": [
+      "Hyun",
+      "Hundy"
+    ],
+    "originCountry": "South Korea",
+    "knownModels": [
+      "Elantra",
+      "Sonata",
+      "Tucson",
+      "Santa Fe"
+    ]
+  },
+  {
+    "name": "INDIAN",
+    "displayName": "Indian Motorcycle",
+    "originCountry": "United States",
+    "knownModels": [
+      "Scout",
+      "Chief",
+      "Chieftain",
+      "FTR",
+      "Roadmaster"
+    ]
+  },
+  {
+    "name": "INFINITI",
+    "displayName": "Infiniti",
+    "originCountry": "Japan",
+    "knownModels": [
+      "Q50",
+      "QX60",
+      "G35",
+      "FX35"
+    ]
+  },
+  {
+    "name": "ISDERA",
+    "displayName": "Isdera",
+    "originCountry": "Germany",
+    "knownModels": [
+      "Commendatore 112i",
+      "Imperator 108i"
+    ]
+  },
+  {
+    "name": "ISO",
+    "displayName": "Iso",
+    "originCountry": "Italy",
+    "knownModels": [
+      "Grifo",
+      "Rivolta",
+      "Lele"
+    ]
+  },
+  {
+    "name": "ISUZU",
+    "displayName": "Isuzu",
+    "originCountry": "Japan",
+    "knownModels": [
+      "Trooper",
+      "Rodeo",
+      "D-Max"
+    ]
+  },
+  {
+    "name": "JAGUAR",
+    "displayName": "Jaguar",
+    "alternativeNames": [
+      "Jag"
+    ],
+    "originCountry": "United Kingdom",
+    "knownModels": [
+      "E-Type",
+      "F-Type",
+      "XJ",
+      "XF",
+      "I-Pace"
+    ]
+  },
+  {
+    "name": "JEEP",
+    "displayName": "Jeep",
+    "originCountry": "United States",
+    "knownModels": [
+      "Wrangler",
+      "Cherokee",
+      "Grand Cherokee",
+      "Renegade"
+    ]
+  },
+  {
+    "name": "JENSEN",
+    "displayName": "Jensen",
+    "originCountry": "United Kingdom",
+    "knownModels": [
+      "Interceptor",
+      "541R"
+    ]
+  },
+  {
+    "name": "KAWASAKI",
+    "displayName": "Kawasaki",
+    "originCountry": "Japan",
+    "knownModels": [
+      "Ninja",
+      "Z1000",
+      "Versys",
+      "Vulcan",
+      "KLR"
+    ]
+  },
+  {
+    "name": "KIA",
+    "displayName": "Kia",
+    "originCountry": "South Korea",
+    "knownModels": [
+      "Sorento",
+      "Optima",
+      "Sportage",
+      "Telluride"
+    ]
+  },
+  {
+    "name": "KOENIGSEGG",
+    "displayName": "Koenigsegg",
+    "originCountry": "Sweden",
+    "knownModels": [
+      "Agera",
+      "Jesko",
+      "Regera",
+      "Gemera"
+    ]
+  },
+  {
+    "name": "KTM",
+    "displayName": "KTM",
+    "originCountry": "Austria",
+    "knownModels": [
+      "Duke 390",
+      "1290 Super Duke R",
+      "RC 390",
+      "Adventure 790",
+      "690 Enduro"
+    ]
+  },
+  {
+    "name": "LADA",
+    "displayName": "Lada",
+    "originCountry": "Russia",
+    "knownModels": [
+      "Niva",
+      "Vesta",
+      "Granta",
+      "Kalina"
+    ]
+  },
+  {
+    "name": "LAGONDA",
+    "displayName": "Lagonda",
+    "originCountry": "United Kingdom",
+    "knownModels": [
+      "LG6",
+      "Rapide"
+    ]
+  },
+  {
+    "name": "LAMBORGHINI",
+    "displayName": "Lamborghini",
+    "alternativeNames": [
+      "Lambo"
+    ],
+    "originCountry": "Italy",
+    "knownModels": [
+      "Aventador",
+      "Huracán",
+      "Urus",
+      "Countach"
+    ]
+  },
+  {
+    "name": "LANCIA",
+    "displayName": "Lancia",
+    "originCountry": "Italy",
+    "knownModels": [
+      "Stratos",
+      "delta integrale"
+    ]
+  },
+  {
+    "name": "LAND ROVER",
+    "displayName": "Land Rover",
+    "alternativeNames": [
+      "Landy"
+    ],
+    "originCountry": "United Kingdom",
+    "knownModels": []
+  },
+  {
+    "name": "LUCID",
+    "displayName": "Lucid",
+    "originCountry": "United States",
+    "knownModels": [
+      "Air",
+      "Gravity"
+    ]
+  },
+  {
+    "name": "MAHINDRA",
+    "displayName": "Mahindra",
+    "originCountry": "India",
+    "knownModels": [
+      "Thar",
+      "Scorpio",
+      "XUV500",
+      "Bolero",
+      "Marazzo"
+    ]
+  },
+  {
+    "name": "MARUTI SUZUKI",
+    "displayName": "Maruti Suzuki",
+    "originCountry": "India",
+    "knownModels": [
+      "Alto",
+      "Swift",
+      "Baleno",
+      "Wagon R",
+      "Dzire"
+    ]
+  },
+  {
+    "name": "MAZDA",
+    "displayName": "Mazda",
+    "alternativeNames": [
+      "Mazzie",
+      "Zoom-Zoom"
+    ],
+    "originCountry": "Japan",
+    "knownModels": [
+      "MX-5",
+      "MX-5 Miata",
+      "CX-90"
+    ]
+  },
+  {
+    "name": "MCLAREN",
+    "displayName": "McLaren",
+    "originCountry": "United Kingdom",
+    "knownModels": [
+      "P1",
+      "720S",
+      "650S",
+      "570S",
+      "Artura",
+      "F1"
+    ]
+  },
+  {
+    "name": "MERCEDES",
+    "displayName": "Mercedes",
+    "originCountry": "Germany",
+    "knownModels": [
+      "S-Class",
+      "E-Class",
+      "C-Class"
+    ]
+  },
+  {
+    "name": "MERCEDES-AMG",
+    "displayName": "Mercedes-AMG",
+    "originCountry": "Germany",
+    "knownModels": [
+      "GT",
+      "C63",
+      "E63",
+      "A45",
+      "G63"
+    ]
+  },
+  {
+    "name": "MERCEDES-BENZ",
+    "displayName": "Mercedes-Benz",
+    "originCountry": "Germany",
+    "knownModels": [
+      "G-Class",
+      "CLA",
+      "GLA",
+      "GLC"
+    ]
+  },
+  {
+    "name": "MERCURY",
+    "displayName": "Mercury",
+    "originCountry": "United States",
+    "knownModels": [
+      "Cougar",
+      "Grand Marquis",
+      "Milan"
+    ]
+  },
+  {
+    "name": "MG",
+    "displayName": "MG",
+    "originCountry": "China",
+    "knownModels": [
+      "MG3",
+      "MG6",
+      "MGB",
+      "MG ZS"
+    ]
+  },
+  {
+    "name": "MINI",
+    "displayName": "MINI",
+    "originCountry": "United Kingdom",
+    "knownModels": [
+      "Cooper",
+      "Clubman",
+      "Countryman",
+      "Paceman"
+    ]
+  },
+  {
+    "name": "MITSUBISHI",
+    "displayName": "Mitsubishi",
+    "alternativeNames": [
+      "Mitsu"
+    ],
+    "originCountry": "Japan",
+    "knownModels": [
+      "Lancer",
+      "Eclipse",
+      "Outlander",
+      "Mirage",
+      "Pajero"
+    ]
+  },
+  {
+    "name": "MITSUOKA",
+    "displayName": "Mitsuoka",
+    "originCountry": "Japan",
+    "knownModels": [
+      "Orochi",
+      "Viewt",
+      "Himiko"
+    ]
+  },
+  {
+    "name": "MORGAN",
+    "displayName": "Morgan",
+    "originCountry": "United Kingdom",
+    "knownModels": [
+      "3 Wheeler",
+      "Plus Four",
+      "Plus Six"
+    ]
+  },
+  {
+    "name": "MORRIS",
+    "displayName": "Morris",
+    "originCountry": "United Kingdom",
+    "knownModels": [
+      "Minor",
+      "Oxford"
+    ]
+  },
+  {
+    "name": "MOSLER",
+    "displayName": "Mosler",
+    "originCountry": "United States",
+    "knownModels": [
+      "MT900"
+    ]
+  },
+  {
+    "name": "MULLEN",
+    "displayName": "Mullen",
+    "originCountry": "United States",
+    "knownModels": [
+      "Mullen Five",
+      "GT Electric"
+    ]
+  },
+  {
+    "name": "MV AGUSTA",
+    "displayName": "MV Agusta",
+    "originCountry": "Italy",
+    "knownModels": [
+      "F4",
+      "Brutale",
+      "Dragster",
+      "Turismo Veloce",
+      "Superveloce"
+    ]
+  },
+  {
+    "name": "NISSAN",
+    "displayName": "Nissan",
+    "originCountry": "Japan",
+    "knownModels": [
+      "GT-R",
+      "370Z",
+      "Altima",
+      "Maxima",
+      "Leaf",
+      "Pathfinder"
+    ]
+  },
+  {
+    "name": "NOBLE",
+    "displayName": "Noble",
+    "originCountry": "United Kingdom",
+    "knownModels": [
+      "M400",
+      "M600"
+    ]
+  },
+  {
+    "name": "NORTON",
+    "displayName": "Norton Motorcycles",
+    "originCountry": "United Kingdom",
+    "knownModels": [
+      "Commando",
+      "Dominator",
+      "V4SS"
+    ]
+  },
+  {
+    "name": "OPEL",
+    "displayName": "Opel",
+    "originCountry": "Germany",
+    "knownModels": [
+      "Astra",
+      "Corsa",
+      "Insignia",
+      "Manta",
+      "Kadett"
+    ]
+  },
+  {
+    "name": "PAGANI",
+    "displayName": "Pagani",
+    "originCountry": "Italy",
+    "knownModels": [
+      "Zonda",
+      "Huayra",
+      "Utopia"
+    ]
+  },
+  {
+    "name": "PEUGEOT",
+    "displayName": "Peugeot",
+    "alternativeNames": [
+      "Pug"
+    ],
+    "originCountry": "France",
+    "knownModels": [
+      "206",
+      "208",
+      "306",
+      "508",
+      "504"
+    ]
+  },
+  {
+    "name": "PERODUA",
+    "displayName": "Perodua",
+    "originCountry": "Malaysia",
+    "knownModels": [
+      "Myvi",
+      "Axia",
+      "Bezza",
+      "Alza"
+    ]
+  },
+  {
+    "name": "PIAGGIO",
+    "displayName": "Piaggio",
+    "originCountry": "Italy",
+    "knownModels": [
+      "Liberty",
+      "Beverly",
+      "MP3"
+    ]
+  },
+  {
+    "name": "PININFARINA",
+    "displayName": "Pininfarina",
+    "originCountry": "Italy",
+    "knownModels": [
+      "Battista"
+    ]
+  },
+  {
+    "name": "PLYMOUTH",
+    "displayName": "Plymouth",
+    "originCountry": "United States",
+    "knownModels": [
+      "Barracuda",
+      "Road Runner",
+      "Duster"
+    ]
+  },
+  {
+    "name": "POLESTAR",
+    "displayName": "Polestar",
+    "originCountry": "Sweden",
+    "knownModels": [
+      "Polestar 1",
+      "Polestar 2",
+      "Polestar 3"
+    ]
+  },
+  {
+    "name": "PONTIAC",
+    "displayName": "Pontiac",
+    "originCountry": "United States",
+    "knownModels": [
+      "GTO",
+      "Firebird",
+      "Trans Am",
+      "Fiero"
+    ]
+  },
+  {
+    "name": "PORSCHE",
+    "displayName": "Porsche",
+    "alternativeNames": [
+      "Porker"
+    ],
+    "originCountry": "Germany",
+    "knownModels": [
+      "911",
+      "Boxster",
+      "Cayman",
+      "Panamera",
+      "Taycan"
+    ]
+  },
+  {
+    "name": "PROTON",
+    "displayName": "Proton",
+    "originCountry": "Malaysia",
+    "knownModels": [
+      "Saga",
+      "Persona",
+      "Wira"
+    ]
+  },
+  {
+    "name": "RADICAL",
+    "displayName": "Radical",
+    "originCountry": "United Kingdom",
+    "knownModels": [
+      "SR3",
+      "RXC",
+      "SR10"
+    ]
+  },
+  {
+    "name": "RENAULT",
+    "displayName": "Renault",
+    "originCountry": "France",
+    "knownModels": [
+      "Clio",
+      "Megane",
+      "Twingo",
+      "Laguna"
+    ]
+  },
+  {
+    "name": "RIVIAN",
+    "displayName": "Rivian",
+    "originCountry": "United States",
+    "knownModels": [
+      "R1T",
+      "R1S"
+    ]
+  },
+  {
+    "name": "ROLLS-ROYCE",
+    "displayName": "Rolls-Royce",
+    "originCountry": "United Kingdom",
+    "knownModels": [
+      "Phantom",
+      "Ghost",
+      "Wraith",
+      "Cullinan"
+    ]
+  },
+  {
+    "name": "ROVER",
+    "displayName": "Rover",
+    "originCountry": "United Kingdom",
+    "knownModels": [
+      "P5",
+      "P6",
+      "SD1"
+    ]
+  },
+  {
+    "name": "ROYAL ENFIELD",
+    "displayName": "Royal Enfield",
+    "originCountry": "India",
+    "knownModels": [
+      "Bullet",
+      "Classic 350",
+      "Himalayan",
+      "Interceptor 650",
+      "Meteor 350"
+    ]
+  },
+  {
+    "name": "RUF",
+    "displayName": "RUF",
+    "originCountry": "Germany",
+    "knownModels": [
+      "CTR",
+      "Rt 12",
+      "RK Coupe"
+    ]
+  },
+  {
+    "name": "SAAB",
+    "displayName": "Saab",
+    "originCountry": "Sweden",
+    "knownModels": [
+      "900",
+      "9-3",
+      "9-5"
+    ]
+  },
+  {
+    "name": "SAIC",
+    "displayName": "SAIC Motor",
+    "originCountry": "China",
+    "knownModels": []
+  },
+  {
+    "name": "SALEEN",
+    "displayName": "Saleen",
+    "originCountry": "United States",
+    "knownModels": [
+      "S7",
+      "S1"
+    ]
+  },
+  {
+    "name": "SCION",
+    "displayName": "Scion",
+    "originCountry": "Japan",
+    "knownModels": [
+      "tC",
+      "xB",
+      "FR-S"
+    ]
+  },
+  {
+    "name": "SEAT",
+    "displayName": "SEAT",
+    "originCountry": "Spain",
+    "knownModels": [
+      "Ibiza",
+      "Leon",
+      "Ateca"
+    ]
+  },
+  {
+    "name": "SHELBY",
+    "displayName": "Shelby",
+    "originCountry": "United States",
+    "knownModels": [
+      "Cobra",
+      "GT350",
+      "GT500"
+    ]
+  },
+  {
+    "name": "SMART",
+    "displayName": "Smart",
+    "originCountry": "Germany",
+    "knownModels": [
+      "Fortwo",
+      "Forfour"
+    ]
+  },
+  {
+    "name": "SPYKER",
+    "displayName": "Spyker",
+    "originCountry": "Netherlands",
+    "knownModels": [
+      "C8",
+      "C12"
+    ]
+  },
+  {
+    "name": "SSC",
+    "displayName": "SSC",
+    "originCountry": "United States",
+    "knownModels": [
+      "Tuatara"
+    ]
+  },
+  {
+    "name": "SUBARU",
+    "displayName": "Subaru",
+    "alternativeNames": [
+      "Subie",
+      "Scooby"
+    ],
+    "originCountry": "Japan",
+    "knownModels": []
+  },
+  {
+    "name": "SUZUKI",
+    "displayName": "Suzuki",
+    "originCountry": "Japan",
+    "knownModels": []
+  },
+  {
+    "name": "SYM",
+    "displayName": "SYM",
+    "originCountry": "Taiwan",
+    "knownModels": [
+      "Wolf 125",
+      "Fiddle III",
+      "Jet 14"
+    ]
+  },
+  {
+    "name": "TATA",
+    "displayName": "Tata",
+    "originCountry": "India",
+    "knownModels": [
+      "Nano",
+      "Indica",
+      "Safari",
+      "Tiago",
+      "Harrier"
+    ]
+  },
+  {
+    "name": "TATRA",
+    "displayName": "Tatra",
+    "originCountry": "Czech Republic",
+    "knownModels": [
+      "T87",
+      "T603",
+      "T700"
+    ]
+  },
+  {
+    "name": "TESLA",
+    "displayName": "Tesla",
+    "originCountry": "United States",
+    "knownModels": []
+  },
+  {
+    "name": "TOYOTA",
+    "displayName": "Toyota",
+    "alternativeNames": [
+      "Yota",
+      "Toyo",
+      "Totoya"
+    ],
+    "originCountry": "Japan",
+    "knownModels": [
+      "4Runner",
+      "Supra"
+    ]
+  },
+  {
+    "name": "TRIUMPH",
+    "displayName": "Triumph",
+    "originCountry": "United Kingdom",
+    "knownModels": []
+  },
+  {
+    "name": "TRIUMPH MOTORCYCLES",
+    "displayName": "Triumph Motorcycles",
+    "originCountry": "United Kingdom",
+    "knownModels": [
+      "Bonneville",
+      "Street Triple",
+      "Tiger",
+      "Rocket 3",
+      "Speed Twin"
+    ]
+  },
+  {
+    "name": "TVR",
+    "displayName": "TVR",
+    "originCountry": "United Kingdom",
+    "knownModels": []
+  },
+  {
+    "name": "VAUXHALL",
+    "displayName": "Vauxhall",
+    "originCountry": "United Kingdom",
+    "knownModels": []
+  },
+  {
+    "name": "VECTOR",
+    "displayName": "Vector",
+    "originCountry": "United States",
+    "knownModels": []
+  },
+  {
+    "name": "VENTURI",
+    "displayName": "Venturi",
+    "originCountry": "France",
+    "knownModels": []
+  },
+  {
+    "name": "VESPA",
+    "displayName": "Vespa",
+    "originCountry": "Italy",
+    "knownModels": [
+      "Primavera",
+      "GTS",
+      "Sprint"
+    ]
+  },
+  {
+    "name": "VINFAST",
+    "displayName": "VinFast",
+    "originCountry": "Vietnam",
+    "knownModels": [
+      "Lux A2.0",
+      "Lux SA2.0",
+      "VF 8",
+      "VF 9"
+    ]
+  },
+  {
+    "name": "VOLKSWAGEN",
+    "displayName": "Volkswagen",
+    "alternativeNames": [
+      "VW",
+      "V-Dub"
+    ],
+    "originCountry": "Germany",
+    "knownModels": []
+  },
+  {
+    "name": "VOLVO",
+    "displayName": "Volvo",
+    "originCountry": "Sweden",
+    "knownModels": []
+  },
+  {
+    "name": "YAMAHA",
+    "displayName": "Yamaha",
+    "originCountry": "Japan",
+    "knownModels": [
+      "YZF-R1",
+      "MT-07",
+      "MT-09",
+      "XSR900",
+      "Ténéré 700"
+    ]
+  },
+  {
+    "name": "ZAZ",
+    "displayName": "ZAZ",
+    "originCountry": "Ukraine",
+    "knownModels": [
+      "Zaporozhets",
+      "Tavria",
+      "Sens"
+    ]
+  },
+  {
+    "name": "ZENVO",
+    "displayName": "Zenvo",
+    "originCountry": "Denmark",
+    "knownModels": []
+  },
+  {
+    "name": "ZERO MOTORCYCLES",
+    "displayName": "Zero Motorcycles",
+    "originCountry": "United States",
+    "knownModels": [
+      "SR/F",
+      "DSR/X",
+      "FXE"
+    ]
+  }
+]

@@ -46,6 +46,6 @@ class ModelsSuggestionProvider {
 
 private extension CarBrand {
     var storageKey: String {
-        rawValue
+        "\(id)_\(name)"
     }
 }

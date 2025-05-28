@@ -1,0 +1,2725 @@
+[
+  {
+    "name": "ABARTH",
+    "displayName": "Abarth",
+    "knownModels": ["500", "595", "695", "Punto", "124 Spider"]
+  },
+  {
+    "name": "ABT",
+    "displayName": "ABT",
+    "knownModels": ["RS6-R", "RS7-R", "Golf R ABT", "ABT Q8", "ABT TT"],
+    "isHidden": true
+  },
+  {
+    "name": "AC",
+    "displayName": "AC",
+    "knownModels": ["Cobra", "Ace", "Aceca", "Greyhound", "428"]
+  },
+  {
+    "name": "AC SCHNITZER",
+    "displayName": "AC Schnitzer",
+    "knownModels": ["ACS3", "ACS5", "ACS7", "X6 Falcon", "ACS1"],
+    "isHidden": true
+  },
+  {
+    "name": "ACURA",
+    "displayName": "Acura",
+    "knownModels": ["NSX", "Integra", "TLX", "MDX", "RDX"]
+  },
+  {
+    "name": "ALFA-ROMEO",
+    "displayName": "Alfa Romeo",
+    "knownModels": ["Giulia", "Stelvio", "4C", "8C Competizione", "Spider"]
+  },
+  {
+    "name": "ALLARD",
+    "displayName": "Allard",
+    "knownModels": ["J2X", "K2", "L", "P1", "M"]
+  },
+  {
+    "name": "ALPINA",
+    "displayName": "Alpina",
+    "knownModels": ["B3", "B5", "B7", "XD3", "D5 S"]
+  },
+  {
+    "name": "ALPINE",
+    "displayName": "Alpine",
+    "knownModels": ["A110", "A310", "A610", "GTA", "Vision"]
+  },
+  {
+    "name": "ALVIS",
+    "displayName": "Alvis",
+    "knownModels": ["Speed 20", "Speed 25", "TF21", "TD21", "TA21"]
+  },
+  {
+    "name": "AMG",
+    "displayName": "AMG",
+    "knownModels": ["GT", "C63", "E63", "S63", "GLC63"]
+  },
+  {
+    "name": "ARDEN",
+    "displayName": "Arden",
+    "knownModels": ["AJ 20", "Range Rover AR", "Jaguar XKR Arden"],
+    "isHidden": true
+  },
+  {
+    "name": "ARIEL",
+    "displayName": "Ariel",
+    "knownModels": ["Atom", "Nomad", "Hipercar"]
+  },
+  {
+    "name": "ASCARI",
+    "displayName": "Ascari",
+    "knownModels": ["KZ1", "A10", "Ecosse"]
+  },
+  {
+    "name": "ASTON MARTIN",
+    "displayName": "Aston Martin",
+    "knownModels": ["DB5", "DB11", "Vantage", "Vanquish", "Rapide"]
+  },
+  {
+    "name": "AUBURN",
+    "displayName": "Auburn",
+    "knownModels": ["Boattail Speedster", "851", "Cord"]
+  },
+  {
+    "name": "AUDI",
+    "displayName": "Audi",
+    "knownModels": ["A4", "A6", "Q5", "R8", "RS7"]
+  },
+  {
+    "name": "AUSTIN-HEALEY",
+    "displayName": "Austin-Healey",
+    "knownModels": ["3000", "100", "Sprite", "BN1", "BN6"]
+  },
+  {
+    "name": "AUTO UNION",
+    "displayName": "Auto Union",
+    "knownModels": ["Type C", "Type D", "1000"]
+  },
+  {
+    "name": "ARTEGA",
+    "displayName": "Artega",
+    "knownModels": ["GT", "Scalo", "Karo"]
+  },
+  {
+    "name": "APOLLO",
+    "displayName": "Apollo",
+    "knownModels": ["Intensa Emozione", "Nathalie", "Arrow"]
+  },
+  {
+    "name": "AAC",
+    "displayName": "AAC",
+    "knownModels": ["Tipo 815"]
+  },
+  {
+    "name": "ABD",
+    "displayName": "ABD",
+    "knownModels": [],
+    "isHidden": true
+  },
+  {
+    "name": "ADRENALINE",
+    "displayName": "Adrenaline",
+    "knownModels": ["Murtaya"],
+    "isHidden": true
+  },
+  {
+    "name": "AEON",
+    "displayName": "Aeon",
+    "knownModels": ["GT3", "GT"]
+  },
+  {
+    "name": "ALAN MANN",
+    "displayName": "Alan Mann",
+    "knownModels": ["AM GT"],
+    "isHidden": true
+  },
+  {
+    "name": "ALBA",
+    "displayName": "Alba",
+    "knownModels": ["AR2", "AR3"],
+    "isHidden": true
+  },
+  {
+    "name": "AMERICAN MOTORS",
+    "displayName": "American Motors",
+    "alternativeNames": ["AMC"],
+    "knownModels": ["AMX", "Javelin", "Gremlin", "Pacer", "Matador"]
+  },
+  {
+    "name": "AMILCAR",
+    "displayName": "Amilcar",
+    "knownModels": ["CGSS", "C6"]
+  },
+  {
+    "name": "ARCH",
+    "displayName": "Arch",
+    "knownModels": ["KRGT-1"]
+  },
+  {
+    "name": "ARK",
+    "displayName": "ARK",
+    "knownModels": []
+  },
+  {
+    "name": "ARASH",
+    "displayName": "Arash",
+    "knownModels": ["AF8", "AF10"]
+  },
+  {
+    "name": "ASC",
+    "displayName": "ASC",
+    "knownModels": ["Diamondback", "McLaren ASC"]
+  },
+  {
+    "name": "ASL",
+    "displayName": "ASL",
+    "knownModels": ["Garaiya"]
+  },
+  {
+    "name": "ASMA",
+    "displayName": "ASMA",
+    "knownModels": [],
+    "isHidden": true
+  },
+  {
+    "name": "ATS",
+    "displayName": "ATS",
+    "knownModels": ["2500 GT", "GT", "Sport"]
+  },
+  {
+    "name": "AUBURN",
+    "displayName": "Auburn",
+    "knownModels": ["851 Speedster", "Boattail Speedster"]
+  },
+  {
+    "name": "AUSTIN",
+    "displayName": "Austin",
+    "knownModels": ["Mini", "A40", "A35", "Healey"]
+  },
+  {
+    "name": "AUTECH",
+    "displayName": "Autech",
+    "knownModels": ["Skyline Autech Version", "Z33 Autech"]
+  },
+  {
+    "name": "BAC",
+    "displayName": "BAC",
+    "knownModels": ["Mono"]
+  },
+  {
+    "name": "BALDWIN MOTION",
+    "displayName": "Baldwin Motion",
+    "knownModels": ["Phase III GT", "Motion Camaro"]
+  },
+  {
+    "name": "BERTONE",
+    "displayName": "Bertone",
+    "knownModels": ["Mantide", "Nuccio", "BAT 5", "BAT 7", "BAT 9"]
+  },
+  {
+    "name": "BALLOT",
+    "displayName": "Ballot",
+    "knownModels": []
+  },
+  {
+    "name": "BENTLEY",
+    "displayName": "Bentley",
+    "knownModels": ["Continental GT", "Bentayga", "Flying Spur", "Mulsanne"]
+  },
+  {
+    "name": "BENZ",
+    "displayName": "Benz",
+    "knownModels": ["Patent-Motorwagen", "Velo"]
+  },
+  {
+    "name": "BIZZARRINI",
+    "displayName": "Bizzarrini",
+    "knownModels": ["5300 GT", "P538", "Strada"]
+  },
+  {
+    "name": "BMW",
+    "displayName": "BMW",
+    "alternativeNames": ["Bimmer", "Beemer", "Beamer"],
+    "knownModels": ["3 Series", "5 Series", "M3", "i8", "Z4", "X5"]
+  },
+  {
+    "name": "BRABUS",
+    "displayName": "Brabus",
+    "knownModels": ["Rocket", "E V12", "G V12 900", "850 6.0 Biturbo"]
+  },
+  {
+    "name": "BUGATTI",
+    "displayName": "Bugatti",
+    "knownModels": ["Veyron", "Chiron", "Divo", "EB110", "Type 35"]
+  },
+  {
+    "name": "BUICK",
+    "displayName": "Buick",
+    "knownModels": ["Regal", "Riviera", "Skylark", "Grand National", "Enclave"]
+  },
+  {
+    "name": "CADILLAC",
+    "displayName": "Cadillac",
+    "alternativeNames": ["Caddy"],
+    "knownModels": ["Escalade", "CT5", "CTS-V", "XLR", "Eldorado"]
+  },
+  {
+    "name": "CALLAWAY",
+    "displayName": "Callaway",
+    "knownModels": ["C12", "Sledgehammer", "C16", "Aerowagen"]
+  },
+  {
+    "name": "CARLSSON",
+    "displayName": "Carlsson",
+    "knownModels": ["C25", "CK63 RS", "SLK 340"]
+  },
+  {
+    "name": "CATERHAM",
+    "displayName": "Caterham",
+    "knownModels": ["Seven 160", "Seven 620R", "CSR"]
+  },
+  {
+    "name": "CHEVROLET",
+    "displayName": "Chevrolet",
+    "alternativeNames": ["Chevy"],
+    "knownModels": ["Camaro", "Corvette", "Impala", "Malibu", "Silverado"]
+  },
+  {
+    "name": "CHRYSLER",
+    "displayName": "Chrysler",
+    "knownModels": ["300", "PT Cruiser", "Crossfire", "Town & Country"]
+  },
+  {
+    "name": "CITROËN",
+    "displayName": "Citroën",
+    "knownModels": ["2CV", "DS", "CX", "SM", "C3", "C4"]
+  },
+  {
+    "name": "CISITALIA",
+    "displayName": "Cisitalia",
+    "knownModels": ["202", "202 MM"]
+  },
+  {
+    "name": "CHEVRON",
+    "displayName": "Chevron",
+    "knownModels": ["B16", "B8", "B24"]
+  },
+  {
+    "name": "CASTAGNA",
+    "displayName": "Castagna",
+    "knownModels": ["Castagna Rossellini", "Castagna Imperial Landaulet"]
+  },
+  {
+    "name": "CIZETA",
+    "displayName": "Cizeta",
+    "knownModels": ["V16T"]
+  },
+  {
+    "name": "CAPARO",
+    "displayName": "Caparo",
+    "knownModels": ["T1"]
+  },
+  {
+    "name": "CONTINENTAL",
+    "displayName": "Continental",
+    "knownModels": []
+  },
+  {
+    "name": "COOPER",
+    "displayName": "Cooper",
+    "knownModels": ["T51", "T53", "T73"]
+  },
+  {
+    "name": "CORD",
+    "displayName": "Cord",
+    "knownModels": ["810", "812"]
+  },
+  {
+    "name": "CORVAIR",
+    "displayName": "Corvair",
+    "knownModels": ["Monza", "Greenbrier", "Corsa"]
+  },
+  {
+    "name": "COURAGE",
+    "displayName": "Courage",
+    "knownModels": ["LC70", "LC75", "C60"]
+  },
+  {
+    "name": "DAIMLER",
+    "displayName": "Daimler",
+    "knownModels": ["SP250", "Majestic Major", "Double-Six"]
+  },
+  {
+    "name": "DATSUN",
+    "displayName": "Datsun",
+    "knownModels": ["240Z", "510", "Fairlady", "Bluebird"]
+  },
+  {
+    "name": "DAUER",
+    "displayName": "Dauer",
+    "knownModels": ["962 Le Mans"]
+  },
+  {
+    "name": "DELAGE",
+    "displayName": "Delage",
+    "knownModels": ["D8", "D6"]
+  },
+  {
+    "name": "DELAHAYE",
+    "displayName": "Delahaye",
+    "knownModels": ["135", "175", "235"]
+  },
+  {
+    "name": "DETOMASO",
+    "displayName": "DeTomaso",
+    "knownModels": ["Pantera", "Mangusta", "Guarà"]
+  },
+  {
+    "name": "DINO",
+    "displayName": "Dino",
+    "knownModels": ["206 GT", "246 GT", "308 GT4"]
+  },
+  {
+    "name": "DODGE",
+    "displayName": "Dodge",
+    "knownModels": ["Charger", "Challenger", "Viper", "Ram", "Durango"]
+  },
+  {
+    "name": "DOME",
+    "displayName": "Dome",
+    "knownModels": ["Zero", "S102", "S101"]
+  },
+  {
+    "name": "DONKERVOORT",
+    "displayName": "Donkervoort",
+    "knownModels": ["D8 GTO", "S8", "F22"]
+  },
+  {
+    "name": "DUESENBERG",
+    "displayName": "Duesenberg",
+    "knownModels": ["Model J", "Model SJ"]
+  },
+  {
+    "name": "DACIA",
+    "displayName": "Dacia",
+    "knownModels": ["Duster", "Sandero", "Logan"]
+  },
+  {
+    "name": "DAEWOO",
+    "displayName": "Daewoo",
+    "knownModels": ["Lanos", "Nubira", "Leganza", "Matiz"]
+  },
+  {
+    "name": "DAIHATSU",
+    "displayName": "Daihatsu",
+    "knownModels": ["Copen", "Hijet", "Mira", "Charade"]
+  },
+  {
+    "name": "DE DION-BOUTON",
+    "displayName": "De Dion-Bouton",
+    "knownModels": []
+  },
+  {
+    "name": "DELAUNAY",
+    "displayName": "Delaunay",
+    "knownModels": []
+  },
+  {
+    "name": "DELOREAN",
+    "displayName": "DeLorean",
+    "knownModels": ["DMC-12"]
+  },
+  {
+    "name": "DENZEL",
+    "displayName": "Denzel",
+    "knownModels": []
+  },
+  {
+    "name": "DERBY",
+    "displayName": "Derby",
+    "knownModels": []
+  },
+  {
+    "name": "DESOTO",
+    "displayName": "DeSoto",
+    "knownModels": ["Firedome", "Fireflite", "Adventurer"]
+  },
+  {
+    "name": "DETROIT ELECTRIC",
+    "displayName": "Detroit Electric",
+    "knownModels": ["SP:01"]
+  },
+  {
+    "name": "DEVIN",
+    "displayName": "Devin",
+    "knownModels": ["SS", "D"]
+  },
+  {
+    "name": "DEVON",
+    "displayName": "Devon",
+    "knownModels": ["GTX"]
+  },
+  {
+    "name": "DIATTO",
+    "displayName": "Diatto",
+    "knownModels": ["Ottovù Zagato"]
+  },
+  {
+    "name": "DINAN",
+    "displayName": "Dinan",
+    "knownModels": ["M5 S2", "S3-R"]
+  },
+  {
+    "name": "DKW",
+    "displayName": "DKW",
+    "knownModels": ["F89", "Munga", "Auto Union 1000"]
+  },
+  {
+    "name": "DORAN",
+    "displayName": "Doran",
+    "knownModels": ["Doran JE4", "Doran Ford GT-R"]
+  },
+  {
+    "name": "DP",
+    "displayName": "DP",
+    "knownModels": []
+  },
+  {
+    "name": "DREKER",
+    "displayName": "Dreker",
+    "knownModels": []
+  },
+  {
+    "name": "DUAL-GHIA",
+    "displayName": "Dual-Ghia",
+    "knownModels": ["Dual-Ghia Convertible", "L6.4"]
+  },
+  {
+    "name": "DUPONT",
+    "displayName": "DuPont",
+    "knownModels": ["Model G", "Model H"]
+  },
+  {
+    "name": "DAVID BROWN",
+    "displayName": "David Brown",
+    "knownModels": ["Speedback GT"]
+  },
+  {
+    "name": "DEVEL SIXTEEN",
+    "displayName": "Devel Sixteen",
+    "knownModels": ["Sixteen"]
+  },
+  {
+    "name": "EDAG",
+    "displayName": "EDAG",
+    "knownModels": ["Light Cocoon", "Biwak"]
+  },
+  {
+    "name": "EDO",
+    "displayName": "Edo Competition",
+    "knownModels": ["Murciélago LP710", "Enzo XX Evolution"]
+  },
+  {
+    "name": "EDWARDS",
+    "displayName": "Edwards",
+    "knownModels": ["R-26"]
+  },
+  {
+    "name": "ELFIN",
+    "displayName": "Elfin",
+    "knownModels": ["MS8 Streamliner", "Type 3 Clubman"]
+  },
+  {
+    "name": "ELVA",
+    "displayName": "Elva",
+    "knownModels": ["Courier", "Mk VII"]
+  },
+  {
+    "name": "EAGLE",
+    "displayName": "Eagle",
+    "knownModels": ["Talon", "Premier"]
+  },
+  {
+    "name": "ECHIDNA",
+    "displayName": "Echidna",
+    "knownModels": []
+  },
+  {
+    "name": "EMME",
+    "displayName": "EMME",
+    "knownModels": []
+  },
+  {
+    "name": "ENIZIO",
+    "displayName": "Enizio",
+    "knownModels": []
+  },
+  {
+    "name": "EPSILON",
+    "displayName": "Epsilon",
+    "knownModels": ["Epsilon Euskadi"]
+  },
+  {
+    "name": "ERMINI",
+    "displayName": "Ermini",
+    "knownModels": ["Seiottosei", "Sport 1100"]
+  },
+  {
+    "name": "ETUD",
+    "displayName": "ETUD",
+    "knownModels": []
+  },
+  {
+    "name": "EUNOS",
+    "displayName": "Eunos",
+    "knownModels": ["Eunos Roadster", "Eunos Cosmo", "Eunos 500"]
+  },
+  {
+    "name": "EVANS",
+    "displayName": "Evans",
+    "knownModels": ["Evans 386"]
+  },
+  {
+    "name": "EVOLVE",
+    "displayName": "Evolve",
+    "knownModels": []
+  },
+  {
+    "name": "EXAGON",
+    "displayName": "Exagon",
+    "knownModels": ["Furtive-eGT"]
+  },
+  {
+    "name": "ELEMENTAL",
+    "displayName": "Elemental",
+    "knownModels": ["RP1"]
+  },
+  {
+    "name": "FERRARI",
+    "displayName": "Ferrari",
+    "knownModels": ["488 GTB", "F40", "F50", "LaFerrari", "812 Superfast"]
+  },
+  {
+    "name": "FIAT",
+    "displayName": "Fiat",
+    "knownModels": ["500", "Punto", "Tipo", "124 Spider"]
+  },
+  {
+    "name": "FIORAVANTI",
+    "displayName": "Fioravanti",
+    "knownModels": ["Vola", "Sensiva"]
+  },
+  {
+    "name": "FISKER",
+    "displayName": "Fisker",
+    "knownModels": ["Karma", "Ocean"]
+  },
+  {
+    "name": "FORD",
+    "displayName": "Ford",
+    "knownModels": ["Mustang", "F-150", "GT", "Focus", "Explorer"]
+  },
+  {
+    "name": "FABCAR",
+    "displayName": "Fabcar",
+    "knownModels": ["FDSC/03"]
+  },
+  {
+    "name": "FACEL VEGA",
+    "displayName": "Facel Vega",
+    "knownModels": ["Facel II", "HK500", "Excellence"]
+  },
+  {
+    "name": "9FF",
+    "displayName": "9ff",
+    "knownModels": ["GT9", "GTurbo", "Speed9"]
+  },
+  {
+    "name": "FARADAY",
+    "displayName": "Faraday",
+    "knownModels": ["FF 91"]
+  },
+  {
+    "name": "FIFTEEN52",
+    "displayName": "Fifteen52",
+    "knownModels": []
+  },
+  {
+    "name": "FLAJOLE",
+    "displayName": "Flajole",
+    "knownModels": ["Forerunner"]
+  },
+  {
+    "name": "FOOSE",
+    "displayName": "Foose",
+    "knownModels": ["Hemisfear", "Impression"]
+  },
+  {
+    "name": "FORCED FED",
+    "displayName": "Forced Fed",
+    "knownModels": ["FF2000"]
+  },
+  {
+    "name": "FACETTI",
+    "displayName": "Facetti",
+    "knownModels": []
+  },
+  {
+    "name": "FACTORY FIVE",
+    "displayName": "Factory Five",
+    "knownModels": ["MK4 Roadster", "Type 65 Coupe", "818"]
+  },
+  {
+    "name": "FARALLI & MAZZANTI",
+    "displayName": "Faralli & Mazzanti",
+    "knownModels": ["Evantra"]
+  },
+  {
+    "name": "FARBIO",
+    "displayName": "Farbio",
+    "knownModels": ["GTS"]
+  },
+  {
+    "name": "FARMAN",
+    "displayName": "Farman",
+    "knownModels": ["A6B"]
+  },
+  {
+    "name": "FARBOUD",
+    "displayName": "Farboud",
+    "knownModels": ["GT"]
+  },
+  {
+    "name": "FENIX",
+    "displayName": "Fenix",
+    "knownModels": ["Fenix GT"]
+  },
+  {
+    "name": "FAB DESIGN",
+    "displayName": "FAB Design",
+    "knownModels": ["Desire", "Vanquish VQ"]
+  },
+  {
+    "name": "FENOMENON",
+    "displayName": "Fenomenon",
+    "knownModels": ["Stratos"]
+  },
+  {
+    "name": "FRAZER NASH",
+    "displayName": "Frazer Nash",
+    "knownModels": ["Le Mans Replica", "Targa Florio"]
+  },
+  {
+    "name": "FRONTY",
+    "displayName": "Fronty",
+    "knownModels": []
+  },
+  {
+    "name": "F.R.P",
+    "displayName": "F.R.P",
+    "knownModels": []
+  },
+  {
+    "name": "FSWERKS",
+    "displayName": "FSWERKS",
+    "knownModels": ["Focus Turbo Kits", "Intake Systems"]
+  },
+  {
+    "name": "FUORE",
+    "displayName": "Fuore",
+    "knownModels": ["BlackJag", "XF10"]
+  },
+  {
+    "name": "GALPIN",
+    "displayName": "Galpin",
+    "knownModels": ["GTR1"]
+  },
+  {
+    "name": "GEIGER",
+    "displayName": "Geiger",
+    "knownModels": ["Hummer HX", "Corvette Z06 by GeigerCars"]
+  },
+  {
+    "name": "GEMBALLA",
+    "displayName": "Gemballa",
+    "knownModels": ["Avalanche", "Mirage GT", "Mistrale"]
+  },
+  {
+    "name": "GHIA",
+    "displayName": "Ghia",
+    "knownModels": ["G230S", "Selene", "Superdart"]
+  },
+  {
+    "name": "GINETTA",
+    "displayName": "Ginetta",
+    "knownModels": ["G40", "G50", "G55", "Akula"]
+  },
+  {
+    "name": "GENERAL MOTORS",
+    "displayName": "General Motors",
+    "knownModels": ["EV1", "Ultralite", "LeSabre Concept"]
+  },
+  {
+    "name": "GORDINI",
+    "displayName": "Gordini",
+    "knownModels": ["8 Gordini", "Renault 12 Gordini"]
+  },
+  {
+    "name": "GPOWER",
+    "displayName": "G-Power",
+    "knownModels": ["M5 Hurricane", "X6 Typhoon"]
+  },
+  {
+    "name": "GREENWOOD",
+    "displayName": "Greenwood",
+    "knownModels": ["Corvette Daytona", "GT3"]
+  },
+  {
+    "name": "GRMN",
+    "displayName": "GRMN",
+    "knownModels": ["Yaris GRMN"]
+  },
+  {
+    "name": "GUMPERT",
+    "displayName": "Gumpert",
+    "knownModels": ["Apollo", "Apollo S", "Apollo Sport"]
+  },
+  {
+    "name": "GAACO",
+    "displayName": "GAACO",
+    "knownModels": []
+  },
+  {
+    "name": "GEELY",
+    "displayName": "Geely",
+    "knownModels": ["Emgrand", "Coolray", "Atlas", "Binrui", "Geometry C"]
+  },
+  {
+    "name": "GENADDI",
+    "displayName": "Genaddi",
+    "knownModels": ["Lamborghini Roadster Conversion"]
+  },
+  {
+    "name": "GIGLIATO",
+    "displayName": "Gigliato",
+    "knownModels": ["Aerosa"]
+  },
+  {
+    "name": "GILLET",
+    "displayName": "Gillet",
+    "knownModels": ["Vertigo"]
+  },
+  {
+    "name": "GIUGIARO",
+    "displayName": "Giugiaro",
+    "knownModels": ["Brivido", "Gea", "Gemin"]
+  },
+  {
+    "name": "GLASSPAR",
+    "displayName": "Glasspar",
+    "knownModels": ["G2"]
+  },
+  {
+    "name": "GRABER CARS",
+    "displayName": "Graber Cars",
+    "knownModels": [],
+    "isHidden": true
+  },
+  {
+    "name": "GREDDY",
+    "displayName": "GReddy",
+    "knownModels": [],
+    "isHidden": true
+  },
+  {
+    "name": "GTA",
+    "displayName": "Spania GTA",
+    "alternativeNames": ["GTA"],
+    "knownModels": ["Spano"]
+  },
+  {
+    "name": "GENESIS",
+    "displayName": "Genesis",
+    "knownModels": ["G70", "G80", "G90", "GV70", "GV80"]
+  },
+  {
+    "name": "GILLET",
+    "displayName": "Gillet",
+    "knownModels": ["Vertigo"]
+  },
+  {
+    "name": "GMC",
+    "displayName": "GMC",
+    "knownModels": ["Sierra", "Canyon", "Yukon", "Terrain", "Acadia"]
+  },
+  {
+    "name": "HAMANN",
+    "displayName": "Hamann",
+    "knownModels": ["Tycoon Evo", "Victory II", "Mirr6r"]
+  },
+  {
+    "name": "HARLEY-DAVIDSON",
+    "displayName": "Harley-Davidson",
+    "knownModels": ["Street Glide", "Sportster", "Road King", "Fat Boy"]
+  },
+  {
+    "name": "HARTGE",
+    "displayName": "Hartge",
+    "knownModels": ["H50 V10", "F1"]
+  },
+  {
+    "name": "HENNESSEY",
+    "displayName": "Hennessey",
+    "knownModels": ["Venom GT", "Venom F5", "Mammoth 1000"]
+  },
+  {
+    "name": "HISPANO-SUIZA",
+    "displayName": "Hispano-Suiza",
+    "knownModels": ["Carmen", "H6"]
+  },
+  {
+    "name": "HOLDEN",
+    "displayName": "Holden",
+    "knownModels": ["Commodore", "Monaro", "Ute", "Statesman"]
+  },
+  {
+    "name": "HONDA",
+    "displayName": "Honda",
+    "knownModels": ["Civic", "Accord", "CR-V", "Fit", "NSX"]
+  },
+  {
+    "name": "HOMMEL",
+    "displayName": "Hommel",
+    "knownModels": ["Berlinette RS"]
+  },
+  {
+    "name": "HORCH",
+    "displayName": "Horch",
+    "knownModels": ["853", "930 V"]
+  },
+  {
+    "name": "HPD",
+    "displayName": "Honda Performance Development (HPD)",
+    "knownModels": ["ARX-04b", "Civic Si Race Car"],
+    "isHidden": true
+  },
+  {
+    "name": "HSV",
+    "displayName": "Holden Special Vehicles (HSV)",
+    "knownModels": ["GTS", "Maloo", "Clubsport", "Senator"]
+  },
+  {
+    "name": "HURST",
+    "displayName": "Hurst",
+    "knownModels": ["Hurst Olds", "Hurst Challenger"]
+  },
+  {
+    "name": "HONGQI",
+    "displayName": "Hongqi",
+    "knownModels": ["H9", "E-HS9", "L5"]
+  },
+  {
+    "name": "HAFEI",
+    "displayName": "Hafei",
+    "knownModels": ["Lobo", "Saibao"]
+  },
+  {
+    "name": "HASPORT",
+    "displayName": "Hasport",
+    "knownModels": []
+  },
+  {
+    "name": "HBH",
+    "displayName": "HBH",
+    "knownModels": ["Bulldog GT"]
+  },
+  {
+    "name": "HEYNSDYK",
+    "displayName": "Heynsdyk",
+    "knownModels": ["2500SF"]
+  },
+  {
+    "name": "HKS",
+    "displayName": "HKS",
+    "knownModels": ["HKS CT230R"]
+  },
+  {
+    "name": "HUNTER",
+    "displayName": "Hunter",
+    "knownModels": ["Hunter MK5"]
+  },
+  {
+    "name": "HOERMANN",
+    "displayName": "Hoermann",
+    "knownModels": []
+  },
+  {
+    "name": "HOOPER",
+    "displayName": "Hooper",
+    "knownModels": ["Rolls-Royce Coachbuilds"]
+  },
+  {
+    "name": "HOTCHKISS",
+    "displayName": "Hotchkiss",
+    "knownModels": ["686", "Gregoire"]
+  },
+  {
+    "name": "HOWELL",
+    "displayName": "Howell",
+    "knownModels": []
+  },
+  {
+    "name": "HRG",
+    "displayName": "HRG",
+    "knownModels": ["1500", "Aerodynamic"]
+  },
+  {
+    "name": "HUDSON",
+    "displayName": "Hudson",
+    "knownModels": ["Hornet", "Commodore", "Terraplane"]
+  },
+  {
+    "name": "HULME",
+    "displayName": "Hulme",
+    "knownModels": ["CanAm"]
+  },
+  {
+    "name": "HYUNDAI",
+    "displayName": "Hyundai",
+    "alternativeNames": ["Hyun", "Hundy"],
+    "knownModels": ["Elantra", "Sonata", "Tucson", "Santa Fe"]
+  },
+  {
+    "name": "HEULIEZ",
+    "displayName": "Heuliez",
+    "knownModels": []
+  },
+  {
+    "name": "IMPERIAL",
+    "displayName": "Imperial",
+    "knownModels": []
+  },
+  {
+    "name": "INDIAN",
+    "displayName": "Indian",
+    "knownModels": []
+  },
+  {
+    "name": "INFINITI",
+    "displayName": "Infiniti",
+    "knownModels": ["Q50", "QX60", "G35", "FX35"]
+  },
+  {
+    "name": "INNOTECH",
+    "displayName": "Innotech",
+    "knownModels": []
+  },
+  {
+    "name": "ISDERA",
+    "displayName": "Isdera",
+    "knownModels": ["Commendatore 112i", "Imperator 108i"]
+  },
+  {
+    "name": "ISO",
+    "displayName": "Iso",
+    "knownModels": ["Grifo", "Rivolta", "Lele"]
+  },
+  {
+    "name": "ISOTTA",
+    "displayName": "Isotta",
+    "knownModels": ["Fraschini Tipo 8A", "Tipo 8C Monterosa"]
+  },
+  {
+    "name": "ISUZU",
+    "displayName": "Isuzu",
+    "knownModels": ["Trooper", "Rodeo", "D-Max"]
+  },
+  {
+    "name": "ITALDESIGN",
+    "displayName": "Italdesign",
+    "knownModels": ["Giugiaro Parcour", "Zerouno"]
+  },
+  {
+    "name": "I.DE.A",
+    "displayName": "I.DE.A",
+    "knownModels": []
+  },
+  {
+    "name": "IED",
+    "displayName": "IED",
+    "knownModels": []
+  },
+  {
+    "name": "IMOLA RACING",
+    "displayName": "Imola Racing",
+    "knownModels": []
+  },
+  {
+    "name": "IMPUL",
+    "displayName": "Impul",
+    "knownModels": ["Impul 930RS", "Impul March"]
+  },
+  {
+    "name": "IMSA",
+    "displayName": "IMSA",
+    "knownModels": []
+  },
+  {
+    "name": "INTERMECCANICA",
+    "displayName": "Intermeccanica",
+    "knownModels": ["Italia", "Indra"]
+  },
+  {
+    "name": "INTREPID",
+    "displayName": "Intrepid",
+    "knownModels": []
+  },
+  {
+    "name": "INVICTA",
+    "displayName": "Invicta",
+    "knownModels": ["S1", "Black Prince"]
+  },
+  {
+    "name": "ICENI",
+    "displayName": "Iceni",
+    "knownModels": ["Iceni Magna", "Iceni Venturer"]
+  },
+  {
+    "name": "ICONA",
+    "displayName": "Icona",
+    "knownModels": ["Vulcano", "Nucleus"]
+  },
+  {
+    "name": "ICONIC",
+    "displayName": "Iconic",
+    "knownModels": ["Iconic GTR"]
+  },
+  {
+    "name": "ITALMECCANICA",
+    "displayName": "Italmeccanica",
+    "knownModels": []
+  },
+  {
+    "name": "JAGUAR",
+    "displayName": "Jaguar",
+    "alternativeNames": ["Jag"],
+    "knownModels": ["E-Type", "F-Type", "XJ", "XF", "I-Pace"]
+  },
+  {
+    "name": "JEEP",
+    "displayName": "Jeep",
+    "knownModels": ["Wrangler", "Cherokee", "Grand Cherokee", "Renegade"]
+  },
+  {
+    "name": "JENSEN",
+    "displayName": "Jensen",
+    "knownModels": ["Interceptor", "541R"]
+  },
+  {
+    "name": "JAVAN",
+    "displayName": "Javan",
+    "knownModels": ["Javan R1"]
+  },
+  {
+    "name": "JETSTREAM",
+    "displayName": "Jetstream",
+    "knownModels": ["SC250"]
+  },
+  {
+    "name": "JIMENEZ",
+    "displayName": "Jimenez",
+    "knownModels": ["Novia"]
+  },
+  {
+    "name": "JIOTTO",
+    "displayName": "Jiotto",
+    "knownModels": ["Caspita"]
+  },
+  {
+    "name": "JOEST",
+    "displayName": "Joest",
+    "knownModels": []
+  },
+  {
+    "name": "JBA",
+    "displayName": "JBA",
+    "knownModels": ["Falcon"]
+  },
+  {
+    "name": "JAC",
+    "displayName": "JAC",
+    "knownModels": ["J7", "T8", "Refine"]
+  },
+  {
+    "name": "KAISER-DARRIN",
+    "displayName": "Kaiser-Darrin",
+    "knownModels": ["DKF-161"]
+  },
+  {
+    "name": "KARMANN",
+    "displayName": "Karmann",
+    "knownModels": ["Ghia"]
+  },
+  {
+    "name": "KATECH",
+    "displayName": "Katech",
+    "knownModels": []
+  },
+  {
+    "name": "KEATING",
+    "displayName": "Keating",
+    "knownModels": ["Bolt", "ZK"]
+  },
+  {
+    "name": "KELLISON",
+    "displayName": "Kellison",
+    "knownModels": ["J4", "J5"]
+  },
+  {
+    "name": "KEPLER MOTORS",
+    "displayName": "Kepler Motors",
+    "knownModels": ["Motion"]
+  },
+  {
+    "name": "KIA",
+    "displayName": "Kia",
+    "knownModels": ["Sorento", "Optima", "Sportage", "Telluride"]
+  },
+  {
+    "name": "KICHERER",
+    "displayName": "Kicherer",
+    "knownModels": []
+  },
+  {
+    "name": "KLEEMANN",
+    "displayName": "Kleemann",
+    "knownModels": []
+  },
+  {
+    "name": "KOENIGSEGG",
+    "displayName": "Koenigsegg",
+    "knownModels": ["Agera", "Jesko", "Regera", "Gemera"]
+  },
+  {
+    "name": "KOENIG-SPECIALS",
+    "displayName": "Koenig-Specials",
+    "knownModels": []
+  },
+  {
+    "name": "KREMER",
+    "displayName": "Kremer",
+    "knownModels": []
+  },
+  {
+    "name": "KTM",
+    "displayName": "KTM",
+    "knownModels": ["X-Bow"]
+  },
+  {
+    "name": "KURTIS",
+    "displayName": "Kurtis",
+    "knownModels": ["Kurtis 500S"]
+  },
+  {
+    "name": "KARMA",
+    "displayName": "Karma",
+    "knownModels": ["Revero", "GS-6"]
+  },
+  {
+    "name": "KAWASAKI",
+    "displayName": "Kawasaki",
+    "knownModels": []
+  },
+  {
+    "name": "LAGONDA",
+    "displayName": "Lagonda",
+    "knownModels": ["LG6", "Rapide"]
+  },
+  {
+    "name": "LAMBORGHINI",
+    "displayName": "Lamborghini",
+    "alternativeNames": ["Lambo"],
+    "knownModels": ["Aventador", "Huracán", "Urus", "Countach"]
+  },
+  {
+    "name": "LANCIA",
+    "displayName": "Lancia",
+    "knownModels": ["Stratos", "delta integrale"]
+  },
+  {
+    "name": "LAND ROVER",
+    "displayName": "Land Rover",
+    "alternativeNames": ["Landy"],
+    "knownModels": []
+  },
+  {
+    "name": "MAZDA",
+    "displayName": "Mazda",
+    "alternativeNames": ["Mazzie", "Zoom-Zoom"],
+    "knownModels": ["MX-5", "MX-5 Miata", "CX-90"]
+  },
+  {
+    "name": "MCLAREN",
+    "displayName": "McLaren",
+    "knownModels": ["P1", "720S", "650S", "570S", "Artura", "F1"]
+  },
+  {
+    "name": "MCV",
+    "displayName": "MCV",
+    "knownModels": []
+  },
+  {
+    "name": "MEGA",
+    "displayName": "Mega",
+    "knownModels": ["Track"]
+  },
+  {
+    "name": "MELKUS",
+    "displayName": "Melkus",
+    "knownModels": ["RS 1000", "RS 2000"]
+  },
+  {
+    "name": "MELLING",
+    "displayName": "Melling",
+    "knownModels": ["Wildcat"]
+  },
+  {
+    "name": "MERCEDES",
+    "displayName": "Mercedes",
+    "knownModels": ["S-Class", "E-Class", "C-Class"]
+  },
+  {
+    "name": "MERCEDES-AMG",
+    "displayName": "Mercedes-AMG",
+    "knownModels": ["GT", "C63", "E63", "A45", "G63"]
+  },
+  {
+    "name": "MERCEDES-BENZ",
+    "displayName": "Mercedes-Benz",
+    "knownModels": ["G-Class", "CLA", "GLA", "GLC"]
+  },
+  {
+    "name": "MERCEDES-KNIGHT",
+    "displayName": "Mercedes-Knight",
+    "knownModels": []
+  },
+  {
+    "name": "MERCER",
+    "displayName": "Mercer",
+    "knownModels": ["Raceabout"]
+  },
+  {
+    "name": "MERCURY",
+    "displayName": "Mercury",
+    "knownModels": ["Cougar", "Grand Marquis", "Milan"]
+  },
+  {
+    "name": "MG",
+    "displayName": "MG",
+    "knownModels": ["MG3", "MG6", "MGB", "MG ZS"]
+  },
+  {
+    "name": "MILLER",
+    "displayName": "Miller",
+    "knownModels": []
+  },
+  {
+    "name": "MINERVA",
+    "displayName": "Minerva",
+    "knownModels": []
+  },
+  {
+    "name": "MINI",
+    "displayName": "MINI",
+    "knownModels": ["Cooper", "Clubman", "Countryman", "Paceman"]
+  },
+  {
+    "name": "MIRAGE",
+    "displayName": "Mirage",
+    "knownModels": []
+  },
+  {
+    "name": "MITSUBISHI",
+    "displayName": "Mitsubishi",
+    "alternativeNames": ["Mitsu"],
+    "knownModels": ["Lancer", "Eclipse", "Outlander", "Mirage", "Pajero"]
+  },
+  {
+    "name": "MITSUOKA",
+    "displayName": "Mitsuoka",
+    "knownModels": ["Orochi", "Viewt", "Himiko"]
+  },
+  {
+    "name": "MOBSTEEL",
+    "displayName": "Mobsteel",
+    "knownModels": []
+  },
+  {
+    "name": "MOMO",
+    "displayName": "MOMO",
+    "knownModels": []
+  },
+  {
+    "name": "MONTEVERDI",
+    "displayName": "Monteverdi",
+    "knownModels": ["Hai 450", "High Speed"]
+  },
+  {
+    "name": "MOONCRAFT",
+    "displayName": "Mooncraft",
+    "knownModels": []
+  },
+  {
+    "name": "MORETTI",
+    "displayName": "Moretti",
+    "knownModels": []
+  },
+  {
+    "name": "MORGAN",
+    "displayName": "Morgan",
+    "knownModels": ["3 Wheeler", "Plus Four", "Plus Six"]
+  },
+  {
+    "name": "MORRIS",
+    "displayName": "Morris",
+    "knownModels": ["Minor", "Oxford"]
+  },
+  {
+    "name": "MOSLER",
+    "displayName": "Mosler",
+    "knownModels": ["MT900"]
+  },
+  {
+    "name": "MR NORM’S",
+    "displayName": "Mr. Norm’s",
+    "knownModels": []
+  },
+  {
+    "name": "MRT",
+    "displayName": "MRT",
+    "knownModels": []
+  },
+  {
+    "name": "MSO",
+    "displayName": "McLaren Special Operations",
+    "knownModels": []
+  },
+  {
+    "name": "MTM",
+    "displayName": "MTM",
+    "knownModels": []
+  },
+  {
+    "name": "MUGEN",
+    "displayName": "Mugen",
+    "knownModels": ["Civic Mugen RR"]
+  },
+  {
+    "name": "MULLEN",
+    "displayName": "Mullen",
+    "knownModels": ["Mullen Five", "GT Electric"]
+  },
+  {
+    "name": "MULTIMATIC",
+    "displayName": "Multimatic",
+    "knownModels": []
+  },
+  {
+    "name": "MUNTZ",
+    "displayName": "Muntz",
+    "knownModels": ["Jet"]
+  },
+  {
+    "name": "MURENA",
+    "displayName": "Murena",
+    "knownModels": []
+  },
+  {
+    "name": "NASH-HEALEY",
+    "displayName": "Nash-Healey",
+    "knownModels": []
+  },
+  {
+    "name": "NISMO",
+    "displayName": "Nismo",
+    "knownModels": ["370Z Nismo", "GT-R Nismo"]
+  },
+  {
+    "name": "NISSAN",
+    "displayName": "Nissan",
+    "knownModels": ["GT-R", "370Z", "Altima", "Maxima", "Leaf", "Pathfinder"]
+  },
+  {
+    "name": "NOBLE",
+    "displayName": "Noble",
+    "knownModels": ["M400", "M600"]
+  },
+  {
+    "name": "NOVITEC",
+    "displayName": "Novitec",
+    "knownModels": []
+  },
+  {
+    "name": "NAPIER",
+    "displayName": "Napier",
+    "knownModels": []
+  },
+  {
+    "name": "NASH",
+    "displayName": "Nash",
+    "knownModels": ["Ambassador", "Rambler"]
+  },
+  {
+    "name": "NEUSPEED",
+    "displayName": "Neuspeed",
+    "knownModels": []
+  },
+  {
+    "name": "NICKEY",
+    "displayName": "Nickey",
+    "knownModels": []
+  },
+  {
+    "name": "NORMAN E. TIMBS",
+    "displayName": "Norman E. Timbs",
+    "knownModels": []
+  },
+  {
+    "name": "NOVA",
+    "displayName": "Nova",
+    "knownModels": []
+  },
+  {
+    "name": "NERI & BONACINI",
+    "displayName": "Neri & Bonacini",
+    "knownModels": []
+  },
+  {
+    "name": "OETTINGER",
+    "displayName": "Oettinger",
+    "knownModels": []
+  },
+  {
+    "name": "OLDSMOBILE",
+    "displayName": "Oldsmobile",
+    "knownModels": ["Cutlass", "442", "Alero", "Aurora"]
+  },
+  {
+    "name": "OLD YELLER",
+    "displayName": "Old Yeller",
+    "knownModels": []
+  },
+  {
+    "name": "OLSBERGSMSE",
+    "displayName": "Olsbergs MSE",
+    "knownModels": []
+  },
+  {
+    "name": "OM",
+    "displayName": "OM",
+    "knownModels": ["Tipo 665 Superba"]
+  },
+  {
+    "name": "OPEL",
+    "displayName": "Opel",
+    "knownModels": ["Astra", "Corsa", "Insignia", "Manta", "Kadett"]
+  },
+  {
+    "name": "ORCA",
+    "displayName": "Orca",
+    "knownModels": ["C113", "SC7"]
+  },
+  {
+    "name": "ORECA",
+    "displayName": "Oreca",
+    "knownModels": ["03", "07"]
+  },
+  {
+    "name": "OSCA",
+    "displayName": "OSCA",
+    "knownModels": ["MT4", "S187"]
+  },
+  {
+    "name": "OSELLA",
+    "displayName": "Osella",
+    "knownModels": ["PA9", "FA1"]
+  },
+  {
+    "name": "PACKARD",
+    "displayName": "Packard",
+    "knownModels": ["One-Twenty", "Clipper", "Patrician"]
+  },
+  {
+    "name": "PAGANI",
+    "displayName": "Pagani",
+    "knownModels": ["Zonda", "Huayra", "Utopia"]
+  },
+  {
+    "name": "PANHARD",
+    "displayName": "Panhard",
+    "knownModels": ["PL 17", "Dyna Z"]
+  },
+  {
+    "name": "PANOZ",
+    "displayName": "Panoz",
+    "knownModels": ["Esperante", "Avezzano"]
+  },
+  {
+    "name": "PEUGEOT",
+    "displayName": "Peugeot",
+    "alternativeNames": ["Pug"],
+    "knownModels": ["206", "208", "306", "508", "504"]
+  },
+  {
+    "name": "PIERCE-ARROW",
+    "displayName": "Pierce-Arrow",
+    "knownModels": ["Model 66", "Silver Arrow"]
+  },
+  {
+    "name": "PININFARINA",
+    "displayName": "Pininfarina",
+    "knownModels": ["Battista"]
+  },
+  {
+    "name": "PLYMOUTH",
+    "displayName": "Plymouth",
+    "knownModels": ["Barracuda", "Road Runner", "Duster"]
+  },
+  {
+    "name": "PONTIAC",
+    "displayName": "Pontiac",
+    "knownModels": ["GTO", "Firebird", "Trans Am", "Fiero"]
+  },
+  {
+    "name": "PORSCHE",
+    "displayName": "Porsche",
+    "alternativeNames": ["Porker"],
+    "knownModels": ["911", "Boxster", "Cayman", "Panamera", "Taycan"]
+  },
+  {
+    "name": "PRODRIVE",
+    "displayName": "Prodrive",
+    "knownModels": ["P25"]
+  },
+  {
+    "name": "PUMA",
+    "displayName": "Puma",
+    "knownModels": ["GT", "GTE"]
+  },
+  {
+    "name": "PPI",
+    "displayName": "PPI",
+    "knownModels": ["RSR"]
+  },
+  {
+    "name": "PGO",
+    "displayName": "PGO",
+    "knownModels": ["Hemera", "Cevennes", "Speedster II"]
+  },
+  {
+    "name": "PEERLESS",
+    "displayName": "Peerless",
+    "knownModels": ["GT"]
+  },
+  {
+    "name": "PEGASO",
+    "displayName": "Pegaso",
+    "knownModels": ["Z-102", "Z-103"]
+  },
+  {
+    "name": "PERANA",
+    "displayName": "Perana",
+    "knownModels": ["Z-One"]
+  },
+  {
+    "name": "PERRIN",
+    "displayName": "Perrin",
+    "knownModels": []
+  },
+  {
+    "name": "PESCAROLO",
+    "displayName": "Pescarolo",
+    "knownModels": ["01", "03"]
+  },
+  {
+    "name": "PICCHIO",
+    "displayName": "Picchio",
+    "knownModels": ["P4", "DP2"]
+  },
+  {
+    "name": "PIERCE",
+    "displayName": "Pierce",
+    "knownModels": ["Great Arrow"]
+  },
+  {
+    "name": "PILBEAM",
+    "displayName": "Pilbeam",
+    "knownModels": ["MP84", "MP100"]
+  },
+  {
+    "name": "PIONTEK",
+    "displayName": "Piontek",
+    "knownModels": ["Sportech"]
+  },
+  {
+    "name": "PREMIER",
+    "displayName": "Premier",
+    "knownModels": ["118NE", "Rio"]
+  },
+  {
+    "name": "PRINCE",
+    "displayName": "Prince",
+    "knownModels": ["Skyline", "Gloria"]
+  },
+  {
+    "name": "PRINDIVILLE",
+    "displayName": "Prindiville",
+    "knownModels": ["Murciélago Custom"]
+  },
+  {
+    "name": "PROST",
+    "displayName": "Prost",
+    "knownModels": []
+  },
+  {
+    "name": "PROTON",
+    "displayName": "Proton",
+    "knownModels": ["Saga", "Persona", "Wira"]
+  },
+  {
+    "name": "PSI",
+    "displayName": "PSI",
+    "knownModels": []
+  },
+  {
+    "name": "POLESTAR",
+    "displayName": "Polestar",
+    "knownModels": ["1", "2", "3"]
+  },
+  {
+    "name": "PANTHER",
+    "displayName": "Panther",
+    "knownModels": ["De Ville", "J72"]
+  },
+  {
+    "name": "PARRADINE",
+    "displayName": "Parradine",
+    "knownModels": []
+  },
+  {
+    "name": "PIPER",
+    "displayName": "Piper",
+    "knownModels": ["GTR"]
+  },
+  {
+    "name": "PIRRUNG",
+    "displayName": "Pirrung",
+    "knownModels": []
+  },
+  {
+    "name": "PRATT & MILLER",
+    "displayName": "Pratt & Miller",
+    "knownModels": ["C6RS"]
+  },
+  {
+    "name": "QUANT",
+    "displayName": "Quant",
+    "knownModels": ["Quant E", "Quant F", "Quantino"]
+  },
+  {
+    "name": "QVALE",
+    "displayName": "Qvale",
+    "knownModels": ["Mangusta"]
+  },
+  {
+    "name": "QVICK",
+    "displayName": "Qvick",
+    "knownModels": []
+  },
+  {
+    "name": "RADICAL",
+    "displayName": "Radical",
+    "knownModels": ["SR3", "RXC", "SR10"]
+  },
+  {
+    "name": "REITER",
+    "displayName": "Reiter",
+    "knownModels": ["Murciélago R-GT", "Gallardo GT3"]
+  },
+  {
+    "name": "RENAULT",
+    "displayName": "Renault",
+    "knownModels": ["Clio", "Megane", "Twingo", "Laguna"]
+  },
+  {
+    "name": "RENNTECH",
+    "displayName": "Renntech",
+    "knownModels": ["R3"]
+  },
+  {
+    "name": "RILEY",
+    "displayName": "Riley",
+    "knownModels": ["Elf", "One-Point-Five"]
+  },
+  {
+    "name": "RINSPEED",
+    "displayName": "Rinspeed",
+    "knownModels": ["BamBoo", "Squba", "Budii"]
+  },
+  {
+    "name": "RMR",
+    "displayName": "RMR",
+    "knownModels": []
+  },
+  {
+    "name": "ROLLS-ROYCE",
+    "displayName": "Rolls-Royce",
+    "knownModels": ["Phantom", "Ghost", "Wraith", "Cullinan"]
+  },
+  {
+    "name": "ROUSH",
+    "displayName": "Roush",
+    "knownModels": ["Stage 3 Mustang", "F-150 SC"]
+  },
+  {
+    "name": "ROVER",
+    "displayName": "Rover",
+    "knownModels": ["P5", "P6", "SD1"]
+  },
+  {
+    "name": "RUF",
+    "displayName": "RUF",
+    "knownModels": ["CTR", "Rt 12", "RK Coupe"]
+  },
+  {
+    "name": "RACING DYNAMICS",
+    "displayName": "Racing Dynamics",
+    "knownModels": []
+  },
+  {
+    "name": "RADFORD",
+    "displayName": "Radford",
+    "knownModels": ["Lotus Type 62-2"]
+  },
+  {
+    "name": "RE AMEMIYA",
+    "displayName": "RE Amemiya",
+    "knownModels": ["RX-7", "GReddy 6"]
+  },
+  {
+    "name": "REDLINE",
+    "displayName": "Redline",
+    "knownModels": ["MTB", "D440"]
+  },
+  {
+    "name": "RENÉ BONNET",
+    "displayName": "René Bonnet",
+    "knownModels": ["Djet"]
+  },
+  {
+    "name": "REVENGE",
+    "displayName": "Revenge",
+    "knownModels": ["GTM"]
+  },
+  {
+    "name": "REYARD",
+    "displayName": "Reyard",
+    "knownModels": []
+  },
+  {
+    "name": "REYNARD",
+    "displayName": "Reynard",
+    "knownModels": ["02S"]
+  },
+  {
+    "name": "RICKENBAKER",
+    "displayName": "Rickenbaker",
+    "knownModels": []
+  },
+  {
+    "name": "RK COLLECTION",
+    "displayName": "RK Collection",
+    "knownModels": []
+  },
+  {
+    "name": "RLR",
+    "displayName": "RLR",
+    "knownModels": []
+  },
+  {
+    "name": "ROEWE",
+    "displayName": "Roewe",
+    "knownModels": ["RX5", "i6"]
+  },
+  {
+    "name": "RONART",
+    "displayName": "Ronart",
+    "knownModels": ["W152"]
+  },
+  {
+    "name": "RONN MOTOR",
+    "displayName": "Ronn Motor",
+    "knownModels": ["Scorpion"]
+  },
+  {
+    "name": "ROOCK",
+    "displayName": "Roock",
+    "knownModels": ["911 Roock RST"]
+  },
+  {
+    "name": "ROOS",
+    "displayName": "Roos",
+    "knownModels": []
+  },
+  {
+    "name": "ROSSI",
+    "displayName": "Rossi",
+    "knownModels": ["SixtySix"]
+  },
+  {
+    "name": "ROSSION",
+    "displayName": "Rossion",
+    "knownModels": ["Q1"]
+  },
+  {
+    "name": "ROYAL ENFIELD",
+    "displayName": "Royal Enfield",
+    "knownModels": ["Bullet", "Interceptor", "Classic"]
+  },
+  {
+    "name": "ROYAL EXCELLENCE",
+    "displayName": "Royal Excellence",
+    "knownModels": []
+  },
+  {
+    "name": "RSR",
+    "displayName": "RSR",
+    "knownModels": []
+  },
+  {
+    "name": "RTR",
+    "displayName": "RTR",
+    "knownModels": ["Spec 5 Mustang"]
+  },
+  {
+    "name": "ROMETSCH",
+    "displayName": "Rometsch",
+    "knownModels": ["Lawrence"]
+  },
+  {
+    "name": "RUSSO-BALTIQUE",
+    "displayName": "Russo-Baltique",
+    "knownModels": ["Impression"]
+  },
+  {
+    "name": "RUXTON",
+    "displayName": "Ruxton",
+    "knownModels": []
+  },
+  {
+    "name": "REZVANI",
+    "displayName": "Rezvani",
+    "knownModels": ["Beast", "Tank"]
+  },
+  {
+    "name": "RAM",
+    "displayName": "RAM",
+    "knownModels": ["1500", "2500", "3500"]
+  },
+  {
+    "name": "RIMAC",
+    "displayName": "Rimac",
+    "knownModels": ["Nevera", "Concept_One"]
+  },
+  {
+    "name": "RANZ",
+    "displayName": "Ranz",
+    "knownModels": []
+  },
+  {
+    "name": "SAAB",
+    "displayName": "Saab",
+    "knownModels": ["900", "9-3", "9-5"]
+  },
+  {
+    "name": "SALEEN",
+    "displayName": "Saleen",
+    "knownModels": ["S7", "S1"]
+  },
+  {
+    "name": "SBARRO",
+    "displayName": "Sbarro",
+    "knownModels": ["Espera"]
+  },
+  {
+    "name": "SCARAB",
+    "displayName": "Scarab",
+    "knownModels": []
+  },
+  {
+    "name": "SCION",
+    "displayName": "Scion",
+    "knownModels": ["tC", "xB", "FR-S"]
+  },
+  {
+    "name": "SEAT",
+    "displayName": "SEAT",
+    "knownModels": ["Ibiza", "Leon", "Ateca"]
+  },
+  {
+    "name": "SHELBY",
+    "displayName": "Shelby",
+    "knownModels": ["Cobra", "GT350", "GT500"]
+  },
+  {
+    "name": "SINGER",
+    "displayName": "Singer",
+    "knownModels": ["Porsche 911 reimagined"]
+  },
+  {
+    "name": "SIATA",
+    "displayName": "Siata",
+    "knownModels": ["208S"]
+  },
+  {
+    "name": "SIMCA",
+    "displayName": "Simca",
+    "knownModels": ["1000", "1301"]
+  },
+  {
+    "name": "SMS",
+    "displayName": "SMS",
+    "knownModels": ["570X", "302"]
+  },
+  {
+    "name": "SPEEDART",
+    "displayName": "SpeedART",
+    "knownModels": []
+  },
+  {
+    "name": "SPORTEC",
+    "displayName": "Sportec",
+    "knownModels": []
+  },
+  {
+    "name": "SPYKER",
+    "displayName": "Spyker",
+    "knownModels": ["C8", "C12"]
+  },
+  {
+    "name": "SSC",
+    "displayName": "SSC",
+    "knownModels": ["Tuatara"]
+  },
+  {
+    "name": "STARTECH",
+    "displayName": "Startech",
+    "knownModels": []
+  },
+  {
+    "name": "STEEDA",
+    "displayName": "Steeda",
+    "knownModels": []
+  },
+  {
+    "name": "STOLA",
+    "displayName": "Stola",
+    "knownModels": []
+  },
+  {
+    "name": "STROSEK",
+    "displayName": "Strosek",
+    "knownModels": []
+  },
+  {
+    "name": "STUTZ",
+    "displayName": "Stutz",
+    "knownModels": []
+  },
+  {
+    "name": "SUBARU",
+    "displayName": "Subaru",
+    "alternativeNames": ["Subie", "Scooby"],
+    "knownModels": []
+  },
+  {
+    "name": "SUNBEAM",
+    "displayName": "Sunbeam",
+    "knownModels": []
+  },
+  {
+    "name": "SUPERFORMANCE",
+    "displayName": "Superformance",
+    "knownModels": []
+  },
+  {
+    "name": "SUZUKI",
+    "displayName": "Suzuki",
+    "knownModels": []
+  },
+  {
+    "name": "SAUBER",
+    "displayName": "Sauber",
+    "knownModels": []
+  },
+  {
+    "name": "SAAC",
+    "displayName": "SAAC",
+    "knownModels": []
+  },
+  {
+    "name": "SADLER-MEYER",
+    "displayName": "Sadler-Meyer",
+    "knownModels": []
+  },
+  {
+    "name": "SAFIR",
+    "displayName": "Safir",
+    "knownModels": []
+  },
+  {
+    "name": "SAKER",
+    "displayName": "Saker",
+    "knownModels": []
+  },
+  {
+    "name": "SAMLSON",
+    "displayName": "Samson",
+    "knownModels": []
+  },
+  {
+    "name": "SANTINI",
+    "displayName": "Santini",
+    "knownModels": []
+  },
+  {
+    "name": "SARENI",
+    "displayName": "Sareni",
+    "knownModels": []
+  },
+  {
+    "name": "SATURN",
+    "displayName": "Saturn",
+    "knownModels": []
+  },
+  {
+    "name": "SAVAGE",
+    "displayName": "Savage",
+    "knownModels": []
+  },
+  {
+    "name": "SCG",
+    "displayName": "SCG",
+    "knownModels": []
+  },
+  {
+    "name": "SCHAGHTICOKE",
+    "displayName": "Schaghticoke",
+    "knownModels": []
+  },
+  {
+    "name": "SCHICK",
+    "displayName": "Schick",
+    "knownModels": []
+  },
+  {
+    "name": "SCORPION",
+    "displayName": "Scorpion",
+    "knownModels": []
+  },
+  {
+    "name": "SCUDERIA",
+    "displayName": "Scuderia",
+    "knownModels": []
+  },
+  {
+    "name": "SDR SPORTSCARS",
+    "displayName": "SDR Sportscars",
+    "knownModels": []
+  },
+  {
+    "name": "SENSOR",
+    "displayName": "Sensor",
+    "knownModels": []
+  },
+  {
+    "name": "SERENISSIMA",
+    "displayName": "Serenissima",
+    "knownModels": []
+  },
+  {
+    "name": "SERPOLLET",
+    "displayName": "Serpollet",
+    "knownModels": []
+  },
+  {
+    "name": "SHADOW",
+    "displayName": "Shadow",
+    "knownModels": []
+  },
+  {
+    "name": "SIMBOL",
+    "displayName": "Simbol",
+    "knownModels": []
+  },
+  {
+    "name": "SIMPLEX",
+    "displayName": "Simplex",
+    "knownModels": []
+  },
+  {
+    "name": "SIZAIRE-NAUDIN",
+    "displayName": "Sizaire-Naudin",
+    "knownModels": []
+  },
+  {
+    "name": "SKUNK2",
+    "displayName": "Skunk2",
+    "knownModels": []
+  },
+  {
+    "name": "SLP",
+    "displayName": "SLP",
+    "knownModels": []
+  },
+  {
+    "name": "SMART",
+    "displayName": "Smart",
+    "knownModels": []
+  },
+  {
+    "name": "SOLEIL",
+    "displayName": "Soleil",
+    "knownModels": []
+  },
+  {
+    "name": "SOLETTA",
+    "displayName": "Solette",
+    "knownModels": []
+  },
+  {
+    "name": "SPADA",
+    "displayName": "Spada",
+    "knownModels": []
+  },
+  {
+    "name": "SPARK",
+    "displayName": "Spark",
+    "knownModels": []
+  },
+  {
+    "name": "SPECTER",
+    "displayName": "Specter",
+    "knownModels": []
+  },
+  {
+    "name": "SPECTRE",
+    "displayName": "Spectre",
+    "knownModels": []
+  },
+  {
+    "name": "SPICE",
+    "displayName": "Spice",
+    "knownModels": []
+  },
+  {
+    "name": "SPIESS",
+    "displayName": "Spiess",
+    "knownModels": []
+  },
+  {
+    "name": "SPITZER INDY",
+    "displayName": "Spitzer Indy",
+    "knownModels": []
+  },
+  {
+    "name": "SQUIRE",
+    "displayName": "Squire",
+    "knownModels": []
+  },
+  {
+    "name": "S.S",
+    "displayName": "S.S",
+    "knownModels": []
+  },
+  {
+    "name": "STASIS",
+    "displayName": "Stasis",
+    "knownModels": []
+  },
+  {
+    "name": "STEALTH",
+    "displayName": "Stealth",
+    "knownModels": []
+  },
+  {
+    "name": "STEEDA",
+    "displayName": "Steeda",
+    "knownModels": []
+  },
+  {
+    "name": "STEENSTRA",
+    "displayName": "Steenstra",
+    "knownModels": []
+  },
+  {
+    "name": "STEINMETZ",
+    "displayName": "Steinmetz",
+    "knownModels": []
+  },
+  {
+    "name": "STILLEN",
+    "displayName": "Stillen",
+    "knownModels": []
+  },
+  {
+    "name": "STING",
+    "displayName": "Sting",
+    "knownModels": []
+  },
+  {
+    "name": "STODDARD-DAYTON",
+    "displayName": "Stoddard-Dayton",
+    "knownModels": []
+  },
+  {
+    "name": "STOVEBOLT",
+    "displayName": "Stovebolt",
+    "knownModels": []
+  },
+  {
+    "name": "STRATHCARRON",
+    "displayName": "Strathcarron",
+    "knownModels": []
+  },
+  {
+    "name": "STUDIE",
+    "displayName": "Studie",
+    "knownModels": []
+  },
+  {
+    "name": "STYLING GARAGE",
+    "displayName": "Styling Garage",
+    "knownModels": []
+  },
+  {
+    "name": "SUNDOULES",
+    "displayName": "Sundoules",
+    "knownModels": []
+  },
+  {
+    "name": "SUN-RED",
+    "displayName": "Sun-Red",
+    "knownModels": []
+  },
+  {
+    "name": "SUZUSHO",
+    "displayName": "Suzusho",
+    "knownModels": []
+  },
+  {
+    "name": "SWALLOW",
+    "displayName": "Swallow",
+    "knownModels": []
+  },
+  {
+    "name": "SO-CAL",
+    "displayName": "So-Cal",
+    "knownModels": []
+  },
+  {
+    "name": "TALBOT",
+    "displayName": "Talbot",
+    "knownModels": []
+  },
+  {
+    "name": "TALBOT-LAGO",
+    "displayName": "Talbot-Lago",
+    "knownModels": []
+  },
+  {
+    "name": "TECHART",
+    "displayName": "Techart",
+    "knownModels": []
+  },
+  {
+    "name": "TESLA",
+    "displayName": "Tesla",
+    "knownModels": []
+  },
+  {
+    "name": "TOYOTA",
+    "displayName": "Toyota",
+    "alternativeNames": ["Yota", "Toyo", "Totoya"],
+    "knownModels": ["4Runner", "Supra"]
+  },
+  {
+    "name": "TRIDENT",
+    "displayName": "Trident",
+    "knownModels": []
+  },
+  {
+    "name": "TRIUMPH",
+    "displayName": "Triumph",
+    "knownModels": []
+  },
+  {
+    "name": "TVR",
+    "displayName": "TVR",
+    "knownModels": []
+  },
+  {
+    "name": "TANNER FOUST",
+    "displayName": "Tanner Foust",
+    "knownModels": []
+  },
+  {
+    "name": "TASCA",
+    "displayName": "Tasca",
+    "knownModels": []
+  },
+  {
+    "name": "TATRA",
+    "displayName": "Tatra",
+    "knownModels": []
+  },
+  {
+    "name": "TATUM",
+    "displayName": "Tatum",
+    "knownModels": []
+  },
+  {
+    "name": "TECHNICAL",
+    "displayName": "Technical",
+    "knownModels": []
+  },
+  {
+    "name": "TEIN",
+    "displayName": "Tein",
+    "knownModels": []
+  },
+  {
+    "name": "TEVERBAUGH",
+    "displayName": "Teverbaugh",
+    "knownModels": []
+  },
+  {
+    "name": "THOMAS FLYER",
+    "displayName": "Thomas Flyer",
+    "knownModels": []
+  },
+  {
+    "name": "Thury-Nussberger",
+    "displayName": "Thury-Nussberger",
+    "knownModels": []
+  },
+  {
+    "name": "TIGER",
+    "displayName": "Tiger",
+    "knownModels": []
+  },
+  {
+    "name": "TMG",
+    "displayName": "TMG",
+    "knownModels": []
+  },
+  {
+    "name": "TMR",
+    "displayName": "TMR",
+    "knownModels": []
+  },
+  {
+    "name": "TOJEIRO",
+    "displayName": "Tojeiro",
+    "knownModels": []
+  },
+  {
+    "name": "TOMMY",
+    "displayName": "Tommy",
+    "knownModels": []
+  },
+  {
+    "name": "TOM",
+    "displayName": "Tom",
+    "knownModels": []
+  },
+  {
+    "name": "TORAY",
+    "displayName": "Toray",
+    "knownModels": []
+  },
+  {
+    "name": "TOWNSEND",
+    "displayName": "Townsend",
+    "knownModels": []
+  },
+  {
+    "name": "TRABANT",
+    "displayName": "Trabant",
+    "knownModels": []
+  },
+  {
+    "name": "TRANSSTAR",
+    "displayName": "Transstar",
+    "knownModels": []
+  },
+  {
+    "name": "TRD",
+    "displayName": "TRD",
+    "knownModels": []
+  },
+  {
+    "name": "TROUTMAN & Barnes",
+    "displayName": "Troutman & Barnes",
+    "alternativeNames": ["Troutman - Barnes"],
+    "knownModels": []
+  },
+  {
+    "name": "TUCKER",
+    "displayName": "Tucker",
+    "knownModels": []
+  },
+  {
+    "name": "TURBO TECHNICS",
+    "displayName": "Turbo Technics",
+    "knownModels": []
+  },
+  {
+    "name": "TURCAT-MÉRY",
+    "displayName": "Turcat-Méry",
+    "knownModels": []
+  },
+  {
+    "name": "Turner Motorsport",
+    "displayName": "Turner Motorsport",
+    "knownModels": []
+  },
+  {
+    "name": "TUSHEK",
+    "displayName": "Tushek",
+    "knownModels": []
+  },
+  {
+    "name": "TRION",
+    "displayName": "Trion",
+    "knownModels": []
+  },
+  {
+    "name": "TAURO SPORT",
+    "displayName": "Tauro Sport",
+    "knownModels": []
+  },
+  {
+    "name": "TRAMONTANA",
+    "displayName": "Tramontana",
+    "knownModels": []
+  },
+  {
+    "name": "ULTIMA",
+    "displayName": "Ultima",
+    "knownModels": []
+  },
+  {
+    "name": "UNIPOWER",
+    "displayName": "Unipower",
+    "knownModels": []
+  },
+  {
+    "name": "VALMET",
+    "displayName": "Valmet",
+    "knownModels": []
+  },
+  {
+    "name": "VANDENBRINK",
+    "displayName": "Vandenbrink",
+    "knownModels": []
+  },
+  {
+    "name": "VAUXHALL",
+    "displayName": "Vauxhall",
+    "knownModels": []
+  },
+  {
+    "name": "VDS",
+    "displayName": "VDS",
+    "knownModels": []
+  },
+  {
+    "name": "VECTOR",
+    "displayName": "Vector",
+    "knownModels": []
+  },
+  {
+    "name": "VEILSIDE",
+    "displayName": "Veilside",
+    "knownModels": []
+  },
+  {
+    "name": "VEMAC",
+    "displayName": "Vemac",
+    "knownModels": []
+  },
+  {
+    "name": "VENCER",
+    "displayName": "Vencer",
+    "knownModels": []
+  },
+  {
+    "name": "VENTURI",
+    "displayName": "Venturi",
+    "knownModels": []
+  },
+  {
+    "name": "VERITAS",
+    "displayName": "Veritas",
+    "knownModels": []
+  },
+  {
+    "name": "VGD",
+    "displayName": "VGD",
+    "knownModels": []
+  },
+  {
+    "name": "VICTRESS",
+    "displayName": "Victress",
+    "knownModels": []
+  },
+  {
+    "name": "VIRAGO",
+    "displayName": "Virago",
+    "knownModels": []
+  },
+  {
+    "name": "VISION",
+    "displayName": "Vision",
+    "knownModels": []
+  },
+  {
+    "name": "VL-AUTOMOTIVE",
+    "displayName": "VL-Automotive",
+    "knownModels": []
+  },
+  {
+    "name": "VOISIN",
+    "displayName": "Voisin",
+    "knownModels": []
+  },
+  {
+    "name": "VOLKSWAGEN",
+    "displayName": "Volkswagen",
+    "alternativeNames": ["VW", "V-Dub"],
+    "knownModels": []
+  },
+  {
+    "name": "VOLVO",
+    "displayName": "Volvo",
+    "knownModels": []
+  },
+  {
+    "name": "VÖRSTEINER",
+    "displayName": "Vörsteiner",
+    "knownModels": []
+  },
+  {
+    "name": "VORTEX",
+    "displayName": "Vortex",
+    "knownModels": []
+  },
+  {
+    "name": "VŪHL",
+    "displayName": "Vūhl",
+    "knownModels": []
+  },
+  {
+    "name": "WANDERER",
+    "displayName": "Wanderer",
+    "knownModels": []
+  },
+  {
+    "name": "WCC",
+    "displayName": "WCC",
+    "knownModels": []
+  },
+  {
+    "name": "WEBB",
+    "displayName": "Webb",
+    "knownModels": []
+  },
+  {
+    "name": "WEBER",
+    "displayName": "Weber",
+    "knownModels": []
+  },
+  {
+    "name": "WEINECK",
+    "displayName": "Weineck",
+    "knownModels": []
+  },
+  {
+    "name": "WELTER",
+    "displayName": "Welter",
+    "knownModels": []
+  },
+  {
+    "name": "WESTFIELD",
+    "displayName": "Westfield",
+    "knownModels": []
+  },
+  {
+    "name": "WIESMANN",
+    "displayName": "Wiesmann",
+    "knownModels": []
+  },
+  {
+    "name": "WILLIMENT",
+    "displayName": "Williment",
+    "knownModels": []
+  },
+  {
+    "name": "WILLYS-KNIGHT",
+    "displayName": "Willys-Knight",
+    "knownModels": []
+  },
+  {
+    "name": "YAMAHA",
+    "displayName": "Yamaha",
+    "knownModels": []
+  },
+  {
+    "name": "YENKO",
+    "displayName": "Yenko",
+    "knownModels": []
+  },
+  {
+    "name": "YES",
+    "displayName": "Yes",
+    "knownModels": []
+  },
+  {
+    "name": "ZAGATO",
+    "displayName": "Zagato",
+    "knownModels": []
+  },
+  {
+    "name": "ZENDER",
+    "displayName": "Zender",
+    "knownModels": []
+  },
+  {
+    "name": "ZENOS",
+    "displayName": "Zenos",
+    "knownModels": []
+  },
+  {
+    "name": "ZENVO",
+    "displayName": "Zenvo",
+    "knownModels": []
+  },
+  {
+    "name": "ZYTEK",
+    "displayName": "Zytek",
+    "knownModels": []
+  }
+]
